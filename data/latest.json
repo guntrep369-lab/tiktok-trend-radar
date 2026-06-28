@@ -1,8 +1,8 @@
 {
-  "run_timestamp": "2026-06-28T16:49:43.786265+00:00",
+  "run_timestamp": "2026-06-28T17:16:31.779082+00:00",
   "results": [
     {
-      "keyword": "มีมตัวอย่าง1",
+      "keyword": "ลิปเปลี่ยนสี",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -11,7 +11,7 @@
       "source": "live"
     },
     {
-      "keyword": "มีมตัวอย่าง2",
+      "keyword": "ครีมกันแดดโกลว์",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -20,7 +20,7 @@
       "source": "live"
     },
     {
-      "keyword": "มีมตัวอย่าง3",
+      "keyword": "เซรั่มหน้าใส",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -29,7 +29,7 @@
       "source": "live"
     },
     {
-      "keyword": "คีย์เวิร์ดกลุ่ม2 อันที่1",
+      "keyword": "น้ำหอมติดทน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -38,7 +38,142 @@
       "source": "live"
     },
     {
-      "keyword": "คีย์เวิร์ดกลุ่ม2 อันที่2",
+      "keyword": "คอนซีลเลอร์",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "คอลลาเจน",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "วิตามินผิว",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "ขนมเกาหลี",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "กาแฟลดน้ำหนัก",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "โพรไบโอติก",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "ที่ดูดฝุ่นไร้สาย",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "หม้อทอดไร้น้ำมัน",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "เครื่องฟอกอากาศ",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "ไฟ LED ติดผนัง",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "รองเท้าผ้าใบ",
+      "current_score": 0.0,
+      "avg_velocity": 7.556,
+      "avg_acceleration": 0.0,
+      "momentum_score": 5.289,
+      "label": "GROWING_SLOWING",
+      "source": "live"
+    },
+    {
+      "keyword": "เสื้อโอเวอร์ไซส์",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "กางเกงขายาวทรงสวย",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "เดรสออกงาน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
