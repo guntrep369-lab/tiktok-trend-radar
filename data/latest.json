@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-06-28T17:16:31.779082+00:00",
+  "run_timestamp": "2026-06-28T19:03:57.372698+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -137,15 +137,6 @@
       "source": "live"
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 0.0,
-      "avg_velocity": 7.556,
-      "avg_acceleration": 0.0,
-      "momentum_score": 5.289,
-      "label": "GROWING_SLOWING",
-      "source": "live"
-    },
-    {
       "keyword": "เสื้อโอเวอร์ไซส์",
       "current_score": 0.0,
       "avg_velocity": 0.0,
@@ -156,6 +147,15 @@
     },
     {
       "keyword": "กางเกงขายาวทรงสวย",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
