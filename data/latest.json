@@ -1,0 +1,50 @@
+{
+  "run_timestamp": "2026-06-28T16:02:21.456835+00:00",
+  "results": [
+    {
+      "keyword": "มีมตัวอย่าง3",
+      "current_score": 31.54,
+      "avg_velocity": 0.901,
+      "avg_acceleration": 2.059,
+      "momentum_score": 1.248,
+      "label": "PEAK_RISING",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "มีมตัวอย่าง2",
+      "current_score": 32.84,
+      "avg_velocity": 0.503,
+      "avg_acceleration": 0.919,
+      "momentum_score": 0.628,
+      "label": "PEAK_RISING",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "มีมตัวอย่าง1",
+      "current_score": 27.98,
+      "avg_velocity": 0.246,
+      "avg_acceleration": 0.333,
+      "momentum_score": 0.272,
+      "label": "PLATEAU",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "คีย์เวิร์ดกลุ่ม2 อันที่1",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    },
+    {
+      "keyword": "คีย์เวิร์ดกลุ่ม2 อันที่2",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "PLATEAU",
+      "source": "live"
+    }
+  ]
+}

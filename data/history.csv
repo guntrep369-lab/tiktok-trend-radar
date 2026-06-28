@@ -1,0 +1,6 @@
+﻿run_timestamp,keyword,current_score,avg_velocity,avg_acceleration,momentum_score,label,source
+2026-06-28T16:02:21.456835+00:00,มีมตัวอย่าง3,31.54,0.901,2.059,1.248,PEAK_RISING,simulate_fallback
+2026-06-28T16:02:21.456835+00:00,มีมตัวอย่าง2,32.84,0.503,0.919,0.628,PEAK_RISING,simulate_fallback
+2026-06-28T16:02:21.456835+00:00,มีมตัวอย่าง1,27.98,0.246,0.333,0.272,PLATEAU,simulate_fallback
+2026-06-28T16:02:21.456835+00:00,คีย์เวิร์ดกลุ่ม2 อันที่1,0.0,0.0,0.0,0.0,PLATEAU,live
+2026-06-28T16:02:21.456835+00:00,คีย์เวิร์ดกลุ่ม2 อันที่2,0.0,0.0,0.0,0.0,PLATEAU,live
