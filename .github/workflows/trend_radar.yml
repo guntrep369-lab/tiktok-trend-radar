@@ -1,0 +1,47 @@
+name: TikTok Trend Radar
+
+on:
+  schedule:
+    # รันทุก 3 ชั่วโมง (เวลา UTC). 0 */3 * * * = นาทีที่ 0 ของทุกๆ 3 ชั่วโมง
+    # หมายเหตุ: เวลาไทย = UTC+7 ดังนั้นจะรันที่ 07:00, 10:00, 13:00, 16:00, 19:00, 22:00, 01:00, 04:00 (เวลาไทย)
+    - cron: "0 */3 * * *"
+  workflow_dispatch: {}   # เพิ่มปุ่มกดรัน manual ได้จากหน้า Actions tab บน GitHub
+
+permissions:
+  contents: write   # ให้ workflow commit ไฟล์ data/ กลับเข้า repo ได้
+
+jobs:
+  run-trend-radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run trend radar pipeline
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python scripts/run_radar.py --mode live
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "trend-radar-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "ไม่มีการเปลี่ยนแปลงข้อมูล -> ข้าม commit"
+          else
+            git commit -m "📊 อัปเดตข้อมูล trend ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi
