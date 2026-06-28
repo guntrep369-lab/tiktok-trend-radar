@@ -1,6 +1,15 @@
 {
-  "run_timestamp": "2026-06-28T19:03:57.372698+00:00",
+  "run_timestamp": "2026-06-28T21:55:05.292444+00:00",
   "results": [
+    {
+      "keyword": "คอนซีลเลอร์",
+      "current_score": 100.0,
+      "avg_velocity": 11.111,
+      "avg_acceleration": 11.111,
+      "momentum_score": 11.111,
+      "label": "PEAK_RISING",
+      "source": "live"
+    },
     {
       "keyword": "ลิปเปลี่ยนสี",
       "current_score": 0.0,
@@ -30,15 +39,6 @@
     },
     {
       "keyword": "น้ำหอมติดทน",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "PLATEAU",
-      "source": "live"
-    },
-    {
-      "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
