@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-06-29T02:37:16.338475+00:00",
+  "run_timestamp": "2026-06-29T02:38:56.016645+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -49,10 +49,10 @@
     {
       "keyword": "คอลลาเจน",
       "current_score": 0.0,
-      "avg_velocity": 5.111,
+      "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
-      "momentum_score": 3.578,
-      "label": "INTRO",
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -92,15 +92,6 @@
       "source": "live"
     },
     {
-      "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 0.0,
-      "avg_velocity": 4.111,
-      "avg_acceleration": 0.0,
-      "momentum_score": 2.878,
-      "label": "INTRO",
-      "source": "live"
-    },
-    {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
       "current_score": 0.0,
       "avg_velocity": 0.0,
@@ -111,6 +102,15 @@
     },
     {
       "keyword": "หม้อทอดไร้น้ำมัน",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live"
+    },
+    {
+      "keyword": "เครื่องฟอกอากาศ",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -130,10 +130,19 @@
     {
       "keyword": "เครื่องชงกาแฟ",
       "current_score": 0.0,
-      "avg_velocity": -5.0,
+      "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
-      "momentum_score": -3.5,
-      "label": "DECLINE",
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live"
+    },
+    {
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": 1.556,
+      "avg_acceleration": 0.0,
+      "momentum_score": 1.089,
+      "label": "INTRO",
       "source": "live"
     },
     {
@@ -156,15 +165,6 @@
     },
     {
       "keyword": "รองเท้าผ้าใบ",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
-    },
-    {
-      "keyword": "กระเป๋าสะพาย",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
