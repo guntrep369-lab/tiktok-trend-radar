@@ -1,103 +1,112 @@
 {
-  "run_timestamp": "2026-06-29T07:22:48.348750+00:00",
+  "run_timestamp": "2026-06-29T10:33:34.139555+00:00",
   "results": [
     {
-      "keyword": "ลิปเปลี่ยนสี",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
+      "keyword": "คอนซีลเลอร์",
+      "current_score": 27.4,
+      "avg_velocity": 0.427,
+      "avg_acceleration": 0.535,
+      "momentum_score": 0.46,
+      "label": "INTRO",
+      "source": "simulate_fallback"
     },
     {
       "keyword": "ครีมกันแดดโกลว์",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
+      "current_score": 31.34,
+      "avg_velocity": -0.038,
+      "avg_acceleration": 0.141,
+      "momentum_score": 0.016,
       "label": "STABLE",
-      "source": "live"
-    },
-    {
-      "keyword": "เซรั่มหน้าใส",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
+      "source": "simulate_fallback"
     },
     {
       "keyword": "น้ำหอมติดทน",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
+      "current_score": 34.85,
+      "avg_velocity": -0.343,
+      "avg_acceleration": -0.458,
+      "momentum_score": -0.377,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
     },
     {
-      "keyword": "คอนซีลเลอร์",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
+      "keyword": "ลิปเปลี่ยนสี",
+      "current_score": 28.57,
+      "avg_velocity": -0.74,
+      "avg_acceleration": -1.636,
+      "momentum_score": -1.008,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "เซรั่มหน้าใส",
+      "current_score": 29.9,
+      "avg_velocity": -1.462,
+      "avg_acceleration": -2.922,
+      "momentum_score": -1.9,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "กาแฟลดน้ำหนัก",
+      "current_score": 34.24,
+      "avg_velocity": 1.13,
+      "avg_acceleration": 1.143,
+      "momentum_score": 1.134,
+      "label": "INTRO",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "วิตามินผิว",
+      "current_score": 33.44,
+      "avg_velocity": 0.003,
+      "avg_acceleration": -0.646,
+      "momentum_score": -0.191,
       "label": "STABLE",
-      "source": "live"
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "โพรไบโอติก",
+      "current_score": 27.15,
+      "avg_velocity": -0.929,
+      "avg_acceleration": -1.261,
+      "momentum_score": -1.029,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
     },
     {
       "keyword": "คอลลาเจน",
-      "current_score": 69.0,
-      "avg_velocity": 0.667,
-      "avg_acceleration": 5.222,
-      "momentum_score": 2.033,
+      "current_score": 23.4,
+      "avg_velocity": -1.367,
+      "avg_acceleration": -1.232,
+      "momentum_score": -1.326,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "ขนมเกาหลี",
+      "current_score": 31.15,
+      "avg_velocity": -1.449,
+      "avg_acceleration": -1.199,
+      "momentum_score": -1.374,
+      "label": "DECLINE",
+      "source": "simulate_fallback"
+    },
+    {
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 72.0,
+      "avg_velocity": 1.667,
+      "avg_acceleration": 2.444,
+      "momentum_score": 1.9,
       "label": "GROWTH",
       "source": "live"
     },
     {
-      "keyword": "ขนมเกาหลี",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
-    },
-    {
-      "keyword": "กาแฟลดน้ำหนัก",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live"
-    },
-    {
-      "keyword": "วิตามินผิว",
-      "current_score": 0.0,
-      "avg_velocity": -0.778,
-      "avg_acceleration": 1.778,
-      "momentum_score": -0.011,
-      "label": "DECLINE",
-      "source": "live"
-    },
-    {
-      "keyword": "โพรไบโอติก",
-      "current_score": 0.0,
-      "avg_velocity": -2.111,
-      "avg_acceleration": -2.667,
-      "momentum_score": -2.278,
-      "label": "DECLINE",
-      "source": "live"
-    },
-    {
       "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 58.0,
-      "avg_velocity": 2.222,
-      "avg_acceleration": -2.889,
-      "momentum_score": 0.689,
-      "label": "PEAK",
+      "current_score": 45.0,
+      "avg_velocity": 1.111,
+      "avg_acceleration": 2.111,
+      "momentum_score": 1.411,
+      "label": "GROWTH",
       "source": "live"
     },
     {
@@ -119,29 +128,29 @@
       "source": "live"
     },
     {
-      "keyword": "เครื่องชงกาแฟ",
-      "current_score": 81.0,
-      "avg_velocity": -1.111,
-      "avg_acceleration": -1.778,
-      "momentum_score": -1.311,
+      "keyword": "หม้อทอดไร้น้ำมัน",
+      "current_score": 0.0,
+      "avg_velocity": -0.444,
+      "avg_acceleration": -0.889,
+      "momentum_score": -0.578,
       "label": "DECLINE",
       "source": "live"
     },
     {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 0.0,
-      "avg_velocity": -1.0,
-      "avg_acceleration": -3.556,
-      "momentum_score": -1.767,
-      "label": "DECLINE",
+      "keyword": "รองเท้าผ้าใบ",
+      "current_score": 79.0,
+      "avg_velocity": 1.778,
+      "avg_acceleration": 2.444,
+      "momentum_score": 1.978,
+      "label": "GROWTH",
       "source": "live"
     },
     {
       "keyword": "กระเป๋าสะพาย",
-      "current_score": 48.0,
+      "current_score": 54.0,
       "avg_velocity": 1.556,
-      "avg_acceleration": 0.111,
-      "momentum_score": 1.122,
+      "avg_acceleration": 2.778,
+      "momentum_score": 1.922,
       "label": "GROWTH",
       "source": "live"
     },
@@ -170,15 +179,6 @@
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "live"
-    },
-    {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 57.0,
-      "avg_velocity": -1.111,
-      "avg_acceleration": -3.667,
-      "momentum_score": -1.878,
-      "label": "DECLINE",
       "source": "live"
     }
   ]
