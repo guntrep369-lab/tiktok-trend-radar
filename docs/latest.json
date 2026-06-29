@@ -1,13 +1,13 @@
 {
-  "run_timestamp": "2026-06-29T19:44:03.598745+00:00",
+  "run_timestamp": "2026-06-29T22:04:44.841348+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
       "current_score": 0.0,
-      "avg_velocity": 0.0,
+      "avg_velocity": 10.889,
       "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
+      "momentum_score": 7.622,
+      "label": "INTRO",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -80,10 +80,65 @@
     {
       "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
-      "avg_velocity": -1.778,
+      "avg_velocity": -7.333,
       "avg_acceleration": 0.0,
-      "momentum_score": -1.244,
+      "momentum_score": -5.133,
       "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      }
+    },
+    {
+      "keyword": "คอลลาเจน",
+      "current_score": 0.0,
+      "avg_velocity": 0.333,
+      "avg_acceleration": 4.667,
+      "momentum_score": 1.633,
+      "label": "INTRO",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      }
+    },
+    {
+      "keyword": "โพรไบโอติก",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 2.0,
+      "momentum_score": 0.6,
+      "label": "STABLE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
+        "products": [
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
+        ]
+      }
+    },
+    {
+      "keyword": "วิตามินผิว",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -135,31 +190,12 @@
       }
     },
     {
-      "keyword": "วิตามินผิว",
+      "keyword": "เครื่องฟอกอากาศ",
       "current_score": 0.0,
-      "avg_velocity": -2.778,
-      "avg_acceleration": 0.0,
-      "momentum_score": -1.944,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      }
-    },
-    {
-      "keyword": "โพรไบโอติก",
-      "current_score": 0.0,
-      "avg_velocity": -4.889,
-      "avg_acceleration": -2.333,
-      "momentum_score": -4.122,
-      "label": "DECLINE",
+      "avg_velocity": 0.0,
+      "avg_acceleration": 2.222,
+      "momentum_score": 0.667,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "default",
@@ -171,26 +207,26 @@
       }
     },
     {
-      "keyword": "คอลลาเจน",
+      "keyword": "ที่ดูดฝุ่นไร้สาย",
       "current_score": 0.0,
-      "avg_velocity": -10.333,
-      "avg_acceleration": -5.0,
-      "momentum_score": -8.733,
-      "label": "DECLINE",
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
+        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
         "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
+          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
+          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
+          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
+          "กล่องเก็บของ / ชั้นวาง"
         ]
       }
     },
     {
-      "keyword": "ที่ดูดฝุ่นไร้สาย",
+      "keyword": "หม้อทอดไร้น้ำมัน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -226,48 +262,12 @@
       }
     },
     {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 0.0,
-      "avg_velocity": -6.444,
-      "avg_acceleration": 4.0,
-      "momentum_score": -3.311,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
-        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
-        "products": [
-          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
-          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
-          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
-          "กล่องเก็บของ / ชั้นวาง"
-        ]
-      }
-    },
-    {
-      "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 0.0,
-      "avg_velocity": -12.444,
-      "avg_acceleration": -3.222,
-      "momentum_score": -9.678,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
-        ]
-      }
-    },
-    {
       "keyword": "เครื่องชงกาแฟ",
       "current_score": 0.0,
-      "avg_velocity": -16.0,
-      "avg_acceleration": -3.111,
-      "momentum_score": -12.133,
-      "label": "DECLINE",
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "กิน_อาหาร",
@@ -338,11 +338,11 @@
       }
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
+      "keyword": "กระเป๋าสะพาย",
       "current_score": 0.0,
-      "avg_velocity": -12.222,
-      "avg_acceleration": -1.444,
-      "momentum_score": -8.989,
+      "avg_velocity": -2.111,
+      "avg_acceleration": 3.111,
+      "momentum_score": -0.544,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -357,11 +357,11 @@
       }
     },
     {
-      "keyword": "กระเป๋าสะพาย",
+      "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
-      "avg_velocity": -13.778,
-      "avg_acceleration": -0.556,
-      "momentum_score": -9.811,
+      "avg_velocity": -2.778,
+      "avg_acceleration": 2.0,
+      "momentum_score": -1.344,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
