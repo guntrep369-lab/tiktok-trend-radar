@@ -1,6 +1,6 @@
 {
   "geo": "TH",
-  "timeframe": "now 1-d",
+  "timeframe": "now 7-d",
   "momentum_alert_threshold": 1.5,
   "keyword_batches": [
     ["ลิปเปลี่ยนสี", "ครีมกันแดดโกลว์", "เซรั่มหน้าใส", "น้ำหอมติดทน", "คอนซีลเลอร์"],
