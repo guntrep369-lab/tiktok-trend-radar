@@ -46,6 +46,9 @@ CONFIG_PATH = REPO_ROOT / "config.json"
 DATA_DIR = REPO_ROOT / "data"
 HISTORY_CSV = DATA_DIR / "history.csv"
 LATEST_JSON = DATA_DIR / "latest.json"
+# สำเนา latest.json ไว้ใน docs/ ด้วย เพื่อให้ dashboard บน GitHub Pages อ่านได้
+DOCS_DIR = REPO_ROOT / "docs"
+DOCS_LATEST_JSON = DOCS_DIR / "latest.json"
 
 
 def load_config() -> dict:
@@ -91,13 +94,21 @@ def append_to_history(report: pd.DataFrame, run_timestamp: str):
 def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
     """บันทึกสแนปช็อตล่าสุดเป็น JSON (เขียนทับทุกครั้ง ใช้ดูสถานะปัจจุบัน)"""
     DATA_DIR.mkdir(exist_ok=True)
+    records = all_reports.reset_index().to_dict(orient="records")
+    # แนบหมวดสินค้าที่ควรขายให้ทุกคีย์เวิร์ด (ใช้แสดงบน dashboard)
+    for rec in records:
+        rec["product_suggestion"] = match_product(rec["keyword"])
     snapshot = {
         "run_timestamp": run_timestamp,
-        "results": all_reports.reset_index().to_dict(orient="records"),
+        "results": records,
     }
     with open(LATEST_JSON, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False, indent=2)
-    logger.info(f"บันทึกสแนปช็อตล่าสุดลง {LATEST_JSON.name}")
+    # เขียนสำเนาไว้ใน docs/ ให้ dashboard บน GitHub Pages อ่าน
+    DOCS_DIR.mkdir(exist_ok=True)
+    with open(DOCS_LATEST_JSON, "w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=2)
+    logger.info(f"บันทึกสแนปช็อตล่าสุดลง {LATEST_JSON.name} และ docs/")
 
 
 def find_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
