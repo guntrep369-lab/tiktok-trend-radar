@@ -45,3 +45,23 @@ jobs:
             git commit -m "📊 อัปเดตข้อมูล trend ($(date -u +'%Y-%m-%d %H:%M UTC'))"
             git push
           fi
+
+  deploy-dashboard:
+    needs: run-trend-radar
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
