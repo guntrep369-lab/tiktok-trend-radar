@@ -30,8 +30,10 @@ from trend_engine import (
     compute_velocity_acceleration,
     rank_keywords_by_momentum,
     LABEL_DISPLAY,
+    ALERT_PHASES,
 )
 from line_notifier import send_line_message, format_alert_message
+from meme_product_map import match_product
 
 logging.basicConfig(
     level=logging.INFO,
@@ -98,17 +100,28 @@ def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
     logger.info(f"บันทึกสแนปช็อตล่าสุดลง {LATEST_JSON.name}")
 
 
-def find_high_momentum_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
-    """หาคำที่ momentum_score เกิน threshold -> สร้างเป็นลิสต์สำหรับแจ้งเตือน"""
-    high_momentum = all_reports[all_reports["momentum_score"] >= threshold]
+def find_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
+    """
+    หาคำที่ควรแจ้งเตือน = อยู่ในเฟส GROWTH หรือ PEAK (จังหวะที่ลงมือแล้วคุ้ม)
+    และ momentum ผ่าน threshold ขั้นต่ำ
+    พร้อมแนบหมวดสินค้าที่ควรขาย (Meme-Product Matching)
+    """
     alerts = []
-    for kw, row in high_momentum.iterrows():
+    for kw, row in all_reports.iterrows():
+        # เงื่อนไข 1: ต้องอยู่ในเฟสที่ควรลงมือ (พุ่ง/พีค)
+        if row["label"] not in ALERT_PHASES:
+            continue
+        # เงื่อนไข 2: momentum ต้องผ่านเกณฑ์ขั้นต่ำ (กันสัญญาณอ่อนเกินไป)
+        if row["momentum_score"] < threshold:
+            continue
+
         alerts.append({
             "keyword": kw,
             "momentum_score": row["momentum_score"],
             "current_score": row["current_score"],
             "label": row["label"],
             "label_display": LABEL_DISPLAY.get(row["label"], row["label"]),
+            "product_suggestion": match_product(kw),  # แนบหมวดสินค้าตามอารมณ์
         })
     return alerts
 
@@ -151,14 +164,14 @@ def main():
     combined = pd.concat(all_reports)
     save_latest_snapshot(combined, run_timestamp)
 
-    # ── แจ้งเตือนผ่าน LINE ถ้าเจอคำที่ momentum สูง ──
-    alerts = find_high_momentum_alerts(combined, threshold)
+    # ── แจ้งเตือนผ่าน LINE เมื่อเจอคำในเฟส GROWTH/PEAK (จังหวะทอง) ──
+    alerts = find_alerts(combined, threshold)
     if alerts:
-        logger.info(f"พบ {len(alerts)} คำที่ momentum สูงเกิน threshold ({threshold}) -> ส่งแจ้งเตือน")
+        logger.info(f"พบ {len(alerts)} คำในเฟสพุ่ง/พีค (จังหวะทอง) -> ส่งแจ้งเตือน")
         message = format_alert_message(alerts)
         send_line_message(message)
     else:
-        logger.info(f"ไม่มีคำใดที่ momentum สูงเกิน threshold ({threshold}) ในรอบนี้")
+        logger.info("ไม่มีคำใดอยู่ในเฟสพุ่ง/พีค ในรอบนี้")
 
     logger.info("จบรอบการทำงาน")
 

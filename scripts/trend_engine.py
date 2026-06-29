@@ -126,7 +126,7 @@ def compute_velocity_acceleration(df: pd.DataFrame, smooth_window: int = 3) -> d
         current_score = series.iloc[-1]
 
         momentum_score = (recent_v * 0.7) + (recent_a * 0.3)
-        label = _classify_trend(recent_v, recent_a)
+        label = _classify_trend(recent_v, recent_a, current_score=current_score)
 
         results[kw] = {
             "current_score": round(float(current_score), 2),
@@ -139,26 +139,63 @@ def compute_velocity_acceleration(df: pd.DataFrame, smooth_window: int = 3) -> d
     return results
 
 
-def _classify_trend(v: float, a: float, v_threshold: float = 0.3, a_threshold: float = 0.1) -> str:
+def _classify_trend(
+    v: float,
+    a: float,
+    current_score: float = 50.0,
+    v_threshold: float = 0.3,
+    a_threshold: float = 0.1,
+    low_score_threshold: float = 35.0,
+) -> str:
+    """
+    จัดเฟสชีวิตมีมเป็น 4 ช่วงตามกราฟระฆังคว่ำ: เกิด -> พุ่ง -> พีค -> ดับ
+
+    พารามิเตอร์:
+      v                  = velocity (ความเร็วการเปลี่ยนแปลง) เฉลี่ยช่วงท้าย
+      a                  = acceleration (อัตราเร่ง) เฉลี่ยช่วงท้าย
+      current_score      = คะแนน interest ล่าสุด (0-100) ใช้แยกเฟส "เกิด"
+      v_threshold        = เกณฑ์ตัดสินว่า v ถือว่า "นิ่ง" หรือ "เคลื่อนไหว"
+      a_threshold        = เกณฑ์ตัดสินว่า a ถือว่า "เร่ง" จริง
+      low_score_threshold = คะแนนต่ำกว่านี้ + กำลังโต = ยังอยู่เฟสเกิด
+
+    ตรรกะหลัก (เรียงตามลำดับความสำคัญ):
+      1. ดับ (DECLINE)  : v ติดลบชัดเจน -> คนเบื่อแล้ว ตลาดวาย
+      2. เกิด (INTRO)   : score ยังต่ำ แต่ v เริ่มเป็นบวก -> เพิ่งโผล่ จับตาไว้
+      3. พุ่ง (GROWTH)  : v เป็นบวก และ a เป็นบวก -> จังหวะทอง! กำลังเร่งขึ้น
+      4. พีค (PEAK)     : v ยังบวก แต่ a แผ่ว/ติดลบ -> โตอยู่แต่หมดแรงเร่ง ใกล้อิ่ม
+      5. นิ่ง (STABLE)  : v แทบไม่ขยับ -> ไม่มีกระแสให้เกาะ
+    """
+    # 1) เฟสดับ — velocity ติดลบ = กระแสกำลังตก (เช็คก่อนเพื่อน เพราะอันตรายสุด)
+    if v < -v_threshold:
+        return "DECLINE"
+
+    # 2) เฟสเกิด — คะแนนยังต่ำ แต่เริ่มขยับขึ้น = ของใหม่ที่น่าจับตา
+    if current_score < low_score_threshold and v > v_threshold:
+        return "INTRO"
+
+    # 3) เฟสพุ่ง (จังหวะทอง) — กำลังโต และยัง "เร่ง" อยู่ (a เป็นบวก)
     if v > v_threshold and a > a_threshold:
-        return "PEAK_RISING"
-    elif v > v_threshold and a <= a_threshold:
-        return "GROWING_SLOWING"
-    elif abs(v) <= v_threshold:
-        return "PLATEAU"
-    elif v < -v_threshold and a < -a_threshold:
-        return "DYING_FAST"
-    else:
-        return "DECLINING"
+        return "GROWTH"
+
+    # 4) เฟสพีค — ยังโตอยู่ แต่แรงเร่งแผ่วลง/เริ่มติดลบ = ใกล้สุดยอด
+    if v > v_threshold and a <= a_threshold:
+        return "PEAK"
+
+    # 5) ที่เหลือ = นิ่ง ไม่มีทิศทางชัด
+    return "STABLE"
 
 
+# label -> ข้อความที่ทีมคอนเทนต์อ่านแล้วตัดสินใจได้ทันที
 LABEL_DISPLAY = {
-    "PEAK_RISING": "🚀 PEAK RISING — รีบทำคลิป NOW",
-    "GROWING_SLOWING": "📈 GROWING (ชะลอตัว) — ยังทำได้ แต่อย่าช้า",
-    "PLATEAU": "➖ PLATEAU/STABLE — กระแสนิ่ง ไม่เร่งด่วน",
-    "DYING_FAST": "💀 DYING FAST — ข้าม ไปคำอื่นดีกว่า",
-    "DECLINING": "📉 DECLINING — เกาะกระแสได้อีกนิดเดียว",
+    "INTRO":   "🌱 เกิด (Introduction) — เพิ่งโผล่ จับตาไว้ ยังไม่ต้องลงมือ",
+    "GROWTH":  "🚀 พุ่ง (Growth) — จังหวะทอง! รีบทำคอนเทนต์ใน 3 ชม.",
+    "PEAK":    "🔥 พีค (Peak) — โตอยู่แต่ใกล้อิ่ม ทำได้แต่ต้องรีบ",
+    "DECLINE": "📉 ดับ (Decline) — คนเบื่อแล้ว หยุด เปลี่ยนคำใหม่",
+    "STABLE":  "➖ นิ่ง (Stable) — ไม่มีกระแสให้เกาะ",
 }
+
+# เฟสที่ควรส่ง alert (จังหวะที่ลงมือแล้วคุ้ม) — ใช้ตอนเชื่อมกับ LINE ในส่วนที่ 3
+ALERT_PHASES = {"GROWTH", "PEAK"}
 
 
 def rank_keywords_by_momentum(results: dict) -> pd.DataFrame:

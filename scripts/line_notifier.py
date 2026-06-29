@@ -80,9 +80,16 @@ def format_alert_message(alerts: list) -> str:
     lines = ["🔥 TikTok Trend Radar — พบกระแสน่าจับตา!", ""]
     for a in alerts:
         lines.append(f"🔑 {a['keyword']}")
-        lines.append(f"   Score: {a['current_score']} | Momentum: {a['momentum_score']}")
         lines.append(f"   {a['label_display']}")
+        lines.append(f"   Score: {a['current_score']} | Momentum: {a['momentum_score']}")
+        # แนบหมวดสินค้าที่ควรขาย (จาก Meme-Product Matching)
+        if a.get("product_suggestion"):
+            ps = a["product_suggestion"]
+            lines.append(f"   🛒 อารมณ์: {ps['mood_display']}")
+            lines.append(f"   💰 ขายคู่กับ: {ps['products'][0]}")
+            if len(ps["products"]) > 1:
+                lines.append(f"      (หรือ: {ps['products'][1]})")
         lines.append("")
 
-    lines.append("📌 รีบเช็คและทำคอนเทนต์ก่อนกระแสหาย!")
+    lines.append("⏰ จังหวะทอง! รีบทำคอนเทนต์ภายใน 3 ชม. ก่อนกระแสหาย")
     return "\n".join(lines)
