@@ -1,22 +1,13 @@
 {
-  "run_timestamp": "2026-06-28T21:55:05.292444+00:00",
+  "run_timestamp": "2026-06-29T02:31:21.627033+00:00",
   "results": [
-    {
-      "keyword": "คอนซีลเลอร์",
-      "current_score": 100.0,
-      "avg_velocity": 11.111,
-      "avg_acceleration": 11.111,
-      "momentum_score": 11.111,
-      "label": "PEAK_RISING",
-      "source": "live"
-    },
     {
       "keyword": "ลิปเปลี่ยนสี",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -25,7 +16,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -34,7 +25,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -43,16 +34,25 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
+      "source": "live"
+    },
+    {
+      "keyword": "คอนซีลเลอร์",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live"
     },
     {
       "keyword": "คอลลาเจน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "avg_acceleration": 7.333,
+      "momentum_score": 2.2,
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -61,7 +61,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -70,7 +70,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -79,7 +79,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -88,7 +88,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -97,7 +97,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -106,7 +106,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -115,7 +115,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -124,7 +124,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -133,7 +133,16 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
+      "source": "live"
+    },
+    {
+      "keyword": "กางเกงขายาวทรงสวย",
+      "current_score": 39.0,
+      "avg_velocity": 4.333,
+      "avg_acceleration": 4.333,
+      "momentum_score": 4.333,
+      "label": "GROWTH",
       "source": "live"
     },
     {
@@ -142,16 +151,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
-      "source": "live"
-    },
-    {
-      "keyword": "กางเกงขายาวทรงสวย",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -160,7 +160,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -169,7 +169,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     },
     {
@@ -178,7 +178,7 @@
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
       "momentum_score": 0.0,
-      "label": "PLATEAU",
+      "label": "STABLE",
       "source": "live"
     }
   ]
