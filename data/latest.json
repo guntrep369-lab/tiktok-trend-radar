@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-06-29T17:28:40.797918+00:00",
+  "run_timestamp": "2026-06-29T19:44:03.598745+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -80,9 +80,9 @@
     {
       "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
-      "avg_velocity": -3.222,
-      "avg_acceleration": -6.444,
-      "momentum_score": -4.189,
+      "avg_velocity": -1.778,
+      "avg_acceleration": 0.0,
+      "momentum_score": -1.244,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -137,10 +137,10 @@
     {
       "keyword": "วิตามินผิว",
       "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": -4.444,
-      "momentum_score": -1.333,
-      "label": "STABLE",
+      "avg_velocity": -2.778,
+      "avg_acceleration": 0.0,
+      "momentum_score": -1.944,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -156,9 +156,9 @@
     {
       "keyword": "โพรไบโอติก",
       "current_score": 0.0,
-      "avg_velocity": -3.444,
-      "avg_acceleration": -2.778,
-      "momentum_score": -3.244,
+      "avg_velocity": -4.889,
+      "avg_acceleration": -2.333,
+      "momentum_score": -4.122,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -173,9 +173,9 @@
     {
       "keyword": "คอลลาเจน",
       "current_score": 0.0,
-      "avg_velocity": -3.222,
-      "avg_acceleration": -4.889,
-      "momentum_score": -3.722,
+      "avg_velocity": -10.333,
+      "avg_acceleration": -5.0,
+      "momentum_score": -8.733,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -228,8 +228,8 @@
     {
       "keyword": "หม้อทอดไร้น้ำมัน",
       "current_score": 0.0,
-      "avg_velocity": -5.111,
-      "avg_acceleration": 0.889,
+      "avg_velocity": -6.444,
+      "avg_acceleration": 4.0,
       "momentum_score": -3.311,
       "label": "DECLINE",
       "source": "live",
@@ -247,9 +247,9 @@
     {
       "keyword": "เครื่องฟอกอากาศ",
       "current_score": 0.0,
-      "avg_velocity": -6.556,
-      "avg_acceleration": -5.667,
-      "momentum_score": -6.289,
+      "avg_velocity": -12.444,
+      "avg_acceleration": -3.222,
+      "momentum_score": -9.678,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -264,9 +264,9 @@
     {
       "keyword": "เครื่องชงกาแฟ",
       "current_score": 0.0,
-      "avg_velocity": -8.667,
-      "avg_acceleration": -6.444,
-      "momentum_score": -8.0,
+      "avg_velocity": -16.0,
+      "avg_acceleration": -3.111,
+      "momentum_score": -12.133,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -338,11 +338,11 @@
       }
     },
     {
-      "keyword": "กระเป๋าสะพาย",
+      "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
-      "avg_velocity": -3.444,
-      "avg_acceleration": -2.333,
-      "momentum_score": -3.111,
+      "avg_velocity": -12.222,
+      "avg_acceleration": -1.444,
+      "momentum_score": -8.989,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -357,11 +357,11 @@
       }
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
+      "keyword": "กระเป๋าสะพาย",
       "current_score": 0.0,
-      "avg_velocity": -7.889,
-      "avg_acceleration": -4.889,
-      "momentum_score": -6.989,
+      "avg_velocity": -13.778,
+      "avg_acceleration": -0.556,
+      "momentum_score": -9.811,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
