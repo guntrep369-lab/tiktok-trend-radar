@@ -83,6 +83,10 @@ def format_alert_message(alerts: list, suggestions: dict = None) -> str:
         lines.append(f"🔑 {a['keyword']}")
         lines.append(f"   {a['label_display']}")
         lines.append(f"   Score: {a['current_score']} | Momentum: {a['momentum_score']}")
+        # พยากรณ์อายุที่เหลือ (โชว์เฉพาะเมื่อ fit ผ่าน)
+        dr = a.get("days_remaining")
+        if dr is not None:
+            lines.append(f"   ⏳ คาดว่าเหลืออีก ~{dr:.1f} วัน ก่อนกระแสตก")
         # แนบหมวดสินค้าที่ควรขาย (จาก Meme-Product Matching)
         if a.get("product_suggestion"):
             ps = a["product_suggestion"]
