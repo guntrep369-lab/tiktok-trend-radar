@@ -90,6 +90,44 @@
   .chip:hover { border-color: var(--ink-dim); color: var(--ink); }
   .chip.on { background: var(--accent); color: #04210f; border-color: var(--accent); font-weight: 600; }
 
+  /* ─── แถบควบคุม ค้นหา/เรียง ─── */
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+  .search-input {
+    flex: 1; min-width: 180px; background: var(--bg-panel); border: 1px solid var(--grid);
+    border-radius: 9px; padding: 10px 14px; color: var(--ink); font-family: var(--sans); font-size: 14px;
+  }
+  .search-input::placeholder { color: var(--ink-dim); }
+  .search-input:focus { outline: none; border-color: var(--accent); }
+  .sort-select {
+    background: var(--bg-panel); border: 1px solid var(--grid); border-radius: 9px;
+    padding: 10px 14px; color: var(--ink); font-family: var(--mono); font-size: 12px; cursor: pointer;
+  }
+  .sort-select:focus { outline: none; border-color: var(--accent); }
+  .toggle-done {
+    background: var(--bg-panel); border: 1px solid var(--grid); border-radius: 9px;
+    padding: 10px 14px; color: var(--ink-dim); font-family: var(--mono); font-size: 12px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .toggle-done:hover { color: var(--ink); border-color: var(--ink-dim); }
+  .toggle-done.on { background: var(--accent); color: #04210f; border-color: var(--accent); font-weight: 600; }
+
+  /* ─── ปุ่มเช็คทำแล้ว + การ์ดที่ทำแล้ว ─── */
+  .done-btn {
+    position: absolute; top: 14px; right: 14px; z-index: 2;
+    width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink-dim);
+    background: transparent; color: var(--ink-dim); cursor: pointer; font-size: 13px;
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s; padding: 0;
+  }
+  .done-btn:hover { border-color: var(--growth); color: var(--growth); }
+  .card.done { opacity: 0.5; }
+  .card.done .done-btn { background: var(--growth); border-color: var(--growth); color: #04210f; }
+  .card.done .act-banner { display: none; }
+  .card.done::after {
+    content: 'ทำคลิปแล้ว ✓'; position: absolute; top: 14px; left: 18px;
+    font-family: var(--mono); font-size: 10px; color: var(--growth); font-weight: 700;
+  }
+  .stat.done-stat .num { color: var(--growth); }
+
   /* ─── การ์ดคีย์เวิร์ด ─── */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px,1fr)); gap: 14px; }
   .card {
@@ -193,6 +231,16 @@
   </div>
 
   <div class="filters" id="filters"></div>
+  <div class="controls">
+    <input type="text" id="searchBox" class="search-input" placeholder="🔍 ค้นหาคีย์เวิร์ด…" />
+    <select id="sortSelect" class="sort-select">
+      <option value="momentum">เรียง: Momentum สูงสุด</option>
+      <option value="score">เรียง: Score สูงสุด</option>
+      <option value="name">เรียง: ชื่อ ก-ฮ</option>
+      <option value="todo">เรียง: ที่ยังไม่ทำก่อน</option>
+    </select>
+    <button id="hideDone" class="toggle-done">ซ่อนที่ทำแล้ว</button>
+  </div>
   <div id="content"><div class="state"><div class="ic">📡</div>กำลังสแกนสัญญาณ…</div></div>
 
   <footer>
@@ -214,6 +262,25 @@ const ACT_PHASES = ['GROWTH', 'PEAK'];
 
 let allData = [];
 let activeFilter = 'ALL';
+let searchTerm = '';
+let sortMode = 'momentum';
+let hideDone = false;
+let lastTs = null;
+
+// ─── จัดการสถานะ "ทำคลิปแล้ว" เก็บใน localStorage ───
+const DONE_KEY = 'trendradar_done';
+function loadDone() {
+  try { return new Set(JSON.parse(localStorage.getItem(DONE_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function saveDone(set) {
+  try { localStorage.setItem(DONE_KEY, JSON.stringify([...set])); } catch {}
+}
+let doneSet = loadDone();
+function toggleDone(kw) {
+  if (doneSet.has(kw)) doneSet.delete(kw); else doneSet.add(kw);
+  saveDone(doneSet);
+}
 
 // ─── โหลดข้อมูลจาก latest.json ───
 async function load() {
@@ -240,11 +307,15 @@ function fmtTime(iso) {
 }
 
 function render(ts) {
+  lastTs = ts;
   document.getElementById('updated').textContent = 'อัปเดต: ' + fmtTime(ts);
 
   // นับแต่ละเฟส
   const counts = { GROWTH:0, PEAK:0, DECLINE:0, INTRO:0, STABLE:0 };
   allData.forEach(d => { if (counts[d.label] !== undefined) counts[d.label]++; });
+  // นับทำแล้ว/ค้าง (เฉพาะคำที่อยู่ในข้อมูลปัจจุบัน)
+  const doneCount = allData.filter(d => doneSet.has(d.keyword)).length;
+  const todoCount = allData.length - doneCount;
 
   // แถบสรุป
   document.getElementById('summary').innerHTML = `
@@ -252,7 +323,7 @@ function render(ts) {
     <div class="stat p"><div class="num">${counts.PEAK}</div><div class="lbl">🔥 พีค</div></div>
     <div class="stat i"><div class="num">${counts.INTRO}</div><div class="lbl">🌱 เกิด</div></div>
     <div class="stat d"><div class="num">${counts.DECLINE}</div><div class="lbl">📉 ดับ</div></div>
-    <div class="stat"><div class="num">${allData.length}</div><div class="lbl">รวมทั้งหมด</div></div>
+    <div class="stat done-stat"><div class="num">${doneCount}/${allData.length}</div><div class="lbl">✓ ทำแล้ว (ค้าง ${todoCount})</div></div>
   `;
 
   // ตัวกรอง
@@ -264,22 +335,67 @@ function render(ts) {
     activeFilter = c.dataset.f; render(ts);
   });
 
+  // ผูก event ค้นหา/เรียง/ซ่อน (ผูกครั้งเดียว ไม่ render ซ้ำทั้งหน้า แค่ renderCards)
+  const sb = document.getElementById('searchBox');
+  if (sb && !sb.dataset.bound) {
+    sb.dataset.bound = '1';
+    sb.addEventListener('input', e => { searchTerm = e.target.value.trim().toLowerCase(); renderCards(); });
+    document.getElementById('sortSelect').addEventListener('change', e => { sortMode = e.target.value; renderCards(); });
+    document.getElementById('hideDone').addEventListener('click', e => {
+      hideDone = !hideDone;
+      e.target.classList.toggle('on', hideDone);
+      renderCards();
+    });
+  }
+
   renderCards();
 }
 
 function renderCards() {
-  // เรียงตาม momentum สูง->ต่ำ, กรองตามเฟสที่เลือก
-  let list = [...allData].sort((a,b) => b.momentum_score - a.momentum_score);
+  let list = [...allData];
+
+  // กรองตามเฟส
   if (activeFilter !== 'ALL') list = list.filter(d => d.label === activeFilter);
+  // กรองตามคำค้นหา
+  if (searchTerm) list = list.filter(d => d.keyword.toLowerCase().includes(searchTerm));
+  // ซ่อนที่ทำแล้ว
+  if (hideDone) list = list.filter(d => !doneSet.has(d.keyword));
+
+  // เรียงลำดับ
+  list.sort((a, b) => {
+    switch (sortMode) {
+      case 'score': return b.current_score - a.current_score;
+      case 'name':  return a.keyword.localeCompare(b.keyword, 'th');
+      case 'todo': {  // ที่ยังไม่ทำขึ้นก่อน แล้วค่อยเรียง momentum
+        const ad = doneSet.has(a.keyword) ? 1 : 0, bd = doneSet.has(b.keyword) ? 1 : 0;
+        if (ad !== bd) return ad - bd;
+        return b.momentum_score - a.momentum_score;
+      }
+      default: return b.momentum_score - a.momentum_score;  // momentum
+    }
+  });
+  // ถ้าไม่ได้เลือกเรียงแบบ todo ก็ดันการ์ดที่ทำแล้วไปท้ายเสมอ (ให้ที่ยังไม่ทำเด่น)
+  if (sortMode !== 'todo') {
+    list.sort((a, b) => (doneSet.has(a.keyword) ? 1 : 0) - (doneSet.has(b.keyword) ? 1 : 0));
+  }
 
   if (!list.length) {
     document.getElementById('content').innerHTML =
-      '<div class="state"><div class="ic">🔍</div>ไม่มีคีย์เวิร์ดในเฟสนี้</div>';
+      '<div class="state"><div class="ic">🔍</div>ไม่พบคีย์เวิร์ดที่ตรงเงื่อนไข</div>';
     return;
   }
 
   document.getElementById('content').innerHTML = '<div class="grid">' + list.map(card).join('') + '</div>';
-  // เล่นอนิเมชันแถบ score
+
+  // ผูกปุ่มเช็ค "ทำแล้ว"
+  document.querySelectorAll('.done-btn').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      toggleDone(btn.dataset.kw);
+      render(lastTs);  // re-render ทั้งหน้าเพื่ออัปเดตตัวนับด้วย
+    };
+  });
+
   requestAnimationFrame(() => {
     document.querySelectorAll('.score-bar i').forEach(el => { el.style.width = el.dataset.w + '%'; });
   });
@@ -288,12 +404,14 @@ function renderCards() {
 function card(d) {
   const ph = PHASES[d.label] || PHASES.STABLE;
   const isAct = ACT_PHASES.includes(d.label);
+  const isDone = doneSet.has(d.keyword);
   const vClass = d.avg_velocity > 0 ? 'pos' : (d.avg_velocity < 0 ? 'neg' : '');
   const aClass = d.avg_acceleration > 0 ? 'pos' : (d.avg_acceleration < 0 ? 'neg' : '');
   const prod = d.product_suggestion;
 
   return `
-  <div class="card ${isAct?'is-act':''}" style="--phase:${ph.color}">
+  <div class="card ${isAct?'is-act':''} ${isDone?'done':''}" style="--phase:${ph.color}">
+    <button class="done-btn" data-kw="${escAttr(d.keyword)}" title="${isDone?'กดเพื่อยกเลิก':'กดเมื่อทำคลิปแล้ว'}">✓</button>
     ${isAct ? `<div class="act-banner">${ph.emoji} ${ph.desc}</div>` : ''}
     <div class="card-top">
       <div class="kw">${esc(d.keyword)}</div>
