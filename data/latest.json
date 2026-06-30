@@ -1,33 +1,14 @@
 {
-  "run_timestamp": "2026-06-30T17:04:28.358387+00:00",
+  "run_timestamp": "2026-06-30T19:43:20.890230+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
-      "current_score": 29.97,
-      "avg_velocity": 0.195,
-      "avg_acceleration": -0.022,
-      "momentum_score": 0.13,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      }
-    },
-    {
-      "keyword": "น้ำหอมติดทน",
-      "current_score": 30.66,
-      "avg_velocity": -0.054,
-      "avg_acceleration": 0.162,
-      "momentum_score": 0.011,
-      "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -41,12 +22,12 @@
     },
     {
       "keyword": "ครีมกันแดดโกลว์",
-      "current_score": 27.67,
-      "avg_velocity": -0.159,
-      "avg_acceleration": -0.109,
-      "momentum_score": -0.144,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -60,12 +41,31 @@
     },
     {
       "keyword": "เซรั่มหน้าใส",
-      "current_score": 29.9,
-      "avg_velocity": -0.617,
-      "avg_acceleration": -0.159,
-      "momentum_score": -0.48,
-      "label": "DECLINE",
-      "source": "simulate_fallback",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      }
+    },
+    {
+      "keyword": "น้ำหอมติดทน",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -79,12 +79,12 @@
     },
     {
       "keyword": "คอนซีลเลอร์",
-      "current_score": 29.16,
-      "avg_velocity": -0.679,
-      "avg_acceleration": -0.905,
-      "momentum_score": -0.746,
-      "label": "DECLINE",
-      "source": "simulate_fallback",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -98,12 +98,12 @@
     },
     {
       "keyword": "วิตามินผิว",
-      "current_score": 29.21,
-      "avg_velocity": 0.484,
-      "avg_acceleration": 0.08,
-      "momentum_score": 0.363,
-      "label": "INTRO",
-      "source": "simulate_fallback",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -112,53 +112,17 @@
           "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
-        ]
-      }
-    },
-    {
-      "keyword": "คอลลาเจน",
-      "current_score": 31.48,
-      "avg_velocity": 0.228,
-      "avg_acceleration": 0.284,
-      "momentum_score": 0.245,
-      "label": "STABLE",
-      "source": "simulate_fallback",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      }
-    },
-    {
-      "keyword": "โพรไบโอติก",
-      "current_score": 30.5,
-      "avg_velocity": 0.041,
-      "avg_acceleration": 0.542,
-      "momentum_score": 0.191,
-      "label": "STABLE",
-      "source": "simulate_fallback",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
         ]
       }
     },
     {
       "keyword": "ขนมเกาหลี",
-      "current_score": 29.17,
-      "avg_velocity": 0.106,
-      "avg_acceleration": -0.075,
-      "momentum_score": 0.052,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "กิน_อาหาร",
         "mood_display": "🍜 กิน/รีวิวอาหาร",
@@ -172,12 +136,12 @@
     },
     {
       "keyword": "กาแฟลดน้ำหนัก",
-      "current_score": 31.46,
-      "avg_velocity": -0.177,
-      "avg_acceleration": 0.274,
-      "momentum_score": -0.042,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "กิน_อาหาร",
         "mood_display": "🍜 กิน/รีวิวอาหาร",
@@ -190,13 +154,49 @@
       }
     },
     {
+      "keyword": "โพรไบโอติก",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
+        "products": [
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
+        ]
+      }
+    },
+    {
+      "keyword": "คอลลาเจน",
+      "current_score": 0.0,
+      "avg_velocity": -13.444,
+      "avg_acceleration": -4.889,
+      "momentum_score": -10.878,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      }
+    },
+    {
       "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 33.77,
-      "avg_velocity": 0.918,
-      "avg_acceleration": 0.462,
-      "momentum_score": 0.781,
-      "label": "INTRO",
-      "source": "simulate_fallback",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 3.556,
+      "momentum_score": 1.067,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "default",
         "mood_display": "❓ เดาอารมณ์ไม่ออก",
@@ -208,31 +208,12 @@
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
-      "current_score": 30.22,
-      "avg_velocity": 0.406,
-      "avg_acceleration": 0.018,
-      "momentum_score": 0.29,
-      "label": "INTRO",
-      "source": "simulate_fallback",
-      "product_suggestion": {
-        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
-        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
-        "products": [
-          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
-          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
-          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
-          "กล่องเก็บของ / ชั้นวาง"
-        ]
-      }
-    },
-    {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 29.82,
-      "avg_velocity": 0.072,
-      "avg_acceleration": 0.14,
-      "momentum_score": 0.093,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
         "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
@@ -246,12 +227,12 @@
     },
     {
       "keyword": "ไฟ LED ติดผนัง",
-      "current_score": 29.6,
-      "avg_velocity": -0.314,
-      "avg_acceleration": -0.435,
-      "momentum_score": -0.35,
-      "label": "DECLINE",
-      "source": "simulate_fallback",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "default",
         "mood_display": "❓ เดาอารมณ์ไม่ออก",
@@ -262,13 +243,32 @@
       }
     },
     {
-      "keyword": "เครื่องชงกาแฟ",
-      "current_score": 28.2,
-      "avg_velocity": -0.952,
-      "avg_acceleration": -0.29,
-      "momentum_score": -0.753,
+      "keyword": "หม้อทอดไร้น้ำมัน",
+      "current_score": 0.0,
+      "avg_velocity": -4.556,
+      "avg_acceleration": 4.111,
+      "momentum_score": -1.956,
       "label": "DECLINE",
-      "source": "simulate_fallback",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
+        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
+        "products": [
+          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
+          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
+          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
+          "กล่องเก็บของ / ชั้นวาง"
+        ]
+      }
+    },
+    {
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 0.0,
+      "avg_velocity": -4.889,
+      "avg_acceleration": 4.0,
+      "momentum_score": -2.222,
+      "label": "DECLINE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "กิน_อาหาร",
         "mood_display": "🍜 กิน/รีวิวอาหาร",
@@ -281,13 +281,13 @@
       }
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 30.94,
-      "avg_velocity": 0.387,
-      "avg_acceleration": 0.11,
-      "momentum_score": 0.304,
-      "label": "INTRO",
-      "source": "simulate_fallback",
+      "keyword": "เสื้อโอเวอร์ไซส์",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
         "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
@@ -301,12 +301,12 @@
     },
     {
       "keyword": "กางเกงขายาวทรงสวย",
-      "current_score": 30.17,
-      "avg_velocity": 0.252,
-      "avg_acceleration": 0.148,
-      "momentum_score": 0.22,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -320,12 +320,12 @@
     },
     {
       "keyword": "เดรสออกงาน",
-      "current_score": 27.05,
-      "avg_velocity": -0.082,
-      "avg_acceleration": -0.198,
-      "momentum_score": -0.117,
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "ตลก_เครียดงาน",
         "mood_display": "😩 ตลก/เครียดเรื่องงาน",
@@ -338,13 +338,13 @@
       }
     },
     {
-      "keyword": "เสื้อโอเวอร์ไซส์",
-      "current_score": 28.18,
-      "avg_velocity": -0.338,
-      "avg_acceleration": -0.066,
-      "momentum_score": -0.256,
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": -10.222,
+      "avg_acceleration": -4.556,
+      "momentum_score": -8.522,
       "label": "DECLINE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
         "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
@@ -357,13 +357,13 @@
       }
     },
     {
-      "keyword": "กระเป๋าสะพาย",
-      "current_score": 26.48,
-      "avg_velocity": -0.516,
-      "avg_acceleration": -0.11,
-      "momentum_score": -0.394,
+      "keyword": "รองเท้าผ้าใบ",
+      "current_score": 0.0,
+      "avg_velocity": -11.222,
+      "avg_acceleration": -3.556,
+      "momentum_score": -8.922,
       "label": "DECLINE",
-      "source": "simulate_fallback",
+      "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
         "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
