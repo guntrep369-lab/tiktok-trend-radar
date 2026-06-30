@@ -216,6 +216,24 @@
   }
   .chip.new { border-color: var(--intro); color: var(--intro); }
 
+  /* ─── ผลงานจริง / ROI (feedback loop, โชว์เฉพาะ local) ─── */
+  .perf-box {
+    background: linear-gradient(160deg, rgba(43,255,136,0.06), var(--bg-panel));
+    border: 1px solid rgba(43,255,136,0.25); border-radius: 14px; padding: 18px 20px; margin: 0 0 28px;
+  }
+  .perf-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+  .perf-head h2 { font-size: 15px; font-weight: 600; }
+  .perf-head .sub { font-size: 11px; color: var(--ink-dim); }
+  .perf-totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr)); gap: 10px; margin-bottom: 14px; }
+  .perf-totals .pt { background: var(--bg-panel2); border: 1px solid var(--grid); border-radius: 9px; padding: 10px 12px; }
+  .perf-totals .pn { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--growth); }
+  .perf-totals .pl { font-size: 10px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .perf-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 540px) { .perf-cols { grid-template-columns: 1fr; } }
+  .perf-cols h3 { font-size: 12px; color: var(--ink-dim); font-family: var(--mono); margin-bottom: 8px; }
+  .perf-row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px dashed var(--grid); font-size: 13px; }
+  .perf-row .g { font-family: var(--mono); color: var(--growth); white-space: nowrap; }
+
   /* ─── sparkline ในการ์ด ─── */
   .spark { margin-top: 12px; }
   .spark .sl { font-size: 9px; color: var(--ink-dim); font-family: var(--mono); margin-bottom: 3px; }
@@ -244,6 +262,18 @@
   </header>
 
   <div class="summary" id="summary"></div>
+
+  <div class="perf-box" id="perfBox" style="display:none">
+    <div class="perf-head">
+      <h2>💰 ผลงานจริง (ROI)</h2>
+      <span class="sub" id="perfUpdated"></span>
+    </div>
+    <div class="perf-totals" id="perfTotals"></div>
+    <div class="perf-cols">
+      <div><h3>// อารมณ์ที่ทำเงินสุด</h3><div id="perfMoods"></div></div>
+      <div><h3>// คีย์เวิร์ดที่ทำเงินสุด</h3><div id="perfKeywords"></div></div>
+    </div>
+  </div>
 
   <div class="chart-box" id="chartBox" style="display:none">
     <div class="chart-head">
@@ -325,6 +355,7 @@ async function load() {
     render(json.run_timestamp);
     loadHistory();
     loadSuggestions();
+    loadPerformance();
   } catch (e) {
     document.getElementById('content').innerHTML =
       '<div class="state"><div class="ic">🛰️</div>ยังไม่มีข้อมูล<br><br>' +
@@ -365,6 +396,36 @@ async function loadSuggestions() {
     document.getElementById('suggBody').innerHTML = html;
     document.getElementById('suggUpdated').textContent =
       s.generated_at ? 'อัปเดต ' + fmtTime(s.generated_at) : '';
+    box.style.display = '';
+  } catch (e) {
+    box.style.display = 'none';
+  }
+}
+
+// ─── โหลด "ผลงานจริง / ROI" จาก performance.json (มีเฉพาะตอนรัน local; สาธารณะจะซ่อน) ───
+async function loadPerformance() {
+  const box = document.getElementById('perfBox');
+  try {
+    const res = await fetch('performance.json?t=' + Date.now());
+    if (!res.ok) throw new Error('no file');
+    const p = await res.json();
+    const t = p.totals || {};
+    if (!t.videos) { box.style.display = 'none'; return; }
+
+    const fmt = n => Number(n || 0).toLocaleString('th-TH');
+    document.getElementById('perfTotals').innerHTML = [
+      ['คลิป', fmt(t.videos)], ['วิวรวม', fmt(t.views)],
+      ['ออเดอร์', fmt(t.orders)], ['GMV (บาท)', fmt(Math.round(t.gmv))],
+    ].map(([l, v]) => `<div class="pt"><div class="pn">${v}</div><div class="pl">${l}</div></div>`).join('');
+
+    const rowsOf = (arr, nameKey) => (arr || []).slice(0, 6).map(r =>
+      `<div class="perf-row"><span>${esc(r[nameKey])}</span>` +
+      `<span class="g">${Number(r.gmv).toLocaleString('th-TH')} · ${r.n_videos} คลิป</span></div>`).join('')
+      || '<div class="perf-row"><span>—</span></div>';
+    document.getElementById('perfMoods').innerHTML = rowsOf(p.by_mood, 'mood_display');
+    document.getElementById('perfKeywords').innerHTML = rowsOf(p.by_keyword, 'keyword');
+    document.getElementById('perfUpdated').textContent =
+      p.generated_at ? 'อัปเดต ' + fmtTime(p.generated_at) : '';
     box.style.display = '';
   } catch (e) {
     box.style.display = 'none';

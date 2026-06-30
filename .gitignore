@@ -5,3 +5,8 @@ __pycache__/
 venv/
 *.log
 .pytest_cache/
+
+# ข้อมูลผลงาน/ยอดขายจริง (feedback loop) — เก็บเป็นส่วนตัว ห้าม commit/เผยแพร่บน Pages
+data/campaigns.csv
+data/performance.json
+docs/performance.json

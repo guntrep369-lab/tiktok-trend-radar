@@ -29,6 +29,12 @@ python scripts/run_radar.py --mode live
 export LINE_CHANNEL_ACCESS_TOKEN="..."
 export LINE_USER_ID="..."
 python scripts/run_radar.py --mode simulate
+
+# Feedback loop / ROI tracking (LOCAL ONLY — data is gitignored, never published)
+python scripts/campaign_tracker.py log --video-id V1 --keyword "คอลลาเจน"
+python scripts/campaign_tracker.py update --video-id V1 --views 18000 --orders 31 --gmv 9300
+python scripts/campaign_tracker.py import --file affiliate_export.csv   # bulk from TikTok Shop CSV
+python scripts/campaign_tracker.py report                                # ROI per keyword/mood
 ```
 
 ```bash
@@ -116,6 +122,16 @@ Key design points to understand before changing anything:
 - **`keyword_discovery.py` is a standalone helper, not wired into the pipeline.** It surfaces
   candidate new keywords (trending searches + related suggestions) for a human to manually add
   to `config.json`. Nothing calls it automatically.
+
+- **Feedback loop / ROI (`campaign_tracker.py`) is a LOCAL, private tool — not part of the CI
+  pipeline.** It links posted videos → source keyword → real TikTok Shop performance
+  (views/clicks/orders/gmv) and aggregates ROI per keyword and per mood (`aggregate_performance`
+  is pure and unit-tested). CLI: `log` / `update` / `import` (CSV from the affiliate dashboard,
+  joined by `video_id`) / `report`. Mood is auto-derived via `match_product`. **Privacy:
+  `data/campaigns.csv`, `data/performance.json`, and `docs/performance.json` are gitignored** so
+  sales numbers are never committed or published to the (public) Pages site — the dashboard's
+  "💰 ผลงานจริง (ROI)" panel only appears on a local preview and stays hidden publicly. This is
+  the loop meant to eventually tune alert ranking by real revenue instead of Google momentum.
 
 ## Configuration
 
