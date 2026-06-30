@@ -75,12 +75,54 @@ def fetch_live_trend(config: TrendConfig, retries: int = 3) -> Optional[pd.DataF
 # ──────────────────────────────────────────────────────────
 # SIMULATION FETCHER (ใช้ตอน test/dev หรือ Google บล็อก)
 # ──────────────────────────────────────────────────────────
+def _pattern_base(pattern: str, t: np.ndarray, n_points: int) -> np.ndarray:
+    """
+    คืน base curve ตามแพทเทิร์นที่ขอ (t คือเวลานอร์มัลไลซ์ 0->1)
+    ออกแบบให้แต่ละแพทเทิร์นไปตกในเฟสที่ต่างกัน เพื่อทดสอบ classifier ได้ครบ:
+      viral_spike -> GROWTH   (โตเร็วและยังเร่ง)
+      plateauing  -> PEAK     (ยังโตแต่แรงเร่งแผ่ว)
+      emerging    -> INTRO    (คะแนนยังต่ำ <35 แต่เริ่มไต่ขึ้นเร็ว)
+      dying       -> DECLINE  (กำลังตก)
+      flat/noise  -> STABLE   (นิ่ง ไม่มีทิศทาง)
+    """
+    if pattern == "viral_spike":
+        # โตแบบเร่ง: ช่วงท้าย v เป็นบวกและ a เป็นบวก -> GROWTH
+        return 5 + 90 * (t ** 3)
+    if pattern == "plateauing":
+        # รากที่สอง: ยังไต่ขึ้นเร็วพอ (v>0) แต่ชะลอตัว (a<0) ตลอด -> PEAK
+        return 95 * np.sqrt(t)
+    if pattern == "emerging":
+        # โค้งกำลังสองคูณ 30: จบที่ ~30 (ยังต่ำกว่าเกณฑ์ INTRO) แต่ช่วงท้ายชันพอให้ v เป็นบวกชัด
+        return 30 * (t ** 2)
+    if pattern == "dying":
+        # ลดลงเป็นเส้นตรงชันสม่ำเสมอ: v ติดลบชัดเจนตลอด -> DECLINE
+        return 90 - 60 * t
+    # flat / noise / ไม่รู้จัก -> นิ่งที่ ~30
+    return np.full(n_points, 30.0)
+
+
+def _resolve_patterns(pattern, keywords: list) -> dict:
+    """
+    แปลงพารามิเตอร์ pattern ให้เป็น map {keyword: pattern_name}
+    รองรับ 3 รูปแบบ:
+      - str            -> ใช้แพทเทิร์นเดียวกับทุกคำ (ค่าเริ่มต้นเดิม, backward compatible)
+      - list/tuple     -> วนแพทเทิร์นตามลำดับคำ
+      - dict           -> ระบุรายคำ (คำที่ไม่ได้ระบุ fallback เป็น viral_spike)
+    """
+    if isinstance(pattern, dict):
+        return {kw: pattern.get(kw, "viral_spike") for kw in keywords}
+    if isinstance(pattern, (list, tuple)):
+        return {kw: pattern[i % len(pattern)] for i, kw in enumerate(keywords)}
+    return {kw: pattern for kw in keywords}
+
+
 def simulate_trend_data(
     keywords: list,
     hours: int = 24,
     interval_minutes: int = 15,
-    pattern: str = "viral_spike",
+    pattern="viral_spike",
     seed: Optional[int] = None,
+    noise_std: float = 1.5,
 ) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
     n_points = int((hours * 60) / interval_minutes)
@@ -88,20 +130,13 @@ def simulate_trend_data(
         datetime.now() - timedelta(minutes=interval_minutes * (n_points - i))
         for i in range(n_points)
     ]
+    pattern_map = _resolve_patterns(pattern, keywords)
 
     data = {}
+    t = np.linspace(0, 1, n_points)
     for kw in keywords:
-        t = np.linspace(0, 1, n_points)
-        if pattern == "viral_spike":
-            base = 5 + 90 * (t ** 3)
-        elif pattern == "plateauing":
-            base = 80 * (1 - np.exp(-4 * t))
-        elif pattern == "dying":
-            base = 90 * np.exp(-3 * t)
-        else:
-            base = np.full(n_points, 30.0)
-
-        noise = rng.normal(0, 3, n_points)
+        base = _pattern_base(pattern_map[kw], t, n_points)
+        noise = rng.normal(0, noise_std, n_points)
         series = np.clip(base + noise, 0, 100)
         data[kw] = series
 

@@ -69,10 +69,11 @@ def send_line_message(message: str) -> bool:
         return False
 
 
-def format_alert_message(alerts: list) -> str:
+def format_alert_message(alerts: list, suggestions: dict = None) -> str:
     """
     แปลงลิสต์ของ trend ที่ momentum สูง ให้เป็นข้อความสำหรับส่งใน LINE
     alerts = [{"keyword": ..., "momentum_score": ..., "label": ..., "current_score": ...}, ...]
+    suggestions = ผลจาก keyword discovery (optional) ไว้แนบท้ายเป็น "คำใหม่น่าจับตา"
     """
     if not alerts:
         return ""
@@ -92,4 +93,13 @@ def format_alert_message(alerts: list) -> str:
         lines.append("")
 
     lines.append("⏰ จังหวะทอง! รีบทำคอนเทนต์ภายใน 3 ชม. ก่อนกระแสหาย")
+
+    # แนบ "คำใหม่น่าจับตา" จาก keyword discovery (โชว์แค่ 5 คำแรกกันข้อความยาว)
+    trending_new = (suggestions or {}).get("trending_today", [])
+    if trending_new:
+        lines.append("")
+        lines.append("🔎 คำใหม่มาแรงวันนี้ (พิจารณาเพิ่มเข้า config):")
+        for w in trending_new[:5]:
+            lines.append(f"   • {w}")
+
     return "\n".join(lines)
