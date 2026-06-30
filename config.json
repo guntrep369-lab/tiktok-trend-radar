@@ -2,6 +2,10 @@
   "geo": "TH",
   "timeframe": "now 7-d",
   "momentum_alert_threshold": 1.5,
+  "batch_delay_seconds": 8,
+  "alert_cooldown_hours": 12,
+  "enable_keyword_discovery": true,
+  "max_history_runs": 200,
   "keyword_batches": [
     ["ลิปเปลี่ยนสี", "ครีมกันแดดโกลว์", "เซรั่มหน้าใส", "น้ำหอมติดทน", "คอนซีลเลอร์"],
     ["คอลลาเจน", "วิตามินผิว", "ขนมเกาหลี", "กาแฟลดน้ำหนัก", "โพรไบโอติก"],
