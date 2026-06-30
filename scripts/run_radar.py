@@ -49,6 +49,7 @@ LATEST_JSON = DATA_DIR / "latest.json"
 # สำเนา latest.json ไว้ใน docs/ ด้วย เพื่อให้ dashboard บน GitHub Pages อ่านได้
 DOCS_DIR = REPO_ROOT / "docs"
 DOCS_LATEST_JSON = DOCS_DIR / "latest.json"
+DOCS_HISTORY_JSON = DOCS_DIR / "history.json"
 
 
 def load_config() -> dict:
@@ -109,6 +110,61 @@ def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
     with open(DOCS_LATEST_JSON, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False, indent=2)
     logger.info(f"บันทึกสแนปช็อตล่าสุดลง {LATEST_JSON.name} และ docs/")
+
+
+def build_history_json(max_runs: int = 50):
+    """
+    อ่าน history.csv แปลงเป็น JSON สำหรับวาดกราฟย้อนหลังใน dashboard
+    เก็บแค่ max_runs รอบล่าสุด (กันไฟล์ใหญ่เกิน)
+
+    โครงสร้างผลลัพธ์:
+    {
+      "timestamps": ["2026-...", ...],          # แกน X (เรียงเก่า -> ใหม่)
+      "series": {
+        "คอลลาเจน": {"momentum": [...], "score": [...]},
+        ...
+      }
+    }
+    """
+    if not HISTORY_CSV.exists():
+        logger.info("ยังไม่มี history.csv -> ข้ามการสร้าง history.json")
+        return
+
+    try:
+        df = pd.read_csv(HISTORY_CSV)
+    except Exception as e:
+        logger.warning(f"อ่าน history.csv ไม่ได้: {e}")
+        return
+
+    if df.empty or "run_timestamp" not in df.columns:
+        return
+
+    # เอาเฉพาะ max_runs รอบล่าสุด (เรียงตามเวลา)
+    unique_runs = sorted(df["run_timestamp"].unique())
+    recent_runs = unique_runs[-max_runs:]
+    df = df[df["run_timestamp"].isin(recent_runs)]
+
+    series = {}
+    for kw in df["keyword"].unique():
+        kw_df = df[df["keyword"] == kw].sort_values("run_timestamp")
+        # จับคู่ค่ากับ timestamp (เผื่อบางรอบไม่มีคำนี้)
+        run_map = dict(zip(kw_df["run_timestamp"], zip(kw_df["momentum_score"], kw_df["current_score"])))
+        momentum, score = [], []
+        for ts in recent_runs:
+            if ts in run_map:
+                momentum.append(round(float(run_map[ts][0]), 2))
+                score.append(round(float(run_map[ts][1]), 1))
+            else:
+                momentum.append(None)  # ช่องว่างถ้ารอบนั้นไม่มีคำนี้
+                score.append(None)
+        series[str(kw)] = {"momentum": momentum, "score": score}
+
+    history = {"timestamps": [str(t) for t in recent_runs], "series": series}
+
+    DOCS_DIR.mkdir(exist_ok=True)
+    with open(DOCS_HISTORY_JSON, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+    logger.info(f"บันทึกประวัติ {len(recent_runs)} รอบลง docs/history.json")
 
 
 def find_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
@@ -174,6 +230,7 @@ def main():
 
     combined = pd.concat(all_reports)
     save_latest_snapshot(combined, run_timestamp)
+    build_history_json()
 
     # ── แจ้งเตือนผ่าน LINE เมื่อเจอคำในเฟส GROWTH/PEAK (จังหวะทอง) ──
     alerts = find_alerts(combined, threshold)

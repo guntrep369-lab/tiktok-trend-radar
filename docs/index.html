@@ -146,6 +146,19 @@
   footer { margin-top: 50px; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--ink-dim); line-height: 1.8; }
   footer a { color: var(--accent); text-decoration: none; }
 
+  /* ─── กราฟย้อนหลัง ─── */
+  .chart-box { background: var(--bg-panel); border: 1px solid var(--grid); border-radius: 12px; padding: 18px; margin-bottom: 24px; }
+  .chart-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .chart-title { font-size: 15px; font-weight: 600; }
+  .chart-legend { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chart-legend .lg { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; }
+  .chart-legend .lg .sw { width: 14px; height: 3px; border-radius: 2px; }
+  .chart-legend .lg.off { opacity: 0.35; }
+  .chart-hint { font-family: var(--mono); font-size: 10px; color: var(--ink-dim); margin-top: 10px; text-align: center; }
+  #chartArea svg { width: 100%; height: auto; display: block; }
+  .chart-grid-line { stroke: var(--grid); stroke-width: 1; }
+  .chart-axis-label { fill: var(--ink-dim); font-family: var(--mono); font-size: 9px; }
+
   @media (max-width: 540px) {
     h1 { font-size: 19px; }
     .score-row .big { font-size: 26px; }
@@ -169,6 +182,16 @@
   </header>
 
   <div class="summary" id="summary"></div>
+
+  <div class="chart-box" id="chartBox" style="display:none">
+    <div class="chart-head">
+      <div class="chart-title">📈 แนวโน้ม Momentum ย้อนหลัง</div>
+      <div class="chart-legend" id="chartLegend"></div>
+    </div>
+    <div id="chartArea"></div>
+    <div class="chart-hint">เส้นพุ่งขึ้น = กระแสกำลังมา · เลือกคำที่อยากดูจากปุ่มด้านบนกราฟ</div>
+  </div>
+
   <div class="filters" id="filters"></div>
   <div id="content"><div class="state"><div class="ic">📡</div>กำลังสแกนสัญญาณ…</div></div>
 
@@ -200,6 +223,7 @@ async function load() {
     const json = await res.json();
     allData = json.results || [];
     render(json.run_timestamp);
+    loadHistory();
   } catch (e) {
     document.getElementById('content').innerHTML =
       '<div class="state"><div class="ic">🛰️</div>ยังไม่มีข้อมูล<br><br>' +
@@ -294,6 +318,115 @@ function card(d) {
 
 function fmtNum(n) { const v = Number(n); return (v>0?'+':'') + v.toFixed(2); }
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+// ─── กราฟย้อนหลัง ───
+let historyData = null;
+let hiddenSeries = new Set();
+// สีสำหรับเส้นกราฟแต่ละคำ (วนซ้ำถ้าคำเยอะ)
+const LINE_COLORS = ['#2bff88','#ffc23d','#4db5ff','#ff4d5e','#b98cff','#3df0d0','#ff9d4d','#ff6ec7'];
+
+async function loadHistory() {
+  try {
+    const res = await fetch('history.json?t=' + Date.now());
+    if (!res.ok) throw new Error('no history');
+    historyData = await res.json();
+    // ต้องมีอย่างน้อย 2 รอบถึงจะวาดกราฟเส้นได้
+    if (!historyData.timestamps || historyData.timestamps.length < 2) {
+      document.getElementById('chartBox').style.display = 'none';
+      return;
+    }
+    document.getElementById('chartBox').style.display = 'block';
+    drawChart();
+  } catch (e) {
+    document.getElementById('chartBox').style.display = 'none';
+  }
+}
+
+function drawChart() {
+  if (!historyData) return;
+  const W = 900, H = 320, padL = 44, padR = 16, padT = 16, padB = 36;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+
+  // เลือกแสดงเฉพาะคำที่ momentum เคยสูงสุด 8 อันดับแรก (กันกราฟรก)
+  const kws = Object.keys(historyData.series);
+  const ranked = kws.map(kw => {
+    const vals = historyData.series[kw].momentum.filter(v => v !== null);
+    const peak = vals.length ? Math.max(...vals.map(Math.abs)) : 0;
+    return { kw, peak };
+  }).sort((a,b) => b.peak - a.peak).slice(0, 8);
+
+  // หาค่า min/max ของ momentum ทั้งหมด (สำหรับสเกลแกน Y)
+  let allVals = [];
+  ranked.forEach(r => historyData.series[r.kw].momentum.forEach(v => { if (v !== null) allVals.push(v); }));
+  if (!allVals.length) return;
+  let yMax = Math.max(...allVals, 0.5), yMin = Math.min(...allVals, -0.5);
+  const yRange = yMax - yMin || 1;
+
+  const n = historyData.timestamps.length;
+  const xAt = i => padL + (n === 1 ? plotW/2 : (i/(n-1)) * plotW);
+  const yAt = v => padT + plotH - ((v - yMin)/yRange) * plotH;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+
+  // เส้นกริดแนวนอน + label แกน Y (5 เส้น)
+  for (let g = 0; g <= 4; g++) {
+    const val = yMin + (yRange * g/4);
+    const y = yAt(val);
+    svg += `<line class="chart-grid-line" x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}"/>`;
+    svg += `<text class="chart-axis-label" x="${padL-6}" y="${y+3}" text-anchor="end">${val.toFixed(1)}</text>`;
+  }
+  // เส้นศูนย์ (momentum = 0) เน้นหน่อย
+  if (yMin < 0 && yMax > 0) {
+    const y0 = yAt(0);
+    svg += `<line x1="${padL}" y1="${y0}" x2="${W-padR}" y2="${y0}" stroke="#5a6b80" stroke-width="1" stroke-dasharray="3,3"/>`;
+  }
+
+  // label แกน X (เวลา) — โชว์แค่ 4 จุดกันแน่น
+  const tFmt = ts => { const d = new Date(ts); return d.toLocaleString('th-TH',{day:'numeric',month:'short',hour:'2-digit'}); };
+  const step = Math.max(1, Math.floor(n/4));
+  for (let i = 0; i < n; i += step) {
+    svg += `<text class="chart-axis-label" x="${xAt(i)}" y="${H-padB+18}" text-anchor="middle">${tFmt(historyData.timestamps[i])}</text>`;
+  }
+
+  // วาดเส้นแต่ละคำ
+  let legend = '';
+  ranked.forEach((r, idx) => {
+    const color = LINE_COLORS[idx % LINE_COLORS.length];
+    const isHidden = hiddenSeries.has(r.kw);
+    legend += `<span class="lg ${isHidden?'off':''}" data-kw="${escAttr(r.kw)}"><span class="sw" style="background:${color}"></span>${esc(r.kw)}</span>`;
+    if (isHidden) return;
+
+    const pts = historyData.series[r.kw].momentum;
+    // สร้าง path เชื่อมเฉพาะจุดที่ไม่ใช่ null
+    let d = '', started = false;
+    pts.forEach((v, i) => {
+      if (v === null) { started = false; return; }
+      d += (started ? ' L' : 'M') + ` ${xAt(i).toFixed(1)} ${yAt(v).toFixed(1)}`;
+      started = true;
+    });
+    svg += `<path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>`;
+    // จุดวงกลมที่ปลายแต่ละค่า
+    pts.forEach((v, i) => {
+      if (v === null) return;
+      svg += `<circle cx="${xAt(i).toFixed(1)}" cy="${yAt(v).toFixed(1)}" r="2.5" fill="${color}"/>`;
+    });
+  });
+
+  svg += `</svg>`;
+  document.getElementById('chartArea').innerHTML = svg;
+  document.getElementById('chartLegend').innerHTML = legend;
+
+  // คลิก legend เพื่อซ่อน/โชว์เส้น
+  document.querySelectorAll('.chart-legend .lg').forEach(el => {
+    el.onclick = () => {
+      const kw = el.dataset.kw;
+      if (hiddenSeries.has(kw)) hiddenSeries.delete(kw); else hiddenSeries.add(kw);
+      drawChart();
+    };
+  });
+}
+
+function escAttr(s) { return String(s).replace(/"/g,'&quot;'); }
 
 load();
 setInterval(load, 5 * 60 * 1000); // รีเฟรชทุก 5 นาที
