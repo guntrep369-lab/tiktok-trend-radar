@@ -90,17 +90,40 @@ def process_batch(keywords: list, geo: str, timeframe: str, mode: str) -> pd.Dat
 
 
 def append_to_history(report: pd.DataFrame, run_timestamp: str):
-    """เพิ่มผลลัพธ์ของรอบนี้เข้าไปใน history.csv (สะสมไปเรื่อยๆ ไม่เขียนทับ)"""
+    """
+    เพิ่มผลลัพธ์ของรอบนี้เข้าไปใน history.csv (สะสมไปเรื่อยๆ ไม่เขียนทับ)
+
+    รองรับการเปลี่ยน schema: ถ้าคอลัมน์ของไฟล์เดิมไม่ตรงกับรอบนี้ (เช่นเพิ่งเพิ่ม
+    คอลัมน์ forecast) จะ migrate โดยอ่านของเก่ามารวมแล้วเขียนใหม่ทั้งไฟล์ด้วย header ใหม่
+    (กันไฟล์พังจากการ append แถวจำนวนคอลัมน์ไม่เท่ากัน)
+    """
     DATA_DIR.mkdir(exist_ok=True)
     report_to_save = report.reset_index()
     report_to_save.insert(0, "run_timestamp", run_timestamp)
+    new_cols = list(report_to_save.columns)
 
-    if HISTORY_CSV.exists():
-        report_to_save.to_csv(HISTORY_CSV, mode="a", header=False, index=False, encoding="utf-8-sig")
-    else:
+    if not HISTORY_CSV.exists():
         report_to_save.to_csv(HISTORY_CSV, mode="w", header=True, index=False, encoding="utf-8-sig")
+        logger.info(f"สร้าง {HISTORY_CSV.name} ใหม่ ({len(report_to_save)} แถว)")
+        return
 
-    logger.info(f"บันทึก {len(report_to_save)} แถวลง {HISTORY_CSV.name}")
+    existing_cols = list(pd.read_csv(HISTORY_CSV, nrows=0).columns)
+    if set(existing_cols) == set(new_cols):
+        # คอลัมน์ชุดเดียวกัน (อาจสลับลำดับ) -> จัดลำดับให้ตรงไฟล์แล้ว append ปกติ
+        report_to_save[existing_cols].to_csv(
+            HISTORY_CSV, mode="a", header=False, index=False, encoding="utf-8-sig")
+        logger.info(f"บันทึก {len(report_to_save)} แถวลง {HISTORY_CSV.name}")
+        return
+
+    # schema เปลี่ยนจริง (ชุดคอลัมน์ต่าง) -> migrate: อ่านของเก่ามารวม แล้วเขียนใหม่ทั้งไฟล์
+    try:
+        old = pd.read_csv(HISTORY_CSV)
+    except Exception as e:
+        logger.warning(f"history.csv เดิมอ่านไม่ได้ ({e}) -> เขียนใหม่ด้วย schema ปัจจุบัน")
+        old = None
+    combined = pd.concat([old, report_to_save], ignore_index=True) if old is not None else report_to_save
+    combined.to_csv(HISTORY_CSV, mode="w", header=True, index=False, encoding="utf-8-sig")
+    logger.info(f"migrate schema history.csv ({len(existing_cols)}->{len(new_cols)} คอลัมน์), รวม {len(combined)} แถว")
 
 
 def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
@@ -226,6 +249,9 @@ def find_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
             "label": row["label"],
             "label_display": LABEL_DISPLAY.get(row["label"], row["label"]),
             "product_suggestion": match_product(kw),  # แนบหมวดสินค้าตามอารมณ์
+            # พยากรณ์อายุที่เหลือ (อาจเป็น None ถ้า fit ไม่ผ่าน) — ใช้ .get เผื่อคอลัมน์ไม่มี
+            "days_remaining": row.get("days_remaining"),
+            "days_to_peak": row.get("days_to_peak"),
         })
     return alerts
 

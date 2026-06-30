@@ -7,6 +7,7 @@ trend_engine.py
 แนวคิดคณิตศาสตร์:
 - Velocity (v)     = อัตราการเปลี่ยนแปลงของ search interest ต่อช่วงเวลา (1st derivative)
 - Acceleration (a) = อัตราการเปลี่ยนแปลงของ velocity (2nd derivative)
+- Lifespan forecast = fit เส้นวงจรชีวิตระฆังคว่ำ (Gaussian) แล้วประเมิน 'เหลืออีกกี่วัน'
 """
 
 import time
@@ -18,6 +19,8 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 logger = logging.getLogger("trend_engine")
+
+HOURS_PER_DAY = 24.0
 
 
 @dataclass
@@ -144,6 +147,81 @@ def simulate_trend_data(
 
 
 # ──────────────────────────────────────────────────────────
+# LIFESPAN FORECAST (พยากรณ์ 'เหลืออีกกี่วัน' ด้วยการ fit วงจรชีวิตระฆังคว่ำ)
+# ──────────────────────────────────────────────────────────
+def _gaussian(t, A, mu, sigma, base):
+    return base + A * np.exp(-((t - mu) ** 2) / (2.0 * sigma ** 2))
+
+
+def forecast_lifespan(series: pd.Series, dead_level: float = 10.0, min_r2: float = 0.5) -> Optional[dict]:
+    """
+    พยากรณ์ 'อายุที่เหลือ' ของเทรนด์ ด้วยการ fit เส้นวงจรชีวิตแบบระฆังคว่ำ (Gaussian)
+        y = base + A * exp(-(t-mu)^2 / 2 sigma^2)
+
+    series     : pd.Series interest 0-100 (index เป็น datetime, เรียงเวลาแล้ว)
+    dead_level : ระดับ interest ที่ถือว่า 'ตาย' แล้ว
+    min_r2     : ถ้า fit ได้ R2 ต่ำกว่านี้ ถือว่าไม่น่าเชื่อ -> คืน {"ok": False}
+
+    คืน dict {ok, fit_r2, days_to_peak, days_remaining, lifecycle_width_days, past_peak, peak_value}
+    หรือ None ถ้าข้อมูลน้อย/scipy ไม่มี/fit ล้มเหลว (ผู้เรียกควร fallback ไปใช้ label เดิม)
+    """
+    try:
+        from scipy.optimize import curve_fit
+    except ImportError:
+        return None
+
+    s = series.astype(float).dropna()
+    if len(s) < 8:                       # ข้อมูลน้อยเกินไปจะ fit 4 พารามิเตอร์ไม่ไหว
+        return None
+    if not isinstance(s.index, pd.DatetimeIndex):
+        return None                      # ต้องมี index เป็นเวลา ถึงจะแปลงเป็น 'วัน' ได้
+
+    # แกนเวลา = ชั่วโมงนับจากจุดเริ่ม (ต้องเป็นตัวเลขต่อเนื่องให้ curve_fit ใช้ได้)
+    t = np.asarray((s.index - s.index[0]).total_seconds(), dtype=float) / 3600.0
+    y = s.to_numpy(dtype=float)
+    span = float(t[-1] - t[0]) or 1.0
+
+    # ค่าเดาเริ่มต้น + ขอบเขต (สำคัญมากต่อความเสถียรของ curve_fit)
+    p0 = [max(y.max() - y.min(), 1.0),   # A
+          float(t[int(np.argmax(y))]),   # mu (เดาที่จุดสูงสุด)
+          max(span / 4.0, 1.0),          # sigma
+          max(float(y.min()), 0.0)]      # base
+    bounds = ([0.0,   t[0] - span,       1.0,        0.0],
+              [200.0, t[-1] + 3 * span,  10 * span,  100.0])  # mu โผล่อนาคตได้ (ยังไม่ถึงพีค)
+
+    try:
+        popt, _ = curve_fit(_gaussian, t, y, p0=p0, bounds=bounds, maxfev=5000)
+    except Exception:
+        return None
+    A, mu, sigma, base = (float(v) for v in popt)
+
+    # คุณภาพการ fit (R2)
+    resid = y - _gaussian(t, A, mu, sigma, base)
+    ss_tot = float(np.sum((y - y.mean()) ** 2)) or 1.0
+    r2 = 1.0 - float(np.sum(resid ** 2)) / ss_tot
+    if r2 < min_r2:
+        return {"ok": False, "fit_r2": round(r2, 3)}
+
+    t_now = float(t[-1])
+    # เวลาที่เส้นจะตกต่ำกว่า dead_level (หลังพีค) — แก้สมการ Gaussian = dead_level
+    target = dead_level - base
+    if A > 0 and 0 < target < A:
+        t_dead = mu + sigma * np.sqrt(2.0 * np.log(A / target))
+    else:
+        t_dead = mu + 3.0 * sigma        # fallback: 3 sigma หลังพีค
+
+    return {
+        "ok": True,
+        "fit_r2": round(r2, 3),
+        "peak_value": round(base + A, 1),
+        "lifecycle_width_days": round(2.355 * sigma / HOURS_PER_DAY, 2),  # FWHM
+        "days_to_peak": round(max((mu - t_now) / HOURS_PER_DAY, 0.0), 2),
+        "days_remaining": round(max((t_dead - t_now) / HOURS_PER_DAY, 0.0), 2),
+        "past_peak": bool(t_now > mu),
+    }
+
+
+# ──────────────────────────────────────────────────────────
 # VELOCITY / ACCELERATION ENGINE
 # ──────────────────────────────────────────────────────────
 def compute_velocity_acceleration(df: pd.DataFrame, smooth_window: int = 3) -> dict:
@@ -163,13 +241,26 @@ def compute_velocity_acceleration(df: pd.DataFrame, smooth_window: int = 3) -> d
         momentum_score = (recent_v * 0.7) + (recent_a * 0.3)
         label = _classify_trend(recent_v, recent_a, current_score=current_score)
 
-        results[kw] = {
+        result = {
             "current_score": round(float(current_score), 2),
             "avg_velocity": round(float(recent_v), 3),
             "avg_acceleration": round(float(recent_a), 3),
             "momentum_score": round(float(momentum_score), 3),
             "label": label,
+            # ฟิลด์พยากรณ์ — ตั้ง None ไว้ก่อนเสมอ (กัน NaN ตอนแปลงเป็น JSON)
+            "days_remaining": None,
+            "days_to_peak": None,
+            "forecast_r2": None,
         }
+
+        # พยากรณ์อายุที่เหลือ (best-effort; fit ไม่ผ่าน/scipy ไม่มี -> คงค่า None ใช้ label เดิมตัดสินใจ)
+        fc = forecast_lifespan(series)
+        if fc and fc.get("ok"):
+            result["days_remaining"] = fc["days_remaining"]
+            result["days_to_peak"] = fc["days_to_peak"]
+            result["forecast_r2"] = fc["fit_r2"]
+
+        results[kw] = result
 
     return results
 

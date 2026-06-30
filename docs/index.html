@@ -216,6 +216,15 @@
   }
   .chip.new { border-color: var(--intro); color: var(--intro); }
 
+  /* ─── ป้ายพยากรณ์อายุที่เหลือ ─── */
+  .forecast {
+    margin-top: 10px; padding: 7px 10px; border-radius: 8px;
+    background: rgba(77,181,255,0.08); border: 1px solid rgba(77,181,255,0.25);
+    color: #9ed4ff; font-size: 12px; font-family: var(--mono);
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .forecast .r2 { color: var(--ink-dim); font-size: 10px; }
+
   /* ─── sparkline ในการ์ด ─── */
   .spark { margin-top: 12px; }
   .spark .sl { font-size: 9px; color: var(--ink-dim); font-family: var(--mono); margin-bottom: 3px; }
@@ -491,6 +500,7 @@ function card(d) {
       <div class="metric"><div class="ml">Velocity</div><div class="mv ${vClass}">${fmtNum(d.avg_velocity)}</div></div>
       <div class="metric"><div class="ml">Acceleration</div><div class="mv ${aClass}">${fmtNum(d.avg_acceleration)}</div></div>
     </div>
+    ${forecastTag(d)}
     ${prod ? `
     <div class="product">
       <div class="mood">🛒 ${esc(prod.mood_display || '')}</div>
@@ -524,6 +534,18 @@ function sparkline(kw, color) {
         <circle cx="${last[0]}" cy="${last[1]}" r="2" fill="${color}"/>
       </svg>
     </div>`;
+}
+
+// ป้ายพยากรณ์อายุที่เหลือ (โชว์เฉพาะเมื่อโมเดล fit ผ่าน -> มี days_remaining)
+function forecastTag(d) {
+  if (d.days_remaining === null || d.days_remaining === undefined) return '';
+  const dr = Number(d.days_remaining);
+  const dp = Number(d.days_to_peak || 0);
+  const r2 = d.forecast_r2 != null ? ` · R²${Number(d.forecast_r2).toFixed(2)}` : '';
+  const txt = dp > 0.1
+    ? `🔮 ถึงพีคใน ~${dp.toFixed(1)} วัน · เหลือ ~${dr.toFixed(1)} วัน`
+    : `🔮 คาดเหลืออีก ~${dr.toFixed(1)} วัน ก่อนกระแสตก`;
+  return `<div class="forecast" title="พยากรณ์จากการ fit วงจรชีวิตระฆังคว่ำ (Gaussian)${r2}">${txt}<span class="r2">${r2}</span></div>`;
 }
 
 function fmtNum(n) { const v = Number(n); return (v>0?'+':'') + v.toFixed(2); }

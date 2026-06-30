@@ -25,6 +25,9 @@ python scripts/run_radar.py --mode simulate
 # Run against real Google Trends (what GitHub Actions runs)
 python scripts/run_radar.py --mode live
 
+# Backtest the lifespan forecaster against accumulated history.csv
+python scripts/backtest_forecast.py
+
 # Test LINE delivery locally (otherwise notification is silently skipped)
 export LINE_CHANNEL_ACCESS_TOKEN="..."
 export LINE_USER_ID="..."
@@ -66,6 +69,17 @@ Key design points to understand before changing anything:
   acceleration the 2nd. `momentum_score = 0.7*velocity + 0.3*acceleration`. `_classify_trend`
   maps (velocity, acceleration, current_score) to one of five phases: `INTRO`, `GROWTH`,
   `PEAK`, `DECLINE`, `STABLE`. The phase, not the raw score, drives alerting.
+
+- **Lifespan forecast** (`forecast_lifespan`, scipy) fits a Gaussian bell
+  `base + A·exp(-(t-μ)²/2σ²)` to the interest series and derives `days_to_peak` /
+  `days_remaining` (time until the curve drops below `dead_level`) plus an R² fit-quality gate.
+  It is best-effort: returns `None` when scipy is missing, data < 8 points, the index isn't a
+  `DatetimeIndex`, or the fit fails; `compute_velocity_acceleration` always emits the
+  `days_remaining`/`days_to_peak`/`forecast_r2` keys (None when unavailable) so JSON never gets
+  NaN. The velocity/accel classifier remains the fast detector + fallback. `forecast_decay` is
+  an exponential-decay alternative for already-declining series. `scripts/backtest_forecast.py`
+  walk-forward-validates the forecaster against the cross-run `current_score` series in
+  `history.csv` (needs several days of accumulated data to be meaningful).
 
 - **Only `GROWTH` and `PEAK` ever alert** (`trend_engine.ALERT_PHASES`), and only if
   `momentum_score >= momentum_alert_threshold` from config. Changing alert behavior means
