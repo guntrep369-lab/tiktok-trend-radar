@@ -85,13 +85,21 @@ def format_alert_message(alerts: list, suggestions: dict = None, scripts: dict =
         lines.append(f"🔑 {a['keyword']}")
         lines.append(f"   {a['label_display']}")
         lines.append(f"   Score: {a['current_score']} | Momentum: {a['momentum_score']}")
-        # แนบหมวดสินค้าที่ควรขาย (จาก Meme-Product Matching)
+        # สินค้าตัวจริง + ลิงก์ affiliate (ถ้ามีในแคตตาล็อก) — เอาไปโพสต์ได้เลย
+        ap = a.get("affiliate_product")
+        if ap:
+            comm = f" (คอม {ap['commission_pct']}%)" if ap.get("commission_pct") is not None else ""
+            lines.append(f"   🛍️ ขายตัวนี้: {ap['product_name']}{comm}")
+            if ap.get("affiliate_link"):
+                lines.append(f"   🔗 {ap['affiliate_link']}")
+        # แนบหมวดสินค้ากว้างๆ (จาก Meme-Product Matching) เป็น fallback/ไอเดียเสริม
         if a.get("product_suggestion"):
             ps = a["product_suggestion"]
             lines.append(f"   🛒 อารมณ์: {ps['mood_display']}")
-            lines.append(f"   💰 ขายคู่กับ: {ps['products'][0]}")
-            if len(ps["products"]) > 1:
-                lines.append(f"      (หรือ: {ps['products'][1]})")
+            if not ap:
+                lines.append(f"   💰 ขายคู่กับ: {ps['products'][0]}")
+                if len(ps["products"]) > 1:
+                    lines.append(f"      (หรือ: {ps['products'][1]})")
         # แนบสคริปต์ที่ Claude เขียนให้ (ฮุก + CTA) เพื่อเริ่มถ่ายได้ทันที
         sc = scripts.get(a["keyword"])
         if sc:

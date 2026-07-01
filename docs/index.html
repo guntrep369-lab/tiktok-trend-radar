@@ -167,6 +167,13 @@
   .product .mood { font-size: 12px; color: var(--ink-dim); margin-bottom: 6px; }
   .product .sell { font-size: 13px; color: var(--ink); }
   .product .sell b { color: var(--peak); font-weight: 600; }
+  .product .comm { font-family: var(--mono); font-size: 10px; color: var(--growth); margin-left: 4px; }
+  .aff-link {
+    display: inline-block; margin-top: 8px; padding: 6px 12px; border-radius: 8px;
+    background: rgba(43,255,136,0.1); border: 1px solid rgba(43,255,136,0.35);
+    color: var(--growth); font-size: 12px; font-weight: 600; text-decoration: none;
+  }
+  .aff-link:hover { background: rgba(43,255,136,0.2); }
 
   /* การ์ด CTA สำหรับเฟสพุ่ง */
   .card.is-act { box-shadow: 0 0 0 1px var(--phase), 0 0 24px color-mix(in srgb, var(--phase) 20%, transparent); }
@@ -534,6 +541,7 @@ function card(d) {
   const vClass = d.avg_velocity > 0 ? 'pos' : (d.avg_velocity < 0 ? 'neg' : '');
   const aClass = d.avg_acceleration > 0 ? 'pos' : (d.avg_acceleration < 0 ? 'neg' : '');
   const prod = d.product_suggestion;
+  const ap = d.affiliate_product;  // สินค้าตัวจริง + ลิงก์ (จากแคตตาล็อก) ถ้ามี
 
   return `
   <div class="card ${isAct?'is-act':''} ${isDone?'done':''}" style="--phase:${ph.color}">
@@ -555,7 +563,10 @@ function card(d) {
     ${prod ? `
     <div class="product">
       <div class="mood">🛒 ${esc(prod.mood_display || '')}</div>
-      <div class="sell">ขายคู่กับ: <b>${esc((prod.products && prod.products[0]) || '—')}</b></div>
+      ${ap ? `
+      <div class="sell">🛍️ <b>${esc(ap.product_name || '')}</b>${ap.commission_pct != null ? ` <span class="comm">คอม ${esc(String(ap.commission_pct))}%</span>` : ''}</div>
+      ${ap.affiliate_link ? `<a class="aff-link" href="${escAttr(ap.affiliate_link)}" target="_blank" rel="noopener">🔗 เปิดลิงก์ขายเลย</a>` : ''}`
+      : `<div class="sell">ขายคู่กับ: <b>${esc((prod.products && prod.products[0]) || '—')}</b></div>`}
     </div>` : ''}
     ${sparkline(d.keyword, ph.color)}
   </div>`;
