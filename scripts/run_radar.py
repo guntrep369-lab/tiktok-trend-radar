@@ -61,11 +61,39 @@ SUGGESTIONS_JSON = DATA_DIR / "suggestions.json"
 DOCS_SUGGESTIONS_JSON = DOCS_DIR / "suggestions.json"
 # สคริปต์คลิปที่ Claude สร้าง (เก็บเป็น local record — gitignore ไว้ ไม่เผยแพร่)
 SCRIPTS_JSON = DATA_DIR / "scripts.json"
+# น้ำหนัก ROI ต่ออารมณ์ (จาก feedback loop) — ถ่วง ranking ให้อารมณ์ที่ทำเงินจริงเด่นขึ้น
+ROI_WEIGHTS_JSON = DATA_DIR / "roi_weights.json"
 
 
 def load_config() -> dict:
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def load_roi_weights() -> dict:
+    """อ่านน้ำหนัก ROI ต่ออารมณ์ (mood_key -> multiplier). ไม่มีไฟล์ = {} = ไม่ถ่วงน้ำหนัก"""
+    if not ROI_WEIGHTS_JSON.exists():
+        return {}
+    try:
+        with open(ROI_WEIGHTS_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data.get("weights", {}) if isinstance(data, dict) else {}
+    except Exception as e:
+        logger.warning(f"อ่าน roi_weights.json ไม่ได้ ({e}) -> ไม่ถ่วงน้ำหนัก")
+        return {}
+
+
+def apply_roi_weights(items: list, weights: dict):
+    """
+    เติม roi_weight + ranking_score ให้แต่ละ item (ทั้ง record และ alert)
+    ranking_score = momentum_score * น้ำหนักของอารมณ์นั้น (ดีฟอลต์ 1.0 = ไม่เปลี่ยน)
+    ใช้ mood_key จาก product_suggestion; ถ้าไม่มี weights ก็เท่ากับ ranking = momentum เดิม
+    """
+    for it in items:
+        ps = it.get("product_suggestion") or {}
+        w = weights.get(ps.get("mood_key"), 1.0) if weights else 1.0
+        it["roi_weight"] = round(float(w), 2)
+        it["ranking_score"] = round(float(it.get("momentum_score", 0)) * w, 3)
 
 
 def process_batch(keywords: list, geo: str, timeframe: str, mode: str) -> pd.DataFrame:
@@ -107,7 +135,7 @@ def append_to_history(report: pd.DataFrame, run_timestamp: str):
     logger.info(f"บันทึก {len(report_to_save)} แถวลง {HISTORY_CSV.name}")
 
 
-def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
+def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str, roi_weights: dict = None):
     """บันทึกสแนปช็อตล่าสุดเป็น JSON (เขียนทับทุกครั้ง ใช้ดูสถานะปัจจุบัน)"""
     DATA_DIR.mkdir(exist_ok=True)
     records = all_reports.reset_index().to_dict(orient="records")
@@ -117,6 +145,8 @@ def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
         rec["product_suggestion"] = ps
         # แนบ 'สินค้าตัวจริง' จากแคตตาล็อก (ถ้ามี) — ชื่อ + ลิงก์ + คอมมิชชั่น
         rec["affiliate_product"] = match_affiliate_product(rec["keyword"], ps.get("mood_key"))
+    # ถ่วง ranking ด้วยน้ำหนัก ROI จากผลงานจริง (สำหรับให้ dashboard เรียงแบบ ROI ได้)
+    apply_roi_weights(records, roi_weights or {})
     snapshot = {
         "run_timestamp": run_timestamp,
         "results": records,
@@ -321,7 +351,8 @@ def run_script_generation(fresh_alerts: list, model: str, max_scripts: int, run_
     บันทึกลง data/scripts.json (local record) และคืน dict {keyword: script}
     best-effort: ถ้าไม่มี ANTHROPIC_API_KEY หรือเรียกไม่ได้ -> คืน {} เฉยๆ ไม่ล้ม pipeline
     """
-    top = sorted(fresh_alerts, key=lambda a: a["momentum_score"], reverse=True)[:max_scripts]
+    # เลือกคำที่ ranking_score สูงสุด (momentum x ROI) มาเขียนสคริปต์ก่อน
+    top = sorted(fresh_alerts, key=lambda a: a.get("ranking_score", a["momentum_score"]), reverse=True)[:max_scripts]
     scripts = {}
     for a in top:
         ps = a.get("product_suggestion") or {}
@@ -372,6 +403,10 @@ def main():
     enable_script_gen = config.get("enable_script_gen", True)
     script_model = config.get("script_model", "claude-opus-4-8")
     script_gen_max = config.get("script_gen_max", 3)
+    # น้ำหนัก ROI ต่ออารมณ์ (จาก feedback loop) — ถ่วง ranking; ไม่มีไฟล์ = ไม่เปลี่ยนอันดับ
+    roi_weights = load_roi_weights()
+    if roi_weights:
+        logger.info(f"ใช้น้ำหนัก ROI ต่ออารมณ์ {len(roi_weights)} รายการ ถ่วงอันดับ alert")
 
     if not batches:
         logger.error("ไม่มีคีย์เวิร์ดใน config.json -> เพิ่มคำในช่อง keyword_batches ก่อนรัน")
@@ -399,7 +434,7 @@ def main():
         sys.exit(1)
 
     combined = pd.concat(all_reports)
-    save_latest_snapshot(combined, run_timestamp)
+    save_latest_snapshot(combined, run_timestamp, roi_weights)
     prune_history(max_history_runs)
     build_history_json()
 
@@ -411,6 +446,9 @@ def main():
 
     # ── แจ้งเตือนผ่าน LINE เมื่อเจอคำในเฟส GROWTH/PEAK (จังหวะทอง) ──
     alerts = find_alerts(combined, threshold)
+    # ถ่วงอันดับด้วย ROI จริง แล้วเรียงให้อารมณ์ที่ทำเงินดีเด่นขึ้น
+    apply_roi_weights(alerts, roi_weights)
+    alerts.sort(key=lambda a: a["ranking_score"], reverse=True)
     if not alerts:
         logger.info("ไม่มีคำใดอยู่ในเฟสพุ่ง/พีค ในรอบนี้")
     else:
