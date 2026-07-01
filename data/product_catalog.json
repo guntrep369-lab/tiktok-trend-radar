@@ -1,29 +1,93 @@
 {
-  "_readme": "สมุดสินค้าที่คุณคัดเอง — แก้ product_name/affiliate_link/commission_pct ให้เป็นของจริงจาก TikTok Shop affiliate center. ลบ entry ตัวอย่างทิ้งแล้วใส่ของคุณเอง. ถ้าไม่มีไฟล์นี้/ไม่มีตัวที่ตรง ระบบจะ fallback ไปใช้หมวดสินค้ากว้างๆ เดิม.",
+  "_readme": "โครงสินค้าตามคีย์เวิร์ดใน config — แต่ละ entry คือ 'ช่อง' ที่จับคู่กับคีย์เวิร์ดกลุ่มหนึ่ง. วิธีใช้: แก้ product_name เป็นชื่อสินค้าจริง, ใส่ affiliate_link (จาก TikTok Shop -> รับลิงก์), ใส่ commission_pct. ตราบใดที่ affiliate_link ยังว่าง ระบบจะโชว์แค่ชื่อช่อง (ไม่มีลิงก์เสีย) และยัง fallback ไปหมวดกว้างได้. mood_key มาจาก meme_product_map.py",
   "products": [
     {
-      "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
-      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
-      "commission_pct": 15,
-      "price": 390,
-      "match": { "keywords": ["คอลลาเจน", "วิตามินผิว", "หน้าใส"], "moods": ["สวย_แต่งหน้า"] },
-      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      "product_name": "★ ใส่สินค้าจริง: ลิป/คอนซีลเลอร์/เมคอัพ",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["ลิปเปลี่ยนสี", "คอนซีลเลอร์", "ลิป", "เมคอัพ"], "moods": ["สวย_แต่งหน้า"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
     },
     {
-      "product_name": "ตัวอย่าง: หม้อทอดไร้น้ำมัน 5.5L จอสัมผัส",
-      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
-      "commission_pct": 8,
-      "price": 1290,
-      "match": { "keywords": ["หม้อทอด", "ทอดไร้น้ำมัน", "เครื่องครัว"], "moods": ["ไลฟ์สไตล์_ทำความสะอาด"] },
-      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      "product_name": "★ ใส่สินค้าจริง: กันแดด/เซรั่ม/สกินแคร์",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["ครีมกันแดดโกลว์", "เซรั่มหน้าใส", "กันแดด", "เซรั่ม", "หน้าใส"], "moods": ["สวย_แต่งหน้า"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
     },
     {
-      "product_name": "ตัวอย่าง: เสื้อโอเวอร์ไซส์ผ้า Cotton 100%",
-      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
-      "commission_pct": 20,
-      "price": 259,
-      "match": { "keywords": ["เสื้อโอเวอร์ไซส์", "เสื้อ", "แฟชั่น"], "moods": ["แฟชั่น_แต่งตัว"] },
-      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      "product_name": "★ ใส่สินค้าจริง: น้ำหอม",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["น้ำหอมติดทน", "น้ำหอม"], "moods": ["สวย_แต่งหน้า"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["คอลลาเจน", "วิตามินผิว", "อาหารเสริมผิว"], "moods": ["สวย_แต่งหน้า"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: ขนม/ของกินไวรัล",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["ขนมเกาหลี", "ขนม", "ของกิน"], "moods": ["กิน_อาหาร"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: โพรไบโอติก/กาแฟลดน้ำหนัก/เครื่องดื่มสุขภาพ",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["โพรไบโอติก", "กาแฟลดน้ำหนัก", "อาหารเสริม"], "moods": ["กิน_อาหาร", "ออกกำลัง_สุขภาพ"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["หม้อทอดไร้น้ำมัน", "เครื่องชงกาแฟ", "หม้อทอด", "เครื่องครัว"], "moods": ["ไลฟ์สไตล์_ทำความสะอาด"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["ที่ดูดฝุ่นไร้สาย", "เครื่องฟอกอากาศ", "ดูดฝุ่น"], "moods": ["ไลฟ์สไตล์_ทำความสะอาด"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: ไฟ LED/ของแต่งห้อง",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["ไฟ LED ติดผนัง", "ไฟ LED", "แต่งห้อง"], "moods": ["ไลฟ์สไตล์_ทำความสะอาด"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: เสื้อผ้า/เดรส",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["เสื้อโอเวอร์ไซส์", "กางเกงขายาวทรงสวย", "เดรสออกงาน", "เสื้อ", "เดรส"], "moods": ["แฟชั่น_แต่งตัว"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+    },
+    {
+      "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
+      "affiliate_link": "",
+      "commission_pct": null,
+      "price": null,
+      "match": { "keywords": ["รองเท้าผ้าใบ", "กระเป๋าสะพาย", "รองเท้า", "กระเป๋า"], "moods": ["แฟชั่น_แต่งตัว"] },
+      "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
     }
   ]
 }
