@@ -56,3 +56,31 @@ def test_mood_grouping_collapses_keywords():
     assert len(moods) == 1
     assert moods[0]["mood_key"] == "สวย"
     assert moods[0]["n_videos"] == 2 and moods[0]["gmv"] == 4000.0
+
+
+# ── น้ำหนัก ROI ต่ออารมณ์ ──
+def _perf(by_mood):
+    return {"by_mood": by_mood}
+
+
+def test_roi_weights_normalized_and_clamped():
+    # สองอารมณ์ gmv/คลิป 8000 vs 2000 -> mean 5000 -> 1.6 และ 0.4(clamp เป็น 0.5)
+    w = ct.compute_roi_weights(_perf([
+        {"mood_key": "รวย", "n_videos": 5, "gmv_per_video": 8000},
+        {"mood_key": "จน", "n_videos": 5, "gmv_per_video": 2000},
+    ]))
+    assert w["รวย"] == 1.6
+    assert w["จน"] == 0.5  # 0.4 ถูก clamp ขึ้นเป็น lo=0.5
+
+
+def test_roi_weights_needs_two_moods():
+    assert ct.compute_roi_weights(_perf([{"mood_key": "a", "n_videos": 9, "gmv_per_video": 5000}])) == {}
+
+
+def test_roi_weights_excludes_low_video_moods():
+    # อารมณ์ที่คลิปน้อยกว่า min_videos ถูกตัด -> เหลือ <2 -> {}
+    w = ct.compute_roi_weights(_perf([
+        {"mood_key": "a", "n_videos": 5, "gmv_per_video": 5000},
+        {"mood_key": "b", "n_videos": 1, "gmv_per_video": 9000},
+    ]), min_videos=3)
+    assert w == {}

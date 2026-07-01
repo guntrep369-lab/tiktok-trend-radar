@@ -48,6 +48,8 @@ DOCS_DIR = REPO_ROOT / "docs"
 CAMPAIGNS_CSV = DATA_DIR / "campaigns.csv"
 PERFORMANCE_JSON = DATA_DIR / "performance.json"
 DOCS_PERFORMANCE_JSON = DOCS_DIR / "performance.json"
+# น้ำหนัก ROI ต่ออารมณ์ (normalized, ไม่มีตัวเลขยอดขายดิบ) — commit ได้ ใช้ถ่วง ranking ใน CI
+ROI_WEIGHTS_JSON = DATA_DIR / "roi_weights.json"
 
 COLUMNS = ["campaign_id", "video_id", "keyword", "mood_key", "mood_display",
            "posted_at", "views", "clicks", "orders", "gmv", "notes"]
@@ -130,6 +132,28 @@ def aggregate_performance(df: pd.DataFrame) -> dict:
         "by_keyword": _agg_group(df, ["keyword"]),
         "by_mood": _agg_group(df, ["mood_key", "mood_display"]),
     }
+
+
+def compute_roi_weights(perf: dict, min_videos: int = 3, lo: float = 0.5, hi: float = 2.0) -> dict:
+    """
+    แปลงผลงานจริงต่ออารมณ์ -> น้ำหนัก ROI แบบ normalized (mood_key -> multiplier)
+    วิธี: weight = gmv_ต่อคลิป / ค่าเฉลี่ยของทุกอารมณ์ แล้ว clamp ไว้ที่ [lo, hi] กันสุดโต่งตอนข้อมูลน้อย
+    - เอาเฉพาะอารมณ์ที่มีคลิป >= min_videos และ gmv/คลิป > 0 (กัน noise)
+    - ต้องมีอย่างน้อย 2 อารมณ์ถึงจะเทียบกันได้ ไม่งั้นคืน {} (= ไม่ถ่วงน้ำหนัก)
+    ผลลัพธ์เป็นค่าสัมพัทธ์ล้วน ไม่มีตัวเลขยอดขายดิบ -> commit ขึ้น repo ได้
+    """
+    moods = [m for m in perf.get("by_mood", [])
+             if m.get("n_videos", 0) >= min_videos and m.get("gmv_per_video", 0) > 0]
+    if len(moods) < 2:
+        return {}
+    mean = sum(m["gmv_per_video"] for m in moods) / len(moods)
+    if mean <= 0:
+        return {}
+    weights = {}
+    for m in moods:
+        w = m["gmv_per_video"] / mean
+        weights[m["mood_key"]] = round(max(lo, min(hi, w)), 2)
+    return weights
 
 
 # ──────────────────────────────────────────────────────────
@@ -229,6 +253,23 @@ def cmd_report(args):
     logger.info(f"\nเขียน {PERFORMANCE_JSON.name} + docs/ แล้ว (dashboard จะโชว์ส่วน 'ผลงานจริง')")
 
 
+def cmd_weights(args):
+    perf = aggregate_performance(load_campaigns())
+    weights = compute_roi_weights(perf, min_videos=args.min_videos)
+    if not weights:
+        logger.info(f"ข้อมูลยังไม่พอสร้างน้ำหนัก ROI (ต้องมี >= 2 อารมณ์ที่มีคลิป >= {args.min_videos} "
+                    f"และมียอดขาย) — สะสมข้อมูลเพิ่มก่อน")
+        return
+    DATA_DIR.mkdir(exist_ok=True)
+    payload = {"generated_at": datetime.now(timezone.utc).isoformat(), "weights": weights}
+    with open(ROI_WEIGHTS_JSON, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    logger.info("=== น้ำหนัก ROI ต่ออารมณ์ (ยิ่งสูง = ทำเงินดีกว่าค่าเฉลี่ย) ===")
+    for k, w in sorted(weights.items(), key=lambda kv: kv[1], reverse=True):
+        logger.info(f"  {k:<26} x{w}")
+    logger.info(f"\nเขียน {ROI_WEIGHTS_JSON.name} แล้ว — commit ไฟล์นี้เพื่อให้ ranking บน CI ถ่วงน้ำหนักด้วยรายได้จริง")
+
+
 def main():
     ap = argparse.ArgumentParser(description="ตัวติดตามผลงาน affiliate (ปิด feedback loop)")
     sub = ap.add_subparsers(dest="command", required=True)
@@ -260,6 +301,10 @@ def main():
     p_rep = sub.add_parser("report", help="สรุป ROI + เขียน performance.json")
     p_rep.add_argument("--top", type=int, default=10)
     p_rep.set_defaults(func=cmd_report)
+
+    p_w = sub.add_parser("weights", help="สร้างน้ำหนัก ROI ต่ออารมณ์ -> roi_weights.json (ถ่วง ranking)")
+    p_w.add_argument("--min-videos", type=int, default=3, help="อารมณ์ต้องมีคลิปอย่างน้อยเท่านี้ถึงนับ")
+    p_w.set_defaults(func=cmd_weights)
 
     args = ap.parse_args()
     args.func(args)

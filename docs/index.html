@@ -296,6 +296,7 @@
     <input type="text" id="searchBox" class="search-input" placeholder="🔍 ค้นหาคีย์เวิร์ด…" />
     <select id="sortSelect" class="sort-select">
       <option value="momentum">เรียง: Momentum สูงสุด</option>
+      <option value="roi">เรียง: ROI (Momentum × ผลงานจริง)</option>
       <option value="score">เรียง: Score สูงสุด</option>
       <option value="name">เรียง: ชื่อ ก-ฮ</option>
       <option value="todo">เรียง: ที่ยังไม่ทำก่อน</option>
@@ -497,6 +498,11 @@ function renderCards() {
   // เรียงลำดับ
   list.sort((a, b) => {
     switch (sortMode) {
+      case 'roi': {  // Momentum ถ่วงด้วยผลงานจริง (ranking_score); ไม่มีก็ fallback momentum
+        const ar = a.ranking_score != null ? a.ranking_score : a.momentum_score;
+        const br = b.ranking_score != null ? b.ranking_score : b.momentum_score;
+        return br - ar;
+      }
       case 'score': return b.current_score - a.current_score;
       case 'name':  return a.keyword.localeCompare(b.keyword, 'th');
       case 'todo': {  // ที่ยังไม่ทำขึ้นก่อน แล้วค่อยเรียง momentum

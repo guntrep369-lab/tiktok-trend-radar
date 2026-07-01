@@ -35,6 +35,7 @@ python scripts/campaign_tracker.py log --video-id V1 --keyword "คอลลา�
 python scripts/campaign_tracker.py update --video-id V1 --views 18000 --orders 31 --gmv 9300
 python scripts/campaign_tracker.py import --file affiliate_export.csv   # bulk from TikTok Shop CSV
 python scripts/campaign_tracker.py report                                # ROI per keyword/mood
+python scripts/campaign_tracker.py weights                               # derive roi_weights.json (commit it)
 
 # AI script generator (needs ANTHROPIC_API_KEY; writes a ready-to-shoot TikTok script)
 export ANTHROPIC_API_KEY="sk-ant-..."
@@ -159,6 +160,15 @@ Key design points to understand before changing anything:
   sales numbers are never committed or published to the (public) Pages site — the dashboard's
   "💰 ผลงานจริง (ROI)" panel only appears on a local preview and stays hidden publicly. This is
   the loop meant to eventually tune alert ranking by real revenue instead of Google momentum.
+
+- **ROI-weighted ranking closes that loop.** `campaign_tracker weights` derives per-mood ROI
+  multipliers (normalized gmv-per-video, clamped 0.5–2.0, min 3 videos/mood) into
+  `data/roi_weights.json`. Unlike the raw ROI data this file is **committable** (relative
+  multipliers only, no absolute sales) so CI can use it. `run_radar` loads it and
+  `apply_roi_weights` sets `ranking_score = momentum_score × mood_weight` on every record/alert;
+  alerts (LINE order + which get scripts) and the dashboard's "ROI" sort use `ranking_score`.
+  No file → all weights 1.0 → identical to plain momentum ordering (safe default). The repo ships
+  **no** `roi_weights.json`; the user generates and commits their own.
 
 ## Configuration
 
