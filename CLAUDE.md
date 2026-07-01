@@ -35,6 +35,10 @@ python scripts/campaign_tracker.py log --video-id V1 --keyword "คอลลา�
 python scripts/campaign_tracker.py update --video-id V1 --views 18000 --orders 31 --gmv 9300
 python scripts/campaign_tracker.py import --file affiliate_export.csv   # bulk from TikTok Shop CSV
 python scripts/campaign_tracker.py report                                # ROI per keyword/mood
+
+# AI script generator (needs ANTHROPIC_API_KEY; writes a ready-to-shoot TikTok script)
+export ANTHROPIC_API_KEY="sk-ant-..."
+python scripts/script_generator.py --keyword "คอลลาเจน" --label GROWTH
 ```
 
 ```bash
@@ -122,6 +126,17 @@ Key design points to understand before changing anything:
 - **`keyword_discovery.py` is a standalone helper, not wired into the pipeline.** It surfaces
   candidate new keywords (trending searches + related suggestions) for a human to manually add
   to `config.json`. Nothing calls it automatically.
+
+- **AI script generation** (`script_generator.py`, Anthropic SDK) turns an alert into a
+  ready-to-shoot TikTok affiliate script (hook / shots / caption / hashtags / CTA / copyright-safe
+  audio idea). Model defaults to `claude-opus-4-8` (configurable via `script_model`). It uses
+  `messages.create` + a tolerant JSON extractor (`_parse_response`) rather than the structured-output
+  API, so it works across SDK versions. Best-effort: `generate_script` returns `None` when
+  `anthropic` isn't installed, `ANTHROPIC_API_KEY` is unset, or the call/parse fails — the pipeline
+  never crashes. In `run_radar`, `run_script_generation` generates for the top `script_gen_max`
+  fresh alerts, saves to `data/scripts.json` (**gitignored** — not published), and the hook+CTA are
+  appended to the LINE alert. The pure functions (`_build_prompt`, `_parse_response`,
+  `format_script_text`) are unit-tested offline; the live API call is not.
 
 - **Feedback loop / ROI (`campaign_tracker.py`) is a LOCAL, private tool — not part of the CI
   pipeline.** It links posted videos → source keyword → real TikTok Shop performance

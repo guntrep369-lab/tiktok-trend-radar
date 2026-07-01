@@ -36,6 +36,7 @@ from trend_engine import (
 from line_notifier import send_line_message, format_alert_message
 from meme_product_map import match_product
 from keyword_discovery import discover_keywords
+from script_generator import generate_script
 
 logging.basicConfig(
     level=logging.INFO,
@@ -57,6 +58,8 @@ DOCS_HISTORY_JSON = DOCS_DIR / "history.json"
 # คำใหม่น่าจับตาจาก keyword discovery (โชว์บน dashboard + แนบท้าย LINE)
 SUGGESTIONS_JSON = DATA_DIR / "suggestions.json"
 DOCS_SUGGESTIONS_JSON = DOCS_DIR / "suggestions.json"
+# สคริปต์คลิปที่ Claude สร้าง (เก็บเป็น local record — gitignore ไว้ ไม่เผยแพร่)
+SCRIPTS_JSON = DATA_DIR / "scripts.json"
 
 
 def load_config() -> dict:
@@ -302,6 +305,39 @@ def run_discovery(existing_keywords: list, run_timestamp: str):
     return payload
 
 
+# ──────────────────────────────────────────────────────────
+# AI SCRIPT GENERATION (Claude เขียนสคริปต์คลิปให้คำที่กำลังจะเตือน)
+# ──────────────────────────────────────────────────────────
+def run_script_generation(fresh_alerts: list, model: str, max_scripts: int, run_timestamp: str) -> dict:
+    """
+    สร้างสคริปต์คลิปสำหรับคำที่ momentum สูงสุด (สูงสุด max_scripts คำ) ด้วย Claude
+    บันทึกลง data/scripts.json (local record) และคืน dict {keyword: script}
+    best-effort: ถ้าไม่มี ANTHROPIC_API_KEY หรือเรียกไม่ได้ -> คืน {} เฉยๆ ไม่ล้ม pipeline
+    """
+    top = sorted(fresh_alerts, key=lambda a: a["momentum_score"], reverse=True)[:max_scripts]
+    scripts = {}
+    for a in top:
+        ps = a.get("product_suggestion") or {}
+        script = generate_script(
+            keyword=a["keyword"],
+            mood_display=ps.get("mood_display"),
+            products=ps.get("products"),
+            label=a.get("label"),
+            model=model,
+        )
+        if script:
+            scripts[a["keyword"]] = script
+
+    if not scripts:
+        return {}
+
+    DATA_DIR.mkdir(exist_ok=True)
+    with open(SCRIPTS_JSON, "w", encoding="utf-8") as f:
+        json.dump({"generated_at": run_timestamp, "scripts": scripts}, f, ensure_ascii=False, indent=2)
+    logger.info(f"สร้างสคริปต์คลิป {len(scripts)} คำด้วย Claude ({model}) -> scripts.json")
+    return scripts
+
+
 def main():
     parser = argparse.ArgumentParser(description="TikTok Trend Radar - ตัวรันหลัก")
     parser.add_argument(
@@ -322,6 +358,10 @@ def main():
     enable_discovery = config.get("enable_keyword_discovery", True)
     # เก็บประวัติใน history.csv ไม่เกินกี่รอบ (กันไฟล์โตไม่จำกัด)
     max_history_runs = config.get("max_history_runs", 200)
+    # สร้างสคริปต์คลิปด้วย Claude (best-effort; ทำงานเฉพาะเมื่อมี ANTHROPIC_API_KEY)
+    enable_script_gen = config.get("enable_script_gen", True)
+    script_model = config.get("script_model", "claude-opus-4-8")
+    script_gen_max = config.get("script_gen_max", 3)
 
     if not batches:
         logger.error("ไม่มีคีย์เวิร์ดใน config.json -> เพิ่มคำในช่อง keyword_batches ก่อนรัน")
@@ -372,7 +412,11 @@ def main():
             logger.info(f"ข้าม {skipped} คำที่เพิ่งเตือนไปภายใน {cooldown_hours} ชม. (กันซ้ำ)")
         if fresh:
             logger.info(f"ส่งแจ้งเตือน {len(fresh)} คำในเฟสพุ่ง/พีค (จังหวะทอง)")
-            message = format_alert_message(fresh, suggestions=suggestions)
+            # ให้ Claude เขียนสคริปต์คลิปให้คำที่แรงสุด แล้วแนบฮุกไปใน LINE
+            scripts = {}
+            if enable_script_gen:
+                scripts = run_script_generation(fresh, script_model, script_gen_max, run_timestamp)
+            message = format_alert_message(fresh, suggestions=suggestions, scripts=scripts)
             send_line_message(message)
             # บันทึกเวลาเตือนล่าสุด เฉพาะคำที่เพิ่งส่งจริง
             for a in fresh:

@@ -6,6 +6,9 @@
   "alert_cooldown_hours": 12,
   "enable_keyword_discovery": true,
   "max_history_runs": 200,
+  "enable_script_gen": true,
+  "script_model": "claude-opus-4-8",
+  "script_gen_max": 3,
   "keyword_batches": [
     ["ลิปเปลี่ยนสี", "ครีมกันแดดโกลว์", "เซรั่มหน้าใส", "น้ำหอมติดทน", "คอนซีลเลอร์"],
     ["คอลลาเจน", "วิตามินผิว", "ขนมเกาหลี", "กาแฟลดน้ำหนัก", "โพรไบโอติก"],
