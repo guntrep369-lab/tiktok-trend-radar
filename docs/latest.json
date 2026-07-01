@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-07-01T02:37:44.325688+00:00",
+  "run_timestamp": "2026-07-01T07:05:06.718772+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -18,7 +18,26 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "ครีมกันแดดโกลว์",
@@ -37,7 +56,26 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "เซรั่มหน้าใส",
@@ -56,7 +94,26 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "น้ำหอมติดทน",
@@ -75,14 +132,33 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
-      "avg_velocity": -10.444,
-      "avg_acceleration": -20.889,
-      "momentum_score": -13.578,
+      "avg_velocity": -1.889,
+      "avg_acceleration": 0.0,
+      "momentum_score": -1.322,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -94,33 +170,33 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
-    },
-    {
-      "keyword": "คอลลาเจน",
-      "current_score": 48.0,
-      "avg_velocity": 8.0,
-      "avg_acceleration": -5.556,
-      "momentum_score": 3.933,
-      "label": "PEAK",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -1.322
     },
     {
       "keyword": "วิตามินผิว",
       "current_score": 0.0,
-      "avg_velocity": 2.0,
+      "avg_velocity": 1.333,
       "avg_acceleration": 0.0,
-      "momentum_score": 1.4,
+      "momentum_score": 0.933,
       "label": "INTRO",
       "source": "live",
       "product_suggestion": {
@@ -132,24 +208,26 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
-    },
-    {
-      "keyword": "โพรไบโอติก",
-      "current_score": 0.0,
-      "avg_velocity": 2.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 1.4,
-      "label": "INTRO",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
-        ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.933
     },
     {
       "keyword": "ขนมเกาหลี",
@@ -168,7 +246,10 @@
           "อุปกรณ์ทำอาหาร/เครื่องครัว",
           "อาหารเสริม/เครื่องดื่มสุขภาพ"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "กาแฟลดน้ำหนัก",
@@ -187,34 +268,18 @@
           "อุปกรณ์ทำอาหาร/เครื่องครัว",
           "อาหารเสริม/เครื่องดื่มสุขภาพ"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
-      "keyword": "เครื่องชงกาแฟ",
-      "current_score": 54.0,
-      "avg_velocity": 13.667,
-      "avg_acceleration": 6.0,
-      "momentum_score": 11.367,
-      "label": "GROWTH",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "กิน_อาหาร",
-        "mood_display": "🍜 กิน/รีวิวอาหาร",
-        "products": [
-          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
-          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
-          "อุปกรณ์ทำอาหาร/เครื่องครัว",
-          "อาหารเสริม/เครื่องดื่มสุขภาพ"
-        ]
-      }
-    },
-    {
-      "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 33.0,
-      "avg_velocity": 10.0,
-      "avg_acceleration": 3.667,
-      "momentum_score": 8.1,
-      "label": "INTRO",
+      "keyword": "โพรไบโอติก",
+      "current_score": 0.0,
+      "avg_velocity": -0.889,
+      "avg_acceleration": -0.333,
+      "momentum_score": -0.722,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "default",
@@ -223,7 +288,48 @@
           "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
           "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": -0.722
+    },
+    {
+      "keyword": "คอลลาเจน",
+      "current_score": 0.0,
+      "avg_velocity": -6.222,
+      "avg_acceleration": -2.111,
+      "momentum_score": -4.989,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -4.989
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -242,26 +348,26 @@
           "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
           "กล่องเก็บของ / ชั้นวาง"
         ]
-      }
-    },
-    {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
-        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
-        "products": [
-          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
-          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
-          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
-          "กล่องเก็บของ / ชั้นวาง"
-        ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: หม้อทอดไร้น้ำมัน 5.5L จอสัมผัส",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 8,
+        "price": 1290,
+        "match": {
+          "keywords": [
+            "หม้อทอด",
+            "ทอดไร้น้ำมัน",
+            "เครื่องครัว"
+          ],
+          "moods": [
+            "ไลฟ์สไตล์_ทำความสะอาด"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "ไฟ LED ติดผนัง",
@@ -278,45 +384,90 @@
           "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
           "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 49.0,
-      "avg_velocity": 8.778,
-      "avg_acceleration": -3.444,
-      "momentum_score": 5.111,
-      "label": "PEAK",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
-        "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
-        ]
-      }
-    },
-    {
-      "keyword": "กระเป๋าสะพาย",
-      "current_score": 43.0,
-      "avg_velocity": 8.0,
+      "keyword": "เครื่องฟอกอากาศ",
+      "current_score": 0.0,
+      "avg_velocity": -4.889,
       "avg_acceleration": -2.333,
-      "momentum_score": 4.9,
-      "label": "PEAK",
+      "momentum_score": -4.122,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
         "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": -4.122
+    },
+    {
+      "keyword": "หม้อทอดไร้น้ำมัน",
+      "current_score": 0.0,
+      "avg_velocity": -3.667,
+      "avg_acceleration": -5.333,
+      "momentum_score": -4.167,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
+        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
+        "products": [
+          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
+          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
+          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
+          "กล่องเก็บของ / ชั้นวาง"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: หม้อทอดไร้น้ำมัน 5.5L จอสัมผัส",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 8,
+        "price": 1290,
+        "match": {
+          "keywords": [
+            "หม้อทอด",
+            "ทอดไร้น้ำมัน",
+            "เครื่องครัว"
+          ],
+          "moods": [
+            "ไลฟ์สไตล์_ทำความสะอาด"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -4.167
+    },
+    {
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 0.0,
+      "avg_velocity": -7.778,
+      "avg_acceleration": -6.889,
+      "momentum_score": -7.511,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "กิน_อาหาร",
+        "mood_display": "🍜 กิน/รีวิวอาหาร",
+        "products": [
+          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
+          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
+          "อุปกรณ์ทำอาหาร/เครื่องครัว",
+          "อาหารเสริม/เครื่องดื่มสุขภาพ"
+        ]
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": -7.511
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
@@ -335,7 +486,26 @@
           "เครื่องประดับ / แอคเซสเซอรี่",
           "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: เสื้อโอเวอร์ไซส์ผ้า Cotton 100%",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 20,
+        "price": 259,
+        "match": {
+          "keywords": [
+            "เสื้อโอเวอร์ไซส์",
+            "เสื้อ",
+            "แฟชั่น"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "กางเกงขายาวทรงสวย",
@@ -354,7 +524,26 @@
           "คอลลาเจน / วิตามินผิว",
           "ครีมกันแดด / เซรั่ม"
         ]
-      }
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 15,
+        "price": 390,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "หน้าใส"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
     },
     {
       "keyword": "เดรสออกงาน",
@@ -373,7 +562,86 @@
           "ขนมขบเคี้ยวแปลกๆ / กาแฟ",
           "ยาหม่อง / แผ่นแปะคลายกล้ามเนื้อ"
         ]
-      }
+      },
+      "affiliate_product": null,
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
+    },
+    {
+      "keyword": "รองเท้าผ้าใบ",
+      "current_score": 0.0,
+      "avg_velocity": -4.111,
+      "avg_acceleration": -3.111,
+      "momentum_score": -3.811,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "products": [
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: เสื้อโอเวอร์ไซส์ผ้า Cotton 100%",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 20,
+        "price": 259,
+        "match": {
+          "keywords": [
+            "เสื้อโอเวอร์ไซส์",
+            "เสื้อ",
+            "แฟชั่น"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -3.811
+    },
+    {
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": -5.222,
+      "avg_acceleration": -7.111,
+      "momentum_score": -5.789,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "products": [
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "ตัวอย่าง: เสื้อโอเวอร์ไซส์ผ้า Cotton 100%",
+        "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+        "commission_pct": 20,
+        "price": 259,
+        "match": {
+          "keywords": [
+            "เสื้อโอเวอร์ไซส์",
+            "เสื้อ",
+            "แฟชั่น"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -5.789
     }
   ]
 }
