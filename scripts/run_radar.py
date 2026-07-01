@@ -37,6 +37,7 @@ from line_notifier import send_line_message, format_alert_message
 from meme_product_map import match_product
 from keyword_discovery import discover_keywords
 from script_generator import generate_script
+from product_catalog import match_affiliate_product
 
 logging.basicConfig(
     level=logging.INFO,
@@ -112,7 +113,10 @@ def save_latest_snapshot(all_reports: pd.DataFrame, run_timestamp: str):
     records = all_reports.reset_index().to_dict(orient="records")
     # แนบหมวดสินค้าที่ควรขายให้ทุกคีย์เวิร์ด (ใช้แสดงบน dashboard)
     for rec in records:
-        rec["product_suggestion"] = match_product(rec["keyword"])
+        ps = match_product(rec["keyword"])
+        rec["product_suggestion"] = ps
+        # แนบ 'สินค้าตัวจริง' จากแคตตาล็อก (ถ้ามี) — ชื่อ + ลิงก์ + คอมมิชชั่น
+        rec["affiliate_product"] = match_affiliate_product(rec["keyword"], ps.get("mood_key"))
     snapshot = {
         "run_timestamp": run_timestamp,
         "results": records,
@@ -222,13 +226,16 @@ def find_alerts(all_reports: pd.DataFrame, threshold: float) -> list:
         if row["momentum_score"] < threshold:
             continue
 
+        ps = match_product(kw)  # แนบหมวดสินค้าตามอารมณ์
         alerts.append({
             "keyword": kw,
             "momentum_score": row["momentum_score"],
             "current_score": row["current_score"],
             "label": row["label"],
             "label_display": LABEL_DISPLAY.get(row["label"], row["label"]),
-            "product_suggestion": match_product(kw),  # แนบหมวดสินค้าตามอารมณ์
+            "product_suggestion": ps,
+            # สินค้าตัวจริง + ลิงก์ affiliate + คอม (ถ้ามีในแคตตาล็อก)
+            "affiliate_product": match_affiliate_product(kw, ps.get("mood_key")),
         })
     return alerts
 
@@ -318,10 +325,13 @@ def run_script_generation(fresh_alerts: list, model: str, max_scripts: int, run_
     scripts = {}
     for a in top:
         ps = a.get("product_suggestion") or {}
+        # ถ้ามีสินค้าตัวจริงในแคตตาล็อก ให้ Claude เขียนสคริปต์ถึง 'ตัวนั้น' ตรงๆ
+        ap = a.get("affiliate_product")
+        products = [ap["product_name"]] if ap else ps.get("products")
         script = generate_script(
             keyword=a["keyword"],
             mood_display=ps.get("mood_display"),
-            products=ps.get("products"),
+            products=products,
             label=a.get("label"),
             model=model,
         )

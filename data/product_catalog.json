@@ -1,0 +1,29 @@
+{
+  "_readme": "สมุดสินค้าที่คุณคัดเอง — แก้ product_name/affiliate_link/commission_pct ให้เป็นของจริงจาก TikTok Shop affiliate center. ลบ entry ตัวอย่างทิ้งแล้วใส่ของคุณเอง. ถ้าไม่มีไฟล์นี้/ไม่มีตัวที่ตรง ระบบจะ fallback ไปใช้หมวดสินค้ากว้างๆ เดิม.",
+  "products": [
+    {
+      "product_name": "ตัวอย่าง: คอลลาเจนเปปไทด์ 10,000mg",
+      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+      "commission_pct": 15,
+      "price": 390,
+      "match": { "keywords": ["คอลลาเจน", "วิตามินผิว", "หน้าใส"], "moods": ["สวย_แต่งหน้า"] },
+      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+    },
+    {
+      "product_name": "ตัวอย่าง: หม้อทอดไร้น้ำมัน 5.5L จอสัมผัส",
+      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+      "commission_pct": 8,
+      "price": 1290,
+      "match": { "keywords": ["หม้อทอด", "ทอดไร้น้ำมัน", "เครื่องครัว"], "moods": ["ไลฟ์สไตล์_ทำความสะอาด"] },
+      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+    },
+    {
+      "product_name": "ตัวอย่าง: เสื้อโอเวอร์ไซส์ผ้า Cotton 100%",
+      "affiliate_link": "https://vt.tiktok.com/REPLACE_ME/",
+      "commission_pct": 20,
+      "price": 259,
+      "match": { "keywords": ["เสื้อโอเวอร์ไซส์", "เสื้อ", "แฟชั่น"], "moods": ["แฟชั่น_แต่งตัว"] },
+      "notes": "แก้เป็นสินค้า+ลิงก์จริงของคุณ"
+    }
+  ]
+}

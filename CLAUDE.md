@@ -123,6 +123,18 @@ Key design points to understand before changing anything:
   match (or `DEFAULT_SUGGESTION`). It is attached to every result in `latest.json` and to
   alert messages so the dashboard/LINE can suggest what to sell.
 
+- **Real product catalog** (`product_catalog.py` + `data/product_catalog.json`) upgrades the
+  generic category above into a *specific* TikTok Shop product with affiliate link + commission %.
+  TikTok Shop has no public API for a creator's affiliate links, so the catalog is a
+  human-curated JSON the user maintains (starter examples committed with `REPLACE_ME` links).
+  `match_affiliate_product(keyword, mood_key)` matches by catalog `keywords` first, then falls
+  back to `moods`; returns `None` when nothing matches, so the pipeline degrades to the generic
+  category. The matched product is attached to `latest.json` records (`affiliate_product`) and to
+  alerts, surfaced on the dashboard card (name + commission + "เปิดลิงก์ขายเลย" button) and in
+  LINE (name + commission + link), and passed to `script_generator` so Claude names the real
+  product. The catalog is **committed** (unlike ROI data) because CI/LINE need it — affiliate
+  links are shareable; the user can omit `commission_pct` if they consider it sensitive.
+
 - **`keyword_discovery.py` is a standalone helper, not wired into the pipeline.** It surfaces
   candidate new keywords (trending searches + related suggestions) for a human to manually add
   to `config.json`. Nothing calls it automatically.
