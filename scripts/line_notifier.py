@@ -69,14 +69,16 @@ def send_line_message(message: str) -> bool:
         return False
 
 
-def format_alert_message(alerts: list, suggestions: dict = None) -> str:
+def format_alert_message(alerts: list, suggestions: dict = None, scripts: dict = None) -> str:
     """
     แปลงลิสต์ของ trend ที่ momentum สูง ให้เป็นข้อความสำหรับส่งใน LINE
     alerts = [{"keyword": ..., "momentum_score": ..., "label": ..., "current_score": ...}, ...]
     suggestions = ผลจาก keyword discovery (optional) ไว้แนบท้ายเป็น "คำใหม่น่าจับตา"
+    scripts = {keyword: {hook, cta, ...}} จาก AI script generator (optional) ไว้แนบฮุกให้เริ่มถ่ายได้เลย
     """
     if not alerts:
         return ""
+    scripts = scripts or {}
 
     lines = ["🔥 TikTok Trend Radar — พบกระแสน่าจับตา!", ""]
     for a in alerts:
@@ -90,6 +92,12 @@ def format_alert_message(alerts: list, suggestions: dict = None) -> str:
             lines.append(f"   💰 ขายคู่กับ: {ps['products'][0]}")
             if len(ps["products"]) > 1:
                 lines.append(f"      (หรือ: {ps['products'][1]})")
+        # แนบสคริปต์ที่ Claude เขียนให้ (ฮุก + CTA) เพื่อเริ่มถ่ายได้ทันที
+        sc = scripts.get(a["keyword"])
+        if sc:
+            lines.append(f"   🪝 ฮุก: {sc.get('hook', '')}")
+            if sc.get("cta"):
+                lines.append(f"   🎬 ปิดคลิป: {sc['cta']}")
         lines.append("")
 
     lines.append("⏰ จังหวะทอง! รีบทำคอนเทนต์ภายใน 3 ชม. ก่อนกระแสหาย")

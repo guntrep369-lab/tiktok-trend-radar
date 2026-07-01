@@ -10,3 +10,6 @@ venv/
 data/campaigns.csv
 data/performance.json
 docs/performance.json
+
+# สคริปต์คลิปที่ AI สร้าง — เก็บเป็น local record ไม่ต้อง commit
+data/scripts.json
