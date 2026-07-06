@@ -9,6 +9,10 @@
   "enable_script_gen": true,
   "script_model": "claude-opus-4-8",
   "script_gen_max": 3,
+  "video_model": "veo-3.0-fast-generate-001",
+  "video_aspect": "9:16",
+  "video_max_scenes": 3,
+  "video_tts_voice": "th-TH-PremwadeeNeural",
   "keyword_batches": [
     ["ลิปเปลี่ยนสี", "ครีมกันแดดโกลว์", "เซรั่มหน้าใส", "น้ำหอมติดทน", "คอนซีลเลอร์"],
     ["คอลลาเจน", "วิตามินผิว", "ขนมเกาหลี", "กาแฟลดน้ำหนัก", "โพรไบโอติก"],

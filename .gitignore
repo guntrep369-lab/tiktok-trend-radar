@@ -13,3 +13,6 @@ docs/performance.json
 
 # สคริปต์คลิปที่ AI สร้าง — เก็บเป็น local record ไม่ต้อง commit
 data/scripts.json
+
+# วิดีโอที่สายการผลิต AI สร้าง (ไฟล์ใหญ่ — เก็บเป็น artifact บน Actions แทน)
+out/
