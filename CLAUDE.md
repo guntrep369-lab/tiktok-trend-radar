@@ -40,6 +40,12 @@ python scripts/campaign_tracker.py weights                               # deriv
 # AI script generator (needs ANTHROPIC_API_KEY; writes a ready-to-shoot TikTok script)
 export ANTHROPIC_API_KEY="sk-ant-..."
 python scripts/script_generator.py --keyword "คอลลาเจน" --label GROWTH
+
+# AI video pipeline (Veo + Thai TTS + ffmpeg -> YouTube; needs requirements-video.txt + ffmpeg)
+python scripts/video_generator.py --keyword "อาหารเปียกแมว" --dry-run   # plan only, no cost
+python scripts/video_generator.py --keyword "อาหารเปียกแมว" --out out/video.mp4  # costs money (Veo)
+python scripts/youtube_uploader.py setup --client-id X --client-secret Y  # one-time OAuth
+python scripts/youtube_uploader.py upload --file out/video.mp4            # uploads as private
 ```
 
 ```bash
@@ -150,6 +156,21 @@ Key design points to understand before changing anything:
   fresh alerts, saves to `data/scripts.json` (**gitignored** — not published), and the hook+CTA are
   appended to the LINE alert. The pure functions (`_build_prompt`, `_parse_response`,
   `format_script_text`) are unit-tested offline; the live API call is not.
+
+- **AI video pipeline (`video_generator.py` + `youtube_uploader.py`) is manual-trigger only —
+  deliberately NOT wired into the 3-hour cron because Veo bills per clip.** Flow: script (Claude,
+  reused) → English scene prompts (Claude with a pure `fallback_scene_prompts` template when no
+  key) → Google Veo text-to-video (needs `GEMINI_API_KEY`; model id in config `video_model` —
+  Veo ids rotate, check ai.google.dev if 404) → Thai voiceover via edge-tts (free,
+  `video_tts_voice`) → ffmpeg: normalize 1080x1920 → concat → burn ASS subtitles (libass handles
+  Thai shaping; drawtext does not) → replace Veo audio with the TTS track. Uploads via YouTube
+  Data API as **private** (unaudited API projects get locked private anyway; the user publishes
+  from Studio — that's the review gate). Upload costs 1600 of the 10k daily quota (~6/day max).
+  Heavy deps live in `requirements-video.txt` so main CI stays lean; both modules lazy-import
+  them, and tests cover only the pure parts (prompts/subtitles/metadata). Workflow:
+  `video_factory.yml` (workflow_dispatch; needs secrets `GEMINI_API_KEY`, `YT_CLIENT_ID`,
+  `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`; mp4 also saved as an Actions artifact). `out/` is
+  gitignored.
 
 - **Feedback loop / ROI (`campaign_tracker.py`) is a LOCAL, private tool — not part of the CI
   pipeline.** It links posted videos → source keyword → real TikTok Shop performance
