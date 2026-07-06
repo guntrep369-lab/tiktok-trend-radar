@@ -65,6 +65,24 @@ def build_metadata(keyword: str, script: dict = None, affiliate_product: dict = 
     return {"title": title, "description": "\n\n".join(lines), "tags": tags[:15]}
 
 
+def build_story_metadata(story: dict) -> dict:
+    """metadata สำหรับนิทานการ์ตูนเด็ก — ไม่มีลิงก์ขายของ เน้นชื่อเรื่อง+บทเรียน"""
+    story = story or {}
+    title = (story.get("title") or "นิทานการ์ตูนเด็ก").strip()
+    title = title[: MAX_TITLE - 8] + " #Shorts"
+
+    lines = []
+    moral = (story.get("moral") or "").strip()
+    if moral:
+        lines.append(f"นิทานสอนใจ: {moral}")
+    hashtags = [h.strip() for h in story.get("hashtags", []) if h and h.strip()]
+    if hashtags:
+        lines.append(" ".join(hashtags))
+
+    tags = [h.lstrip("#") for h in hashtags][:15] or ["นิทานเด็ก", "การ์ตูนเด็ก"]
+    return {"title": title, "description": "\n\n".join(lines), "tags": tags[:15]}
+
+
 # ──────────────────────────────────────────────────────────
 # GOOGLE API (lazy import — โมดูลนี้ import ได้แม้ไม่มีไลบรารี)
 # ──────────────────────────────────────────────────────────
@@ -84,8 +102,9 @@ def get_service():
     return build("youtube", "v3", credentials=creds)
 
 
-def upload_video(file_path: Path, meta: dict, privacy: str = "private") -> str:
-    """อัปโหลดแบบ resumable คืน videoId"""
+def upload_video(file_path: Path, meta: dict, privacy: str = "private",
+                 made_for_kids: bool = False) -> str:
+    """อัปโหลดแบบ resumable คืน videoId (made_for_kids=True สำหรับคอนเทนต์เด็ก ตามกฎ COPPA)"""
     from googleapiclient.http import MediaFileUpload
 
     service = get_service()
@@ -94,10 +113,10 @@ def upload_video(file_path: Path, meta: dict, privacy: str = "private") -> str:
             "title": meta["title"],
             "description": meta["description"],
             "tags": meta.get("tags", []),
-            "categoryId": "22",  # People & Blogs
+            "categoryId": "1" if made_for_kids else "22",  # Film & Animation / People & Blogs
             "defaultLanguage": "th",
         },
-        "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False},
+        "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": bool(made_for_kids)},
     }
     media = MediaFileUpload(str(file_path), chunksize=-1, resumable=True, mimetype="video/mp4")
     request = service.videos().insert(part="snippet,status", body=body, media_body=media)
@@ -141,6 +160,7 @@ def cmd_upload(args):
         logger.error(f"ไม่พบไฟล์ {file_path}")
         sys.exit(1)
 
+    made_for_kids = args.made_for_kids
     if args.title:
         meta = {"title": args.title[:MAX_TITLE], "description": args.description or "", "tags": []}
     else:
@@ -151,9 +171,14 @@ def cmd_upload(args):
             sys.exit(1)
         with open(meta_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        meta = build_metadata(data.get("keyword", ""), data.get("script"), data.get("affiliate_product"))
+        if data.get("story"):
+            # โหมดนิทาน: ไม่มีลิงก์ขายของ + ติ๊ก Made for Kids อัตโนมัติ
+            meta = build_story_metadata(data["story"])
+            made_for_kids = made_for_kids or bool(data.get("made_for_kids", True))
+        else:
+            meta = build_metadata(data.get("keyword", ""), data.get("script"), data.get("affiliate_product"))
 
-    vid = upload_video(file_path, meta, privacy=args.privacy)
+    vid = upload_video(file_path, meta, privacy=args.privacy, made_for_kids=made_for_kids)
     print(vid)
 
 
@@ -171,6 +196,8 @@ def main():
     p_up.add_argument("--title", default=None)
     p_up.add_argument("--description", default="")
     p_up.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"])
+    p_up.add_argument("--made-for-kids", action="store_true",
+                      help="ติ๊ก 'สร้างมาเพื่อเด็ก' (บังคับตามกฎ COPPA สำหรับคอนเทนต์เด็ก)")
     p_up.set_defaults(func=cmd_upload)
 
     args = ap.parse_args()

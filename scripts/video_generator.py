@@ -281,33 +281,57 @@ def probe_duration(path: Path) -> float:
 # MAIN
 # ──────────────────────────────────────────────────────────
 def main():
-    ap = argparse.ArgumentParser(description="สร้างวิดีโอ AI (Veo) จากสคริปต์ Claude")
-    ap.add_argument("--keyword", required=True)
+    ap = argparse.ArgumentParser(description="สร้างวิดีโอ AI (Veo/Flow) จากสคริปต์ขายของ หรือบทนิทานการ์ตูน")
+    ap.add_argument("--keyword", default=None, help="คีย์เวิร์ดสินค้า (โหมดขายของ)")
     ap.add_argument("--out", default="out/video.mp4")
-    ap.add_argument("--script-file", default=None, help="JSON สคริปต์ (ถ้าไม่ใส่ จะให้ Claude เขียนใหม่)")
+    ap.add_argument("--script-file", default=None, help="JSON สคริปต์ขายของ (ถ้าไม่ใส่ จะให้ Claude เขียนใหม่)")
+    ap.add_argument("--story-file", default=None, help="JSON นิทานจาก story_generator (โหมดการ์ตูนสตอรี่)")
+    ap.add_argument("--clips-dir", default=None,
+                    help="โฟลเดอร์คลิป mp4 ที่มีอยู่แล้ว (เช่นโหลดจาก Flow) — ข้าม Veo ไม่เสียเงิน")
     ap.add_argument("--dry-run", action="store_true", help="โชว์แผน+prompt โดยไม่เรียก Veo (ไม่เสียเงิน)")
     args = ap.parse_args()
+
+    if not args.keyword and not args.story_file:
+        ap.error("ต้องใส่ --keyword (โหมดขายของ) หรือ --story-file (โหมดนิทาน) อย่างน้อยหนึ่งอย่าง")
 
     cfg = load_video_config()
     out_path = Path(args.out)
     work_dir = out_path.parent / "work"
 
-    # 1) สคริปต์
-    ps = match_product(args.keyword)
-    ap_prod = match_affiliate_product(args.keyword, ps.get("mood_key"))
-    product_name = ap_prod["product_name"] if ap_prod else None
-    if args.script_file:
-        with open(args.script_file, "r", encoding="utf-8") as f:
-            script = json.load(f)
+    # 1) เตรียมบท + prompt ตามโหมด
+    if args.story_file:
+        # ── โหมดนิทานการ์ตูน (ตัวละครคงที่, Made for Kids) ──
+        from story_generator import story_scene_prompts, character_sheet_prompt
+        with open(args.story_file, "r", encoding="utf-8") as f:
+            story = json.load(f)
+        prompts = story_scene_prompts(story)
+        narrations = [sc.get("narration", "") for sc in story.get("scenes", [])]
+        voice_text = " ".join(n.strip() for n in narrations if n.strip())
+        sub_lines = narrations
+        meta = {"keyword": args.keyword or story.get("title", "นิทาน"),
+                "story": story, "made_for_kids": True, "video": str(out_path)}
+        logger.info(f"\nโหมดนิทาน: {story.get('title', '')}")
+        logger.info(f"Character sheet (ไว้ทำ ingredient ใน Flow): {character_sheet_prompt(story)[:100]}...")
     else:
-        script = generate_script(args.keyword, mood_display=ps.get("mood_display"),
-                                 products=[product_name] if product_name else ps.get("products"))
-    if not script:
-        logger.error("ไม่มีสคริปต์ (ตั้ง ANTHROPIC_API_KEY หรือส่ง --script-file)")
-        sys.exit(1)
+        # ── โหมดขายของ (ของเดิม) ──
+        ps = match_product(args.keyword)
+        ap_prod = match_affiliate_product(args.keyword, ps.get("mood_key"))
+        product_name = ap_prod["product_name"] if ap_prod else None
+        if args.script_file:
+            with open(args.script_file, "r", encoding="utf-8") as f:
+                script = json.load(f)
+        else:
+            script = generate_script(args.keyword, mood_display=ps.get("mood_display"),
+                                     products=[product_name] if product_name else ps.get("products"))
+        if not script:
+            logger.error("ไม่มีสคริปต์ (ตั้ง ANTHROPIC_API_KEY หรือส่ง --script-file)")
+            sys.exit(1)
+        prompts = build_scene_prompts(args.keyword, script, product_name, cfg["max_scenes"])
+        voice_text = voiceover_text_from_script(script)
+        sub_lines = [script.get("hook", "")] + list(script.get("script", [])) + [script.get("cta", "")]
+        meta = {"keyword": args.keyword, "script": script,
+                "affiliate_product": ap_prod, "video": str(out_path)}
 
-    # 2) scene prompts
-    prompts = build_scene_prompts(args.keyword, script, product_name, cfg["max_scenes"])
     est_seconds = len(prompts) * SCENE_SECONDS
     logger.info(f"\nแผนวิดีโอ: {len(prompts)} ฉาก x ~{SCENE_SECONDS} วิ = ~{est_seconds} วิ | รุ่น {cfg['model']}")
     for i, p in enumerate(prompts, 1):
@@ -319,13 +343,21 @@ def main():
     work_dir.mkdir(parents=True, exist_ok=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # 3) Veo + TTS + ประกอบ
-    clips = generate_clips_veo(prompts, cfg["model"], cfg["aspect"], work_dir)
+    # 2) ภาพวิดีโอ: จากโฟลเดอร์ (สาย Flow) หรือสร้างใหม่ด้วย Veo (เสียเงิน)
+    if args.clips_dir:
+        clips = sorted(Path(args.clips_dir).glob("*.mp4"))
+        if not clips:
+            logger.error(f"ไม่พบไฟล์ .mp4 ใน {args.clips_dir}")
+            sys.exit(1)
+        logger.info(f"ใช้คลิปที่มีอยู่ {len(clips)} ไฟล์จาก {args.clips_dir} (ข้าม Veo)")
+    else:
+        clips = generate_clips_veo(prompts, cfg["model"], cfg["aspect"], work_dir)
+
+    # 3) เสียงพากย์ + ซับ + ประกอบ
     voice_path = work_dir / "voice.mp3"
-    tts_voiceover(voiceover_text_from_script(script), cfg["voice"], voice_path)
+    tts_voiceover(voice_text, cfg["voice"], voice_path)
 
     total = sum(probe_duration(c) for c in clips)
-    sub_lines = [script.get("hook", "")] + list(script.get("script", [])) + [script.get("cta", "")]
     ass_path = work_dir / "subs.ass"
     ass_path.write_text(build_ass_subtitles(sub_lines, total), encoding="utf-8")
 
@@ -334,8 +366,7 @@ def main():
     # เก็บ metadata ไว้ให้ตัวอัปโหลดใช้
     meta_path = out_path.with_suffix(".json")
     with open(meta_path, "w", encoding="utf-8") as f:
-        json.dump({"keyword": args.keyword, "script": script,
-                   "affiliate_product": ap_prod, "video": str(out_path)}, f, ensure_ascii=False, indent=2)
+        json.dump(meta, f, ensure_ascii=False, indent=2)
     logger.info(f"เสร็จ: {out_path} (+ {meta_path.name} สำหรับอัปโหลด)")
 
 
