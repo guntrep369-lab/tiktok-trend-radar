@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Story Studio — โรงงานนิทานแสนสนุก</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Itim&display=swap" rel="stylesheet" />
+<style>
+  /* ─── โทเค็นดีไซน์: โลกการ์ตูนเด็กสีลูกกวาด ─── */
+  :root {
+    --ink:      #4a4453;   /* ตัวอักษรหลัก ม่วงเทานุ่ม */
+    --ink-dim:  #8a7f96;   /* ตัวอักษรรอง */
+    --pink:     #ff6b9d;
+    --orange:   #ff9f4d;
+    --sunny:    #ffc93c;
+    --mint:     #43cea2;
+    --sky:      #4db5ff;
+    --grape:    #9b7ede;
+    --card:     #ffffff;
+    --cream:    #fff8e7;
+    --hand: 'Mali', 'Itim', sans-serif;
+    --body: 'Itim', 'Mali', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--body); color: var(--ink); line-height: 1.7; min-height: 100vh;
+    background: linear-gradient(180deg, #bde9ff 0%, #fff9e0 55%, #ffeaf4 100%);
+    background-attachment: fixed;
+  }
+
+  /* ก้อนเมฆ/ดาวลอยประดับฉาก */
+  .float { position: fixed; font-size: 42px; opacity: 0.7; pointer-events: none; z-index: 0; animation: bob 6s ease-in-out infinite; }
+  .f1 { top: 6%;  left: 4%;  animation-delay: 0s; }
+  .f2 { top: 14%; right: 6%; animation-delay: 1.5s; font-size: 34px; }
+  .f3 { bottom: 18%; left: 6%; animation-delay: 3s; font-size: 36px; }
+  .f4 { bottom: 8%; right: 8%; animation-delay: 2s; }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
+
+  .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 30px 20px 90px; }
+
+  header { text-align: center; margin-bottom: 24px; }
+  h1 {
+    font-family: var(--hand); font-size: 40px; font-weight: 700; line-height: 1.2;
+    background: linear-gradient(90deg, var(--pink), var(--orange), var(--sunny), var(--mint), var(--sky), var(--grape));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tagline { font-size: 16px; color: var(--ink-dim); margin-top: 4px; }
+  a.back {
+    display: inline-block; margin-top: 10px; color: var(--sky); text-decoration: none;
+    font-size: 14px; background: #fff; border: 2px solid #cfeaff; border-radius: 999px; padding: 6px 16px;
+  }
+
+  .card {
+    background: var(--card); border-radius: 26px; padding: 24px; margin-bottom: 18px;
+    border: 3px solid #ffe3ef; box-shadow: 0 8px 24px rgba(155, 126, 222, 0.12);
+  }
+  .card.key { border-color: #d8ecff; }
+  .card.form { border-color: #ffe9c9; }
+
+  label { display: block; font-family: var(--hand); font-weight: 600; font-size: 15px; color: var(--grape); margin-bottom: 8px; }
+  input, select {
+    width: 100%; background: var(--cream); border: 2.5px solid #ffdfa8; border-radius: 16px;
+    padding: 13px 16px; color: var(--ink); font-family: var(--body); font-size: 16px;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--pink); background: #fff; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .row > div { flex: 1; min-width: 150px; }
+  .hint { font-size: 13px; color: var(--ink-dim); margin-top: 10px; }
+  .hint a { color: var(--sky); }
+
+  button.primary {
+    margin-top: 16px; width: 100%; padding: 16px; border: none; border-radius: 999px; cursor: pointer;
+    background: linear-gradient(90deg, var(--pink), var(--orange));
+    color: #fff; font-size: 20px; font-weight: 700; font-family: var(--hand);
+    box-shadow: 0 6px 0 #e8548a; transition: transform 0.12s, box-shadow 0.12s;
+  }
+  button.primary:hover { transform: translateY(-2px); }
+  button.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 #e8548a; }
+  button.primary:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+  #status { margin-top: 14px; font-size: 15px; color: #2fa36b; min-height: 22px; text-align: center; }
+  #status.err { color: #e85d75; }
+
+  h2 { font-family: var(--hand); font-size: 28px; color: var(--pink); margin-bottom: 6px; }
+  h3 {
+    font-family: var(--hand); font-size: 18px; font-weight: 700; color: #fff; display: inline-block;
+    background: linear-gradient(90deg, var(--sky), var(--grape));
+    border-radius: 999px; padding: 6px 18px; margin: 22px 0 12px;
+  }
+  .moral {
+    background: var(--cream); border: 2px dashed var(--sunny); border-radius: 16px;
+    padding: 10px 16px; font-size: 16px; margin: 10px 0 14px;
+  }
+  .chip {
+    display: inline-block; background: #f3edff; border: 2px solid #ddd0f7; border-radius: 999px;
+    padding: 6px 14px; font-size: 14px; margin: 3px 6px 3px 0;
+  }
+  .chip.tag { background: #e5f7ff; border-color: #c4e9ff; color: var(--sky); }
+
+  .scene { border-radius: 22px; padding: 18px; margin-bottom: 14px; border: 3px solid transparent; }
+  .scene:nth-child(5n+1) { background: #fff3f8; border-color: #ffd6e7; }
+  .scene:nth-child(5n+2) { background: #fff9e6; border-color: #ffe9a8; }
+  .scene:nth-child(5n+3) { background: #ecfbf4; border-color: #bfeeda; }
+  .scene:nth-child(5n+4) { background: #edf6ff; border-color: #cfe7ff; }
+  .scene:nth-child(5n+5) { background: #f5f0ff; border-color: #e0d4fb; }
+  .scene .num {
+    font-family: var(--hand); font-weight: 700; font-size: 14px; color: #fff;
+    background: linear-gradient(90deg, var(--orange), var(--sunny));
+    display: inline-block; border-radius: 999px; padding: 3px 14px;
+  }
+  .scene .th { font-size: 17px; margin: 10px 0; }
+
+  pre {
+    background: #fffdf6; border: 2px dashed #e8ddc8; border-radius: 14px; padding: 14px;
+    font-family: 'Consolas', ui-monospace, monospace; font-size: 12px; color: #7a7264;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  button.copy {
+    margin-top: 10px; padding: 9px 18px; border-radius: 999px; cursor: pointer; font-size: 14px;
+    font-family: var(--hand); font-weight: 600;
+    background: #fff; border: 2.5px solid var(--mint); color: #1f9d74;
+    box-shadow: 0 3px 0 #bfeeda; transition: transform 0.1s;
+  }
+  button.copy:hover { transform: translateY(-1px); background: #ecfbf4; }
+
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .actions button {
+    flex: 1; min-width: 200px; padding: 14px; border-radius: 999px; cursor: pointer;
+    font-family: var(--hand); font-weight: 700; font-size: 16px; color: #fff; border: none;
+    transition: transform 0.12s;
+  }
+  .actions button:hover { transform: translateY(-2px); }
+  .actions button.dl  { background: linear-gradient(90deg, var(--sky), var(--grape)); box-shadow: 0 5px 0 #7e63c9; }
+  .actions button.cp  { background: linear-gradient(90deg, var(--mint), #2fa36b); box-shadow: 0 5px 0 #1f8a60; }
+
+  ol.howto { margin: 12px 0 0 24px; font-size: 15px; color: var(--ink-dim); }
+  ol.howto li { margin-bottom: 6px; }
+  ol.howto b { color: var(--ink); background: var(--cream); border-radius: 8px; padding: 1px 8px; }
+
+  @media (max-width: 540px) { h1 { font-size: 30px; } .float { font-size: 30px; } }
+</style>
+</head>
+<body>
+<div class="float f1">☁️</div>
+<div class="float f2">⭐</div>
+<div class="float f3">🌈</div>
+<div class="float f4">🎈</div>
+
+<div class="wrap">
+  <header>
+    <h1>📖 Story Studio 🏰</h1>
+    <div class="tagline">โรงงานนิทานแสนสนุก · แต่งนิทานด้วย AI · พร้อมวาดใน Google Flow ✨</div>
+    <a class="back" href="index.html">← กลับ Trend Radar</a>
+  </header>
+
+  <div class="card key">
+    <label>🔑 Anthropic API Key (เก็บในเบราว์เซอร์เครื่องนี้เท่านั้น)</label>
+    <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+    <div class="hint">คีย์ถูกเก็บใน localStorage ของคุณ และถูกส่งตรงไปที่ api.anthropic.com เท่านั้น — ขอคีย์ได้ที่ <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></div>
+  </div>
+
+  <div class="card form">
+    <div class="row">
+      <div style="flex:3">
+        <label>💭 อยากได้นิทานเรื่องอะไรเอ่ย?</label>
+        <input id="theme" placeholder='เช่น "แมวน้อยขี้เกียจ เรียนรู้การแบ่งปัน"' />
+      </div>
+      <div>
+        <label>🎬 จำนวนฉาก</label>
+        <select id="nScenes">
+          <option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option><option>8</option>
+        </select>
+      </div>
+    </div>
+    <button class="primary" id="btnGen" onclick="generate()">✨ แต่งนิทานเลย! ✨</button>
+    <div id="status"></div>
+  </div>
+
+  <div id="result" style="display:none">
+    <div class="card">
+      <h2 id="stTitle"></h2>
+      <div class="moral" id="stMoral"></div>
+      <div id="stChars"></div>
+      <div id="stTags" style="margin-top:8px"></div>
+
+      <div><h3>1️⃣ ภาพตัวละคร — สร้างก่อน แล้วใช้เป็น ingredient ใน Flow</h3></div>
+      <pre id="sheetPrompt"></pre>
+      <button class="copy" onclick="copyText('sheetPrompt', this)">📋 Copy character sheet prompt</button>
+
+      <div><h3>2️⃣ ฉากนิทาน — วางใน Flow ทีละฉาก (แนบภาพตัวละครทุกครั้ง)</h3></div>
+      <div id="scenes"></div>
+
+      <div class="actions">
+        <button class="dl" onclick="downloadJson()">⬇️ ดาวน์โหลด story.json</button>
+        <button class="cp" onclick="copyAll(this)">📋 Copy ทุก prompt รวดเดียว</button>
+      </div>
+
+      <div><h3>3️⃣ ขั้นต่อไป</h3></div>
+      <ol class="howto">
+        <li>โหลดคลิปทั้งหมดจาก Flow ใส่โฟลเดอร์ <b>flow_clips\</b> (ตั้งชื่อ 1.mp4, 2.mp4, ... ให้เรียงถูก)</li>
+        <li>ประกอบ + เสียงเล่านิทานไทย + ซับ: <b>python scripts/video_generator.py --story-file story.json --clips-dir flow_clips\ --out out\story.mp4</b></li>
+        <li>อัปโหลด (private + Made for Kids อัตโนมัติ): <b>python scripts/youtube_uploader.py upload --file out\story.mp4</b></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ค่าคงที่ต้องตรงกับ scripts/story_generator.py (สไตล์ช่องเดียวกันทุกตอน) ──
+const STYLE = "3D animated cartoon for children, bright vibrant colors, soft rounded shapes, big expressive eyes, warm cinematic lighting, smooth animation, no text, no watermark, no logos";
+const MODEL = "claude-opus-4-8";
+let currentStory = null;
+
+function buildStoryPrompt(theme, n) {
+  return `คุณเป็นนักเขียนบทการ์ตูนเด็กมืออาชีพ เขียนนิทานสั้นสำหรับวิดีโอ YouTube (~${n * 8} วินาที)
+
+ธีม: ${theme}
+
+กติกา:
+- ตัวละครหลักไม่เกิน 2 ตัว ตั้งชื่อไทยจำง่าย และเขียน description_en เป็นคำอธิบายภาพละเอียด (สี ขนาด เสื้อผ้า ลักษณะเด่น) เพื่อให้ AI วาดหน้าเดิมทุกฉาก
+- แบ่งเป็น ${n} ฉากพอดี โครงเรื่อง: เปิดปมเร็วในฉากแรก -> พยายาม/ผิดพลาด -> คลี่คลาย + บทเรียน
+- narration = เสียงเล่านิทานภาษาไทย อบอุ่น ประโยคสั้น เด็กเล็กฟังรู้เรื่อง (ฉากละ 1-2 ประโยค)
+- visual_prompt = ภาพของฉากเป็นภาษาอังกฤษ บรรยายฉากและการกระทำ และต้องเรียกชื่อตัวละครพร้อมคำอธิบายเต็มจาก description_en ทุกครั้งที่ตัวละครปรากฏ (ห้ามย่อ) ห้ามมีตัวหนังสือในภาพ
+- เนื้อหาปลอดภัยสำหรับเด็กเล็ก 100% ไม่มีความรุนแรง/ความน่ากลัว
+- moral = บทเรียน 1 ประโยค
+
+ตอบเป็น JSON อย่างเดียว ตามรูปแบบนี้เป๊ะ:
+{"title": "ชื่อตอนภาษาไทย", "characters": [{"name": "...", "description_en": "..."}], "moral": "...", "scenes": [{"narration": "...", "visual_prompt": "..."}], "hashtags": ["#นิทานเด็ก", "#การ์ตูนเด็ก", "..."]}`;
+}
+
+function parseStory(text) {
+  if (!text) return null;
+  const fence = text.match(/```(?:json)?\s*(\{[\s\S]*?\})\s*```/);
+  let raw = fence ? fence[1] : text;
+  if (!fence) {
+    const s = raw.indexOf("{"), e = raw.lastIndexOf("}");
+    if (s === -1 || e <= s) return null;
+    raw = raw.slice(s, e + 1);
+  }
+  let data;
+  try { data = JSON.parse(raw); } catch { return null; }
+  for (const k of ["title", "characters", "moral", "scenes", "hashtags"]) if (!(k in data)) return null;
+  if (!Array.isArray(data.scenes) || !data.scenes.length) return null;
+  for (const sc of data.scenes) if (!sc.narration || !sc.visual_prompt) return null;
+  return data;
+}
+
+function charBlock(story) {
+  return (story.characters || [])
+    .filter(c => c.description_en)
+    .map(c => (c.name ? c.name + ": " : "") + c.description_en).join(" | ");
+}
+function scenePrompts(story) {
+  const chars = charBlock(story);
+  return (story.scenes || []).map(sc =>
+    `${STYLE}. ` + (chars ? `Recurring characters (keep EXACTLY consistent in every scene): ${chars}. ` : "") +
+    `Scene: ${sc.visual_prompt || ""}`);
+}
+function sheetPrompt(story) {
+  return `${STYLE}. Character reference sheet on plain light background, full body, front view, T-pose relaxed, showing: ${charBlock(story)}`;
+}
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function setStatus(msg, isErr) {
+  const el = document.getElementById("status");
+  el.textContent = msg; el.className = isErr ? "err" : "";
+}
+
+async function generate() {
+  const key = document.getElementById("apiKey").value.trim();
+  const theme = document.getElementById("theme").value.trim();
+  const n = parseInt(document.getElementById("nScenes").value, 10);
+  if (!key) return setStatus("ใส่ Anthropic API Key ก่อนนะ (ขอได้ที่ console.anthropic.com)", true);
+  if (!theme) return setStatus("พิมพ์ธีมนิทานก่อนนะ เช่น แมวน้อยหัดแบ่งปัน", true);
+  localStorage.setItem("studio_api_key", key);
+
+  const btn = document.getElementById("btnGen");
+  btn.disabled = true; setStatus("✍️ กำลังแต่งนิทาน... (ราว 30-90 วินาที อย่าปิดหน้านะ)");
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true",
+      },
+      body: JSON.stringify({ model: MODEL, max_tokens: 3000,
+        messages: [{ role: "user", content: buildStoryPrompt(theme, n) }] }),
+    });
+    if (!res.ok) {
+      const t = res.status === 401 ? "คีย์ไม่ถูกต้อง (401)" :
+                res.status === 429 ? "ยิงถี่เกิน/เครดิตหมด (429) ลองใหม่สักครู่" :
+                `API error ${res.status}`;
+      throw new Error(t);
+    }
+    const data = await res.json();
+    const text = (data.content || []).filter(b => b.type === "text").map(b => b.text).join("");
+    const story = parseStory(text);
+    if (!story) throw new Error("อ่านบทจากคำตอบไม่ได้ ลองกดใหม่อีกครั้ง");
+    localStorage.setItem("studio_last_story", JSON.stringify(story));
+    render(story);
+    setStatus("🎉 เสร็จแล้ว! เลื่อนลงไปดูนิทาน + copy prompt ได้เลย");
+  } catch (e) {
+    setStatus("❌ " + e.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function render(story) {
+  currentStory = story;
+  document.getElementById("stTitle").textContent = "📖 " + (story.title || "");
+  document.getElementById("stMoral").textContent = "💡 บทเรียน: " + (story.moral || "");
+  document.getElementById("stChars").innerHTML = (story.characters || [])
+    .map(c => `<div class="chip">🧸 <b>${esc(c.name || "")}</b> — ${esc(c.description_en || "")}</div>`).join("");
+  document.getElementById("stTags").innerHTML = (story.hashtags || [])
+    .map(h => `<span class="chip tag">${esc(h)}</span>`).join("");
+  document.getElementById("sheetPrompt").textContent = sheetPrompt(story);
+
+  const prompts = scenePrompts(story);
+  document.getElementById("scenes").innerHTML = (story.scenes || []).map((sc, i) => `
+    <div class="scene">
+      <div class="num">ฉากที่ ${i + 1} / ${story.scenes.length}</div>
+      <div class="th">🎙️ ${esc(sc.narration || "")}</div>
+      <pre id="sp${i}">${esc(prompts[i])}</pre>
+      <button class="copy" onclick="copyText('sp${i}', this)">📋 Copy prompt ฉาก ${i + 1}</button>
+    </div>`).join("");
+  document.getElementById("result").style.display = "";
+}
+
+function copyText(id, btn) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent).then(() => {
+    const old = btn.textContent; btn.textContent = "✅ copied!";
+    setTimeout(() => { btn.textContent = old; }, 1500);
+  });
+}
+function copyAll(btn) {
+  if (!currentStory) return;
+  const parts = ["=== CHARACTER SHEET ===", sheetPrompt(currentStory)];
+  scenePrompts(currentStory).forEach((p, i) => parts.push(`\n=== SCENE ${i + 1} ===`, p));
+  navigator.clipboard.writeText(parts.join("\n")).then(() => {
+    const old = btn.textContent; btn.textContent = "✅ copied!";
+    setTimeout(() => { btn.textContent = old; }, 1500);
+  });
+}
+function downloadJson() {
+  if (!currentStory) return;
+  const blob = new Blob([JSON.stringify(currentStory, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "story.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// โหลดค่าที่เคยใช้
+(function init() {
+  const k = localStorage.getItem("studio_api_key");
+  if (k) document.getElementById("apiKey").value = k;
+  const last = localStorage.getItem("studio_last_story");
+  if (last) { try { render(JSON.parse(last)); } catch {} }
+})();
+</script>
+</body>
+</html>
