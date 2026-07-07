@@ -178,6 +178,14 @@ Key design points to understand before changing anything:
   `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`; mp4 also saved as an Actions artifact). `out/` is
   gitignored.
 
+- **Story Studio** (`docs/studio.html`) is a no-CLI web UI for the story lane, served on the same
+  GitHub Pages site. It calls the Anthropic API **directly from the browser** (header
+  `anthropic-dangerous-direct-browser-access: true`; the user's key lives in localStorage only —
+  never in the repo) to write a story, then renders copy-ready Flow prompts and a story.json
+  download. Its `buildStoryPrompt`/`parseStory`/`scenePrompts`/`STYLE` are a **JS duplicate of
+  `story_generator.py`** — keep the two in sync when changing the story schema or channel style.
+  Assembly/upload still happen via CLI/Actions (browsers can't run ffmpeg/YouTube OAuth sanely).
+
 - **Kids' story mode** (`story_generator.py` + `--story-file` on video_generator) targets views
   instead of affiliate. Claude writes a story JSON (title/characters/moral/scenes/hashtags);
   the key constraint is **character consistency** — `story_scene_prompts` re-injects the full
