@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-07-19T01:48:47.416476+00:00",
+  "run_timestamp": "2026-07-19T05:42:36.697044+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -198,10 +198,10 @@
     },
     {
       "keyword": "คอลลาเจน",
-      "current_score": 57.0,
-      "avg_velocity": 12.111,
-      "avg_acceleration": 6.333,
-      "momentum_score": 10.378,
+      "current_score": 59.0,
+      "avg_velocity": 8.333,
+      "avg_acceleration": 6.556,
+      "momentum_score": 7.8,
       "label": "GROWTH",
       "source": "live",
       "product_suggestion": {
@@ -232,7 +232,44 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 10.378
+      "ranking_score": 7.8
+    },
+    {
+      "keyword": "โพรไบโอติก",
+      "current_score": 52.0,
+      "avg_velocity": 4.667,
+      "avg_acceleration": 5.778,
+      "momentum_score": 5.0,
+      "label": "GROWTH",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
+        "products": [
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: โพรไบโอติก/กาแฟลดน้ำหนัก/เครื่องดื่มสุขภาพ",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "โพรไบโอติก",
+            "กาแฟลดน้ำหนัก",
+            "อาหารเสริม"
+          ],
+          "moods": [
+            "กิน_อาหาร",
+            "ออกกำลัง_สุขภาพ"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 5.0
     },
     {
       "keyword": "วิตามินผิว",
@@ -350,58 +387,21 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "โพรไบโอติก",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: โพรไบโอติก/กาแฟลดน้ำหนัก/เครื่องดื่มสุขภาพ",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "โพรไบโอติก",
-            "กาแฟลดน้ำหนัก",
-            "อาหารเสริม"
-          ],
-          "moods": [
-            "กิน_อาหาร",
-            "ออกกำลัง_สุขภาพ"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 0.0
-    },
-    {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 81.0,
-      "avg_velocity": 9.0,
-      "avg_acceleration": 9.0,
-      "momentum_score": 9.0,
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 57.0,
+      "avg_velocity": 3.889,
+      "avg_acceleration": 6.333,
+      "momentum_score": 4.622,
       "label": "GROWTH",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
-        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
+        "mood_key": "กิน_อาหาร",
+        "mood_display": "🍜 กิน/รีวิวอาหาร",
         "products": [
-          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
-          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
-          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
-          "กล่องเก็บของ / ชั้นวาง"
+          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
+          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
+          "อุปกรณ์ทำอาหาร/เครื่องครัว",
+          "อาหารเสริม/เครื่องดื่มสุขภาพ"
         ]
       },
       "affiliate_product": {
@@ -423,15 +423,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 9.0
+      "ranking_score": 4.622
     },
     {
       "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 78.0,
-      "avg_velocity": 8.667,
-      "avg_acceleration": 8.667,
-      "momentum_score": 8.667,
-      "label": "GROWTH",
+      "current_score": 0.0,
+      "avg_velocity": 4.889,
+      "avg_acceleration": 0.0,
+      "momentum_score": 3.422,
+      "label": "INTRO",
       "source": "live",
       "product_suggestion": {
         "mood_key": "default",
@@ -459,7 +459,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 8.667
+      "ranking_score": 3.422
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -536,21 +536,21 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "เครื่องชงกาแฟ",
+      "keyword": "หม้อทอดไร้น้ำมัน",
       "current_score": 0.0,
-      "avg_velocity": 0.0,
+      "avg_velocity": -3.444,
       "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
+      "momentum_score": -2.411,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "กิน_อาหาร",
-        "mood_display": "🍜 กิน/รีวิวอาหาร",
+        "mood_key": "ไลฟ์สไตล์_ทำความสะอาด",
+        "mood_display": "🧹 ไลฟ์สไตล์/จัดบ้าน/ทำความสะอาด",
         "products": [
-          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
-          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
-          "อุปกรณ์ทำอาหาร/เครื่องครัว",
-          "อาหารเสริม/เครื่องดื่มสุขภาพ"
+          "น้ำยาขจัดคราบ / อุปกรณ์ทำความสะอาด",
+          "อุปกรณ์จัดระเบียบโต๊ะ/ห้อง",
+          "เครื่องใช้ไฟฟ้าในครัว (หม้อทอด/เครื่องดูดฝุ่น)",
+          "กล่องเก็บของ / ชั้นวาง"
         ]
       },
       "affiliate_product": {
@@ -572,15 +572,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": -2.411
     },
     {
       "keyword": "กระเป๋าสะพาย",
-      "current_score": 0.0,
-      "avg_velocity": 16.333,
-      "avg_acceleration": 0.0,
-      "momentum_score": 11.433,
-      "label": "INTRO",
+      "current_score": 46.0,
+      "avg_velocity": 4.889,
+      "avg_acceleration": -7.556,
+      "momentum_score": 1.156,
+      "label": "PEAK",
       "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
@@ -611,15 +611,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 11.433
+      "ranking_score": 1.156
     },
     {
       "keyword": "รองเท้าผ้าใบ",
-      "current_score": 62.0,
-      "avg_velocity": 6.889,
-      "avg_acceleration": 6.889,
-      "momentum_score": 6.889,
-      "label": "GROWTH",
+      "current_score": 95.0,
+      "avg_velocity": 2.0,
+      "avg_acceleration": -2.778,
+      "momentum_score": 0.567,
+      "label": "PEAK",
       "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
@@ -650,7 +650,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 6.889
+      "ranking_score": 0.567
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
