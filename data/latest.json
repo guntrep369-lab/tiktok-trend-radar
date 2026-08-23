@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-08-23T06:24:20.661653+00:00",
+  "run_timestamp": "2026-08-23T09:18:36.400521+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -160,9 +160,9 @@
     {
       "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
-      "avg_velocity": -0.556,
+      "avg_velocity": -8.778,
       "avg_acceleration": 0.0,
-      "momentum_score": -0.389,
+      "momentum_score": -6.144,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -194,45 +194,45 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.389
+      "ranking_score": -6.144
     },
     {
-      "keyword": "คอลลาเจน",
-      "current_score": 59.0,
-      "avg_velocity": 0.889,
-      "avg_acceleration": 3.778,
-      "momentum_score": 1.756,
-      "label": "GROWTH",
+      "keyword": "ขนมเกาหลี",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "mood_key": "กิน_อาหาร",
+        "mood_display": "🍜 กิน/รีวิวอาหาร",
         "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
+          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
+          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
+          "อุปกรณ์ทำอาหาร/เครื่องครัว",
+          "อาหารเสริม/เครื่องดื่มสุขภาพ"
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
+        "product_name": "★ ใส่สินค้าจริง: ขนม/ของกินไวรัล",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "คอลลาเจน",
-            "วิตามินผิว",
-            "อาหารเสริมผิว"
+            "ขนมเกาหลี",
+            "ขนม",
+            "ของกิน"
           ],
           "moods": [
-            "สวย_แต่งหน้า"
+            "กิน_อาหาร"
           ]
         },
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 1.756
+      "ranking_score": 0.0
     },
     {
       "keyword": "กาแฟลดน้ำหนัก",
@@ -274,12 +274,12 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "วิตามินผิว",
-      "current_score": 0.0,
-      "avg_velocity": -0.111,
-      "avg_acceleration": 0.0,
-      "momentum_score": -0.078,
-      "label": "STABLE",
+      "keyword": "คอลลาเจน",
+      "current_score": 60.0,
+      "avg_velocity": -2.333,
+      "avg_acceleration": 0.778,
+      "momentum_score": -1.4,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -309,52 +309,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.078
-    },
-    {
-      "keyword": "ขนมเกาหลี",
-      "current_score": 0.0,
-      "avg_velocity": -1.778,
-      "avg_acceleration": 0.0,
-      "momentum_score": -1.244,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "กิน_อาหาร",
-        "mood_display": "🍜 กิน/รีวิวอาหาร",
-        "products": [
-          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
-          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
-          "อุปกรณ์ทำอาหาร/เครื่องครัว",
-          "อาหารเสริม/เครื่องดื่มสุขภาพ"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: ขนม/ของกินไวรัล",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "ขนมเกาหลี",
-            "ขนม",
-            "ของกิน"
-          ],
-          "moods": [
-            "กิน_อาหาร"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": -1.244
+      "ranking_score": -1.4
     },
     {
       "keyword": "โพรไบโอติก",
       "current_score": 0.0,
-      "avg_velocity": -4.667,
-      "avg_acceleration": -1.778,
-      "momentum_score": -3.8,
+      "avg_velocity": -3.0,
+      "avg_acceleration": -1.667,
+      "momentum_score": -2.6,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -384,14 +346,52 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -3.8
+      "ranking_score": -2.6
+    },
+    {
+      "keyword": "วิตามินผิว",
+      "current_score": 0.0,
+      "avg_velocity": -2.556,
+      "avg_acceleration": -4.444,
+      "momentum_score": -3.122,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "อาหารเสริมผิว"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -3.122
     },
     {
       "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 93.0,
-      "avg_velocity": 9.778,
-      "avg_acceleration": 7.556,
-      "momentum_score": 9.111,
+      "current_score": 99.0,
+      "avg_velocity": 5.556,
+      "avg_acceleration": 5.556,
+      "momentum_score": 5.556,
       "label": "GROWTH",
       "source": "live",
       "product_suggestion": {
@@ -423,46 +423,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 9.111
-    },
-    {
-      "keyword": "เครื่องชงกาแฟ",
-      "current_score": 86.0,
-      "avg_velocity": 2.556,
-      "avg_acceleration": 0.111,
-      "momentum_score": 1.822,
-      "label": "GROWTH",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "กิน_อาหาร",
-        "mood_display": "🍜 กิน/รีวิวอาหาร",
-        "products": [
-          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
-          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
-          "อุปกรณ์ทำอาหาร/เครื่องครัว",
-          "อาหารเสริม/เครื่องดื่มสุขภาพ"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "หม้อทอดไร้น้ำมัน",
-            "เครื่องชงกาแฟ",
-            "หม้อทอด",
-            "เครื่องครัว"
-          ],
-          "moods": [
-            "ไลฟ์สไตล์_ทำความสะอาด"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 1.822
+      "ranking_score": 5.556
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -541,10 +502,10 @@
     {
       "keyword": "เครื่องฟอกอากาศ",
       "current_score": 0.0,
-      "avg_velocity": -8.222,
-      "avg_acceleration": -5.333,
-      "momentum_score": -7.356,
-      "label": "DECLINE",
+      "avg_velocity": 0.667,
+      "avg_acceleration": -7.778,
+      "momentum_score": -1.867,
+      "label": "INTRO",
       "source": "live",
       "product_suggestion": {
         "mood_key": "default",
@@ -572,46 +533,46 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -7.356
+      "ranking_score": -1.867
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 60.0,
-      "avg_velocity": 5.222,
-      "avg_acceleration": 0.111,
-      "momentum_score": 3.689,
-      "label": "GROWTH",
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 0.0,
+      "avg_velocity": -10.111,
+      "avg_acceleration": -6.444,
+      "momentum_score": -9.011,
+      "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "mood_key": "กิน_อาหาร",
+        "mood_display": "🍜 กิน/รีวิวอาหาร",
         "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
+          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
+          "อุปกรณ์ทำอาหาร/เครื่องครัว",
+          "อาหารเสริม/เครื่องดื่มสุขภาพ"
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
+        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "รองเท้าผ้าใบ",
-            "กระเป๋าสะพาย",
-            "รองเท้า",
-            "กระเป๋า"
+            "หม้อทอดไร้น้ำมัน",
+            "เครื่องชงกาแฟ",
+            "หม้อทอด",
+            "เครื่องครัว"
           ],
           "moods": [
-            "แฟชั่น_แต่งตัว"
+            "ไลฟ์สไตล์_ทำความสะอาด"
           ]
         },
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 3.689
+      "ranking_score": -9.011
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
@@ -734,11 +695,11 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "กระเป๋าสะพาย",
-      "current_score": 38.0,
-      "avg_velocity": -0.333,
-      "avg_acceleration": -0.222,
-      "momentum_score": -0.3,
+      "keyword": "รองเท้าผ้าใบ",
+      "current_score": 69.0,
+      "avg_velocity": -1.0,
+      "avg_acceleration": -0.778,
+      "momentum_score": -0.933,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -770,7 +731,46 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.3
+      "ranking_score": -0.933
+    },
+    {
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": -9.0,
+      "avg_acceleration": -7.111,
+      "momentum_score": -8.433,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "products": [
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "รองเท้าผ้าใบ",
+            "กระเป๋าสะพาย",
+            "รองเท้า",
+            "กระเป๋า"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -8.433
     }
   ]
 }
