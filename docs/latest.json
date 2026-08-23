@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-08-23T18:15:56.029233+00:00",
+  "run_timestamp": "2026-08-23T21:12:40.355942+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -160,10 +160,10 @@
     {
       "keyword": "คอนซีลเลอร์",
       "current_score": 0.0,
-      "avg_velocity": -5.667,
+      "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
-      "momentum_score": -3.967,
-      "label": "DECLINE",
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -194,14 +194,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -3.967
+      "ranking_score": 0.0
     },
     {
       "keyword": "วิตามินผิว",
       "current_score": 0.0,
       "avg_velocity": 0.0,
-      "avg_acceleration": 1.333,
-      "momentum_score": 0.4,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
       "label": "STABLE",
       "source": "live",
       "product_suggestion": {
@@ -232,7 +232,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.4
+      "ranking_score": 0.0
     },
     {
       "keyword": "ขนมเกาหลี",
@@ -314,9 +314,9 @@
     {
       "keyword": "โพรไบโอติก",
       "current_score": 0.0,
-      "avg_velocity": -5.667,
-      "avg_acceleration": -1.111,
-      "momentum_score": -4.3,
+      "avg_velocity": -1.667,
+      "avg_acceleration": 2.111,
+      "momentum_score": -0.533,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -346,14 +346,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -4.3
+      "ranking_score": -0.533
     },
     {
       "keyword": "คอลลาเจน",
       "current_score": 0.0,
-      "avg_velocity": -5.778,
-      "avg_acceleration": -2.333,
-      "momentum_score": -4.744,
+      "avg_velocity": -14.0,
+      "avg_acceleration": -3.111,
+      "momentum_score": -10.733,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -384,7 +384,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -4.744
+      "ranking_score": -10.733
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -461,86 +461,11 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "เครื่องชงกาแฟ",
-      "current_score": 0.0,
-      "avg_velocity": -1.0,
-      "avg_acceleration": 0.667,
-      "momentum_score": -0.5,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "กิน_อาหาร",
-        "mood_display": "🍜 กิน/รีวิวอาหาร",
-        "products": [
-          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
-          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
-          "อุปกรณ์ทำอาหาร/เครื่องครัว",
-          "อาหารเสริม/เครื่องดื่มสุขภาพ"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "หม้อทอดไร้น้ำมัน",
-            "เครื่องชงกาแฟ",
-            "หม้อทอด",
-            "เครื่องครัว"
-          ],
-          "moods": [
-            "ไลฟ์สไตล์_ทำความสะอาด"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": -0.5
-    },
-    {
-      "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 0.0,
-      "avg_velocity": -3.222,
-      "avg_acceleration": -0.778,
-      "momentum_score": -2.489,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "ที่ดูดฝุ่นไร้สาย",
-            "เครื่องฟอกอากาศ",
-            "ดูดฝุ่น"
-          ],
-          "moods": [
-            "ไลฟ์สไตล์_ทำความสะอาด"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": -2.489
-    },
-    {
       "keyword": "หม้อทอดไร้น้ำมัน",
       "current_score": 0.0,
-      "avg_velocity": -9.889,
-      "avg_acceleration": -1.889,
-      "momentum_score": -7.489,
+      "avg_velocity": -3.222,
+      "avg_acceleration": 3.889,
+      "momentum_score": -1.089,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -572,7 +497,82 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -7.489
+      "ranking_score": -1.089
+    },
+    {
+      "keyword": "เครื่องฟอกอากาศ",
+      "current_score": 0.0,
+      "avg_velocity": -8.444,
+      "avg_acceleration": 4.0,
+      "momentum_score": -4.711,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
+        "products": [
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "ที่ดูดฝุ่นไร้สาย",
+            "เครื่องฟอกอากาศ",
+            "ดูดฝุ่น"
+          ],
+          "moods": [
+            "ไลฟ์สไตล์_ทำความสะอาด"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -4.711
+    },
+    {
+      "keyword": "เครื่องชงกาแฟ",
+      "current_score": 0.0,
+      "avg_velocity": -9.222,
+      "avg_acceleration": 4.0,
+      "momentum_score": -5.256,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "กิน_อาหาร",
+        "mood_display": "🍜 กิน/รีวิวอาหาร",
+        "products": [
+          "ขนม/ของกินไวรัล (เกาหลี/ญี่ปุ่น)",
+          "เครื่องปรุง/น้ำจิ้มสำเร็จรูป",
+          "อุปกรณ์ทำอาหาร/เครื่องครัว",
+          "อาหารเสริม/เครื่องดื่มสุขภาพ"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "หม้อทอดไร้น้ำมัน",
+            "เครื่องชงกาแฟ",
+            "หม้อทอด",
+            "เครื่องครัว"
+          ],
+          "moods": [
+            "ไลฟ์สไตล์_ทำความสะอาด"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -5.256
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
@@ -697,9 +697,9 @@
     {
       "keyword": "กระเป๋าสะพาย",
       "current_score": 0.0,
-      "avg_velocity": -4.111,
-      "avg_acceleration": -2.111,
-      "momentum_score": -3.511,
+      "avg_velocity": -12.0,
+      "avg_acceleration": 5.333,
+      "momentum_score": -6.8,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -731,14 +731,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -3.511
+      "ranking_score": -6.8
     },
     {
       "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
-      "avg_velocity": -7.556,
-      "avg_acceleration": -3.667,
-      "momentum_score": -6.389,
+      "avg_velocity": -16.222,
+      "avg_acceleration": -5.222,
+      "momentum_score": -12.922,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -770,7 +770,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -6.389
+      "ranking_score": -12.922
     }
   ]
 }
