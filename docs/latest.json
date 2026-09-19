@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-09-19T12:46:28.984473+00:00",
+  "run_timestamp": "2026-09-19T17:36:10.407982+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -199,10 +199,10 @@
     {
       "keyword": "คอลลาเจน",
       "current_score": 0.0,
-      "avg_velocity": 10.111,
+      "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
-      "momentum_score": 7.078,
-      "label": "INTRO",
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -232,7 +232,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 7.078
+      "ranking_score": 0.0
     },
     {
       "keyword": "วิตามินผิว",
@@ -538,10 +538,10 @@
     {
       "keyword": "เครื่องชงกาแฟ",
       "current_score": 0.0,
-      "avg_velocity": -11.111,
-      "avg_acceleration": -22.222,
-      "momentum_score": -14.444,
-      "label": "DECLINE",
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "กิน_อาหาร",
@@ -572,7 +572,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -14.444
+      "ranking_score": 0.0
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
