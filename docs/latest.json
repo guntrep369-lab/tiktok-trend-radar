@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-09-20T13:19:59.782932+00:00",
+  "run_timestamp": "2026-09-20T17:48:16.163571+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -576,11 +576,11 @@
     },
     {
       "keyword": "รองเท้าผ้าใบ",
-      "current_score": 100.0,
+      "current_score": 0.0,
       "avg_velocity": 11.111,
-      "avg_acceleration": 11.111,
-      "momentum_score": 11.111,
-      "label": "GROWTH",
+      "avg_acceleration": 0.0,
+      "momentum_score": 7.778,
+      "label": "INTRO",
       "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
@@ -611,7 +611,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 11.111
+      "ranking_score": 7.778
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
