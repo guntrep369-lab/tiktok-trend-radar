@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-09-21T02:26:07.928215+00:00",
+  "run_timestamp": "2026-09-21T08:22:32.345574+00:00",
   "results": [
     {
       "keyword": "ลิปเปลี่ยนสี",
@@ -197,44 +197,6 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "คอลลาเจน",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "คอลลาเจน",
-            "วิตามินผิว",
-            "อาหารเสริมผิว"
-          ],
-          "moods": [
-            "สวย_แต่งหน้า"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 0.0
-    },
-    {
       "keyword": "วิตามินผิว",
       "current_score": 0.0,
       "avg_velocity": 0.0,
@@ -387,11 +349,49 @@
       "ranking_score": 0.0
     },
     {
+      "keyword": "คอลลาเจน",
+      "current_score": 0.0,
+      "avg_velocity": -5.556,
+      "avg_acceleration": 0.0,
+      "momentum_score": -3.889,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "อาหารเสริมผิว"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -3.889
+    },
+    {
       "keyword": "เครื่องชงกาแฟ",
       "current_score": 0.0,
-      "avg_velocity": 11.111,
+      "avg_velocity": 1.778,
       "avg_acceleration": 0.0,
-      "momentum_score": 7.778,
+      "momentum_score": 1.244,
       "label": "INTRO",
       "source": "live",
       "product_suggestion": {
@@ -423,7 +423,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 7.778
+      "ranking_score": 1.244
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -575,35 +575,34 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "เดรสออกงาน",
+      "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
-      "avg_velocity": 5.778,
-      "avg_acceleration": 0.0,
-      "momentum_score": 4.044,
-      "label": "INTRO",
+      "avg_velocity": 0.0,
+      "avg_acceleration": 7.667,
+      "momentum_score": 2.3,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "ตลก_เครียดงาน",
-        "mood_display": "😩 ตลก/เครียดเรื่องงาน",
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
         "products": [
-          "อาหารเสริมแก้ปวดหัว / วิตามินบำรุงสมอง",
-          "หมอนรองคอ / หมอนรองหลังออฟฟิศ",
-          "ขนมขบเคี้ยวแปลกๆ / กาแฟ",
-          "ยาหม่อง / แผ่นแปะคลายกล้ามเนื้อ"
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: เสื้อผ้า/เดรส",
+        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "เสื้อโอเวอร์ไซส์",
-            "กางเกงขายาวทรงสวย",
-            "เดรสออกงาน",
-            "เสื้อ",
-            "เดรส"
+            "รองเท้าผ้าใบ",
+            "กระเป๋าสะพาย",
+            "รองเท้า",
+            "กระเป๋า"
           ],
           "moods": [
             "แฟชั่น_แต่งตัว"
@@ -612,7 +611,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 4.044
+      "ranking_score": 2.3
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
@@ -695,7 +694,7 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "รองเท้าผ้าใบ",
+      "keyword": "กระเป๋าสะพาย",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -734,7 +733,7 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "กระเป๋าสะพาย",
+      "keyword": "เดรสออกงาน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
@@ -742,26 +741,27 @@
       "label": "STABLE",
       "source": "live",
       "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "mood_key": "ตลก_เครียดงาน",
+        "mood_display": "😩 ตลก/เครียดเรื่องงาน",
         "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+          "อาหารเสริมแก้ปวดหัว / วิตามินบำรุงสมอง",
+          "หมอนรองคอ / หมอนรองหลังออฟฟิศ",
+          "ขนมขบเคี้ยวแปลกๆ / กาแฟ",
+          "ยาหม่อง / แผ่นแปะคลายกล้ามเนื้อ"
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
+        "product_name": "★ ใส่สินค้าจริง: เสื้อผ้า/เดรส",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "รองเท้าผ้าใบ",
-            "กระเป๋าสะพาย",
-            "รองเท้า",
-            "กระเป๋า"
+            "เสื้อโอเวอร์ไซส์",
+            "กางเกงขายาวทรงสวย",
+            "เดรสออกงาน",
+            "เสื้อ",
+            "เดรส"
           ],
           "moods": [
             "แฟชั่น_แต่งตัว"
