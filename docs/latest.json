@@ -1,14 +1,14 @@
 {
-  "run_timestamp": "2026-10-19T08:17:23.984640+00:00",
+  "run_timestamp": "2026-10-19T16:01:33.581778+00:00",
   "results": [
     {
-      "keyword": "ลิปเปลี่ยนสี",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
+      "keyword": "คอนซีลเลอร์",
+      "current_score": 33.26,
+      "avg_velocity": 0.695,
+      "avg_acceleration": 0.582,
+      "momentum_score": 0.661,
+      "label": "INTRO",
+      "source": "simulate_fallback",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -38,16 +38,55 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": 0.661
+    },
+    {
+      "keyword": "ลิปเปลี่ยนสี",
+      "current_score": 29.52,
+      "avg_velocity": 0.072,
+      "avg_acceleration": 0.467,
+      "momentum_score": 0.191,
+      "label": "STABLE",
+      "source": "simulate_fallback",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: ลิป/คอนซีลเลอร์/เมคอัพ",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "ลิปเปลี่ยนสี",
+            "คอนซีลเลอร์",
+            "ลิป",
+            "เมคอัพ"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.191
     },
     {
       "keyword": "ครีมกันแดดโกลว์",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
+      "current_score": 29.76,
+      "avg_velocity": 0.29,
+      "avg_acceleration": -0.12,
+      "momentum_score": 0.167,
       "label": "STABLE",
-      "source": "live",
+      "source": "simulate_fallback",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -78,16 +117,16 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": 0.167
     },
     {
       "keyword": "เซรั่มหน้าใส",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
+      "current_score": 31.52,
+      "avg_velocity": -0.053,
+      "avg_acceleration": -0.095,
+      "momentum_score": -0.066,
       "label": "STABLE",
-      "source": "live",
+      "source": "simulate_fallback",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -118,16 +157,16 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": -0.066
     },
     {
       "keyword": "น้ำหอมติดทน",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
+      "current_score": 26.56,
+      "avg_velocity": -0.373,
+      "avg_acceleration": -0.05,
+      "momentum_score": -0.276,
+      "label": "DECLINE",
+      "source": "simulate_fallback",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
         "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
@@ -155,15 +194,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": -0.276
     },
     {
-      "keyword": "คอนซีลเลอร์",
-      "current_score": 0.0,
-      "avg_velocity": -0.111,
-      "avg_acceleration": -5.111,
-      "momentum_score": -1.611,
-      "label": "STABLE",
+      "keyword": "คอลลาเจน",
+      "current_score": 50.0,
+      "avg_velocity": 4.444,
+      "avg_acceleration": 1.0,
+      "momentum_score": 3.411,
+      "label": "GROWTH",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -176,16 +215,15 @@
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: ลิป/คอนซีลเลอร์/เมคอัพ",
+        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "ลิปเปลี่ยนสี",
-            "คอนซีลเลอร์",
-            "ลิป",
-            "เมคอัพ"
+            "คอลลาเจน",
+            "วิตามินผิว",
+            "อาหารเสริมผิว"
           ],
           "moods": [
             "สวย_แต่งหน้า"
@@ -194,7 +232,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -1.611
+      "ranking_score": 3.411
     },
     {
       "keyword": "ขนมเกาหลี",
@@ -274,49 +312,11 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "คอลลาเจน",
-      "current_score": 44.0,
-      "avg_velocity": -2.556,
-      "avg_acceleration": 1.111,
-      "momentum_score": -1.456,
-      "label": "DECLINE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: คอลลาเจน/วิตามินผิว",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "คอลลาเจน",
-            "วิตามินผิว",
-            "อาหารเสริมผิว"
-          ],
-          "moods": [
-            "สวย_แต่งหน้า"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": -1.456
-    },
-    {
       "keyword": "โพรไบโอติก",
-      "current_score": 0.0,
-      "avg_velocity": -2.111,
-      "avg_acceleration": -4.222,
-      "momentum_score": -2.744,
+      "current_score": 14.0,
+      "avg_velocity": -1.333,
+      "avg_acceleration": -1.333,
+      "momentum_score": -1.333,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -346,14 +346,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -2.744
+      "ranking_score": -1.333
     },
     {
       "keyword": "วิตามินผิว",
       "current_score": 0.0,
-      "avg_velocity": -3.778,
-      "avg_acceleration": -0.778,
-      "momentum_score": -2.878,
+      "avg_velocity": -2.889,
+      "avg_acceleration": -1.111,
+      "momentum_score": -2.356,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -384,7 +384,43 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -2.878
+      "ranking_score": -2.356
+    },
+    {
+      "keyword": "เครื่องฟอกอากาศ",
+      "current_score": 31.0,
+      "avg_velocity": 1.222,
+      "avg_acceleration": -1.333,
+      "momentum_score": 0.456,
+      "label": "INTRO",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "default",
+        "mood_display": "❓ เดาอารมณ์ไม่ออก",
+        "products": [
+          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
+          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "ที่ดูดฝุ่นไร้สาย",
+            "เครื่องฟอกอากาศ",
+            "ดูดฝุ่น"
+          ],
+          "moods": [
+            "ไลฟ์สไตล์_ทำความสะอาด"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.456
     },
     {
       "keyword": "ที่ดูดฝุ่นไร้สาย",
@@ -461,47 +497,11 @@
       "ranking_score": 0.0
     },
     {
-      "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 46.0,
-      "avg_velocity": -0.222,
-      "avg_acceleration": 0.222,
-      "momentum_score": -0.089,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "default",
-        "mood_display": "❓ เดาอารมณ์ไม่ออก",
-        "products": [
-          "เลือกสินค้าที่กำลังไวรัลใน TikTok Shop (#TikTokMadeMeBuyIt)",
-          "ดูว่าคีย์เวิร์ดนี้คนค้นเพราะอะไร แล้วจับคู่สินค้าแก้ปัญหานั้น"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "ที่ดูดฝุ่นไร้สาย",
-            "เครื่องฟอกอากาศ",
-            "ดูดฝุ่น"
-          ],
-          "moods": [
-            "ไลฟ์สไตล์_ทำความสะอาด"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": -0.089
-    },
-    {
       "keyword": "เครื่องชงกาแฟ",
-      "current_score": 54.0,
-      "avg_velocity": -1.556,
-      "avg_acceleration": 0.667,
-      "momentum_score": -0.889,
+      "current_score": 33.0,
+      "avg_velocity": -0.556,
+      "avg_acceleration": 0.556,
+      "momentum_score": -0.222,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -533,14 +533,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.889
+      "ranking_score": -0.222
     },
     {
       "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 0.0,
-      "avg_velocity": -4.222,
-      "avg_acceleration": -6.111,
-      "momentum_score": -4.789,
+      "current_score": 25.0,
+      "avg_velocity": -6.0,
+      "avg_acceleration": 1.111,
+      "momentum_score": -3.867,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -572,46 +572,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -4.789
-    },
-    {
-      "keyword": "รองเท้าผ้าใบ",
-      "current_score": 64.0,
-      "avg_velocity": 0.111,
-      "avg_acceleration": 1.778,
-      "momentum_score": 0.611,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
-        "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "รองเท้าผ้าใบ",
-            "กระเป๋าสะพาย",
-            "รองเท้า",
-            "กระเป๋า"
-          ],
-          "moods": [
-            "แฟชั่น_แต่งตัว"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 0.611
+      "ranking_score": -3.867
     },
     {
       "keyword": "เสื้อโอเวอร์ไซส์",
@@ -696,10 +657,10 @@
     {
       "keyword": "เดรสออกงาน",
       "current_score": 0.0,
-      "avg_velocity": -1.556,
+      "avg_velocity": 0.0,
       "avg_acceleration": 0.0,
-      "momentum_score": -1.089,
-      "label": "DECLINE",
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "ตลก_เครียดงาน",
@@ -731,14 +692,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -1.089
+      "ranking_score": 0.0
     },
     {
-      "keyword": "กระเป๋าสะพาย",
+      "keyword": "รองเท้าผ้าใบ",
       "current_score": 0.0,
-      "avg_velocity": -2.556,
+      "avg_velocity": -4.444,
       "avg_acceleration": -5.889,
-      "momentum_score": -3.556,
+      "momentum_score": -4.878,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -770,7 +731,46 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -3.556
+      "ranking_score": -4.878
+    },
+    {
+      "keyword": "กระเป๋าสะพาย",
+      "current_score": 0.0,
+      "avg_velocity": -5.556,
+      "avg_acceleration": -6.889,
+      "momentum_score": -5.956,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "products": [
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: รองเท้า/กระเป๋า",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "รองเท้าผ้าใบ",
+            "กระเป๋าสะพาย",
+            "รองเท้า",
+            "กระเป๋า"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -5.956
     }
   ]
 }
