@@ -1,43 +1,6 @@
 {
-  "run_timestamp": "2026-10-27T15:01:38.794402+00:00",
+  "run_timestamp": "2026-10-27T21:37:08.408082+00:00",
   "results": [
-    {
-      "keyword": "น้ำหอมติดทน",
-      "current_score": 0.0,
-      "avg_velocity": 2.667,
-      "avg_acceleration": 0.0,
-      "momentum_score": 1.867,
-      "label": "INTRO",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "สวย_แต่งหน้า",
-        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
-        "products": [
-          "เครื่องสำอางราคาจับต้องได้",
-          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
-          "คอลลาเจน / วิตามินผิว",
-          "ครีมกันแดด / เซรั่ม"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: น้ำหอม",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "น้ำหอมติดทน",
-            "น้ำหอม"
-          ],
-          "moods": [
-            "สวย_แต่งหน้า"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 1.867
-    },
     {
       "keyword": "ลิปเปลี่ยนสี",
       "current_score": 0.0,
@@ -158,12 +121,49 @@
       "ranking_score": 0.0
     },
     {
+      "keyword": "น้ำหอมติดทน",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "สวย_แต่งหน้า",
+        "mood_display": "💄 สวย/แต่งหน้า/ดูแลผิว",
+        "products": [
+          "เครื่องสำอางราคาจับต้องได้",
+          "กระจกแต่งหน้ามีไฟ / อุปกรณ์แต่งหน้า",
+          "คอลลาเจน / วิตามินผิว",
+          "ครีมกันแดด / เซรั่ม"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: น้ำหอม",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "น้ำหอมติดทน",
+            "น้ำหอม"
+          ],
+          "moods": [
+            "สวย_แต่งหน้า"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": 0.0
+    },
+    {
       "keyword": "คอนซีลเลอร์",
-      "current_score": 28.0,
-      "avg_velocity": -2.556,
-      "avg_acceleration": -2.667,
-      "momentum_score": -2.589,
-      "label": "DECLINE",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -194,15 +194,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -2.589
+      "ranking_score": 0.0
     },
     {
-      "keyword": "คอลลาเจน",
-      "current_score": 60.0,
-      "avg_velocity": 3.333,
-      "avg_acceleration": 4.333,
-      "momentum_score": 3.633,
-      "label": "GROWTH",
+      "keyword": "วิตามินผิว",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 3.0,
+      "momentum_score": 0.9,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "สวย_แต่งหน้า",
@@ -232,7 +232,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 3.633
+      "ranking_score": 0.9
     },
     {
       "keyword": "ขนมเกาหลี",
@@ -313,11 +313,11 @@
     },
     {
       "keyword": "โพรไบโอติก",
-      "current_score": 15.0,
-      "avg_velocity": -1.111,
-      "avg_acceleration": -0.556,
-      "momentum_score": -0.944,
-      "label": "DECLINE",
+      "current_score": 0.0,
+      "avg_velocity": 0.0,
+      "avg_acceleration": 0.0,
+      "momentum_score": 0.0,
+      "label": "STABLE",
       "source": "live",
       "product_suggestion": {
         "mood_key": "default",
@@ -346,14 +346,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.944
+      "ranking_score": 0.0
     },
     {
-      "keyword": "วิตามินผิว",
+      "keyword": "คอลลาเจน",
       "current_score": 0.0,
-      "avg_velocity": -5.222,
-      "avg_acceleration": -2.333,
-      "momentum_score": -4.356,
+      "avg_velocity": -14.333,
+      "avg_acceleration": -4.222,
+      "momentum_score": -11.3,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -384,14 +384,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -4.356
+      "ranking_score": -11.3
     },
     {
-      "keyword": "ที่ดูดฝุ่นไร้สาย",
+      "keyword": "หม้อทอดไร้น้ำมัน",
       "current_score": 0.0,
       "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
+      "avg_acceleration": 2.778,
+      "momentum_score": 0.833,
       "label": "STABLE",
       "source": "live",
       "product_suggestion": {
@@ -405,15 +405,16 @@
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
+        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "ที่ดูดฝุ่นไร้สาย",
-            "เครื่องฟอกอากาศ",
-            "ดูดฝุ่น"
+            "หม้อทอดไร้น้ำมัน",
+            "เครื่องชงกาแฟ",
+            "หม้อทอด",
+            "เครื่องครัว"
           ],
           "moods": [
             "ไลฟ์สไตล์_ทำความสะอาด"
@@ -422,7 +423,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": 0.833
     },
     {
       "keyword": "ไฟ LED ติดผนัง",
@@ -462,10 +463,10 @@
     },
     {
       "keyword": "เครื่องฟอกอากาศ",
-      "current_score": 31.0,
-      "avg_velocity": -2.778,
-      "avg_acceleration": 3.778,
-      "momentum_score": -0.811,
+      "current_score": 0.0,
+      "avg_velocity": -4.333,
+      "avg_acceleration": 5.0,
+      "momentum_score": -1.533,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -494,14 +495,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.811
+      "ranking_score": -1.533
     },
     {
       "keyword": "เครื่องชงกาแฟ",
-      "current_score": 33.0,
-      "avg_velocity": -1.444,
-      "avg_acceleration": 0.222,
-      "momentum_score": -0.944,
+      "current_score": 0.0,
+      "avg_velocity": -8.111,
+      "avg_acceleration": 3.889,
+      "momentum_score": -4.511,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -533,14 +534,14 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.944
+      "ranking_score": -4.511
     },
     {
-      "keyword": "หม้อทอดไร้น้ำมัน",
-      "current_score": 28.0,
-      "avg_velocity": -2.778,
-      "avg_acceleration": -5.0,
-      "momentum_score": -3.444,
+      "keyword": "ที่ดูดฝุ่นไร้สาย",
+      "current_score": 0.0,
+      "avg_velocity": -8.556,
+      "avg_acceleration": -17.111,
+      "momentum_score": -11.122,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -554,16 +555,15 @@
         ]
       },
       "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: หม้อทอด/เครื่องชงกาแฟ (เครื่องครัว)",
+        "product_name": "★ ใส่สินค้าจริง: เครื่องดูดฝุ่น/เครื่องฟอกอากาศ",
         "affiliate_link": "",
         "commission_pct": null,
         "price": null,
         "match": {
           "keywords": [
-            "หม้อทอดไร้น้ำมัน",
-            "เครื่องชงกาแฟ",
-            "หม้อทอด",
-            "เครื่องครัว"
+            "ที่ดูดฝุ่นไร้สาย",
+            "เครื่องฟอกอากาศ",
+            "ดูดฝุ่น"
           ],
           "moods": [
             "ไลฟ์สไตล์_ทำความสะอาด"
@@ -572,15 +572,15 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -3.444
+      "ranking_score": -11.122
     },
     {
       "keyword": "รองเท้าผ้าใบ",
-      "current_score": 51.0,
-      "avg_velocity": 3.667,
-      "avg_acceleration": 0.778,
-      "momentum_score": 2.8,
-      "label": "GROWTH",
+      "current_score": 0.0,
+      "avg_velocity": 1.222,
+      "avg_acceleration": 5.0,
+      "momentum_score": 2.356,
+      "label": "INTRO",
       "source": "live",
       "product_suggestion": {
         "mood_key": "แฟชั่น_แต่งตัว",
@@ -611,47 +611,7 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": 2.8
-    },
-    {
-      "keyword": "เสื้อโอเวอร์ไซส์",
-      "current_score": 0.0,
-      "avg_velocity": 0.0,
-      "avg_acceleration": 0.0,
-      "momentum_score": 0.0,
-      "label": "STABLE",
-      "source": "live",
-      "product_suggestion": {
-        "mood_key": "แฟชั่น_แต่งตัว",
-        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
-        "products": [
-          "เสื้อผ้าแฟชั่นตามเทรนด์",
-          "กระเป๋า / รองเท้า",
-          "เครื่องประดับ / แอคเซสเซอรี่",
-          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
-        ]
-      },
-      "affiliate_product": {
-        "product_name": "★ ใส่สินค้าจริง: เสื้อผ้า/เดรส",
-        "affiliate_link": "",
-        "commission_pct": null,
-        "price": null,
-        "match": {
-          "keywords": [
-            "เสื้อโอเวอร์ไซส์",
-            "กางเกงขายาวทรงสวย",
-            "เดรสออกงาน",
-            "เสื้อ",
-            "เดรส"
-          ],
-          "moods": [
-            "แฟชั่น_แต่งตัว"
-          ]
-        },
-        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
-      },
-      "roi_weight": 1.0,
-      "ranking_score": 0.0
+      "ranking_score": 2.356
     },
     {
       "keyword": "กางเกงขายาวทรงสวย",
@@ -735,10 +695,10 @@
     },
     {
       "keyword": "กระเป๋าสะพาย",
-      "current_score": 64.0,
-      "avg_velocity": -0.333,
-      "avg_acceleration": 0.0,
-      "momentum_score": -0.233,
+      "current_score": 0.0,
+      "avg_velocity": -9.889,
+      "avg_acceleration": 4.889,
+      "momentum_score": -5.456,
       "label": "DECLINE",
       "source": "live",
       "product_suggestion": {
@@ -770,7 +730,47 @@
         "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
       },
       "roi_weight": 1.0,
-      "ranking_score": -0.233
+      "ranking_score": -5.456
+    },
+    {
+      "keyword": "เสื้อโอเวอร์ไซส์",
+      "current_score": 0.0,
+      "avg_velocity": -5.556,
+      "avg_acceleration": -11.111,
+      "momentum_score": -7.222,
+      "label": "DECLINE",
+      "source": "live",
+      "product_suggestion": {
+        "mood_key": "แฟชั่น_แต่งตัว",
+        "mood_display": "👗 แฟชั่น/แต่งตัว/OOTD",
+        "products": [
+          "เสื้อผ้าแฟชั่นตามเทรนด์",
+          "กระเป๋า / รองเท้า",
+          "เครื่องประดับ / แอคเซสเซอรี่",
+          "อุปกรณ์รีดผ้า / ที่เก็บเสื้อผ้า"
+        ]
+      },
+      "affiliate_product": {
+        "product_name": "★ ใส่สินค้าจริง: เสื้อผ้า/เดรส",
+        "affiliate_link": "",
+        "commission_pct": null,
+        "price": null,
+        "match": {
+          "keywords": [
+            "เสื้อโอเวอร์ไซส์",
+            "กางเกงขายาวทรงสวย",
+            "เดรสออกงาน",
+            "เสื้อ",
+            "เดรส"
+          ],
+          "moods": [
+            "แฟชั่น_แต่งตัว"
+          ]
+        },
+        "notes": "แก้ชื่อ + ใส่ลิงก์ + คอมจริง"
+      },
+      "roi_weight": 1.0,
+      "ranking_score": -7.222
     }
   ]
 }
